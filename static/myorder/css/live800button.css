@@ -1,0 +1,120 @@
+.live800 a{width:96px;height:20px;text-decoration: none;}
+
+.live800 a.onlinef{background-position:0 0;width:125px;height:205px;}
+.live800 a.offlinef{background-position:0 -205px;width:125px;height:205px;}
+
+.live800 .shopTitle{
+    width:115px;
+    height:22px;
+    margin-top:5px;
+    margin-left:8px;
+    margin-right:5px;
+}
+
+.live800 .shopDESC{
+    margin-left:8px;
+    margin-right:8px;
+    margin-top:85px;
+    height:33px;
+    font-family: "瀹嬩�?;
+	font-size: 12px;
+	color:#D02090;
+	line-height: 15px;
+	overflow:hidden;
+}
+
+.live800 .shopTitle div{
+    float:left;
+    font-family: "瀹嬩�?;
+	font-size: 13px;
+	color:#FFFFFF;
+	line-height: 18px;
+}
+
+.live800 .clickPath{
+    width:90px;
+    height:30px;
+    margin-left:20px;
+}
+/*                   outLine_mess_box  style                          */
+.mess_box{
+	width: 204px;
+	position:fixed;
+	right:30px;
+	bottom:30px;
+	font-family:"微软雅黑";
+	font-size: 12px;
+	color:#000;
+	z-index:1000000;
+}
+.mess_bg{
+	width:100%;
+	height:6px;
+	padding:0;
+	margin:0;
+	background-repeat: no-repeat;
+	font-size:0;
+}
+.mess_box_top{
+	background-image:url(../images/topbg.gif);
+	background-position:center top;
+}
+.mess_box_bott{
+	background-image:url(../images/bottbg.gif);
+	background-position:center bottom;
+}
+.mess_cont{
+	background-image:url(../images/contbg.gif);
+	background-repeat: repeat-y;
+	background-position:center;
+	padding:2px 10px  22px;
+	word-break: break-all;
+	white-space: pre-wrap;
+	min-height: 10px;
+	cursor: pointer;
+}
+.shop_name{
+	font-size: 15px;
+    color: darkred;
+    margin: 3px 0;
+}
+.shop_mess{
+	text-indent: 1em;
+	min-height: 16px;
+	font-size: 14px;
+}
+.round{
+	width:8px;
+	height:10px;
+	background-image:url(../images/jiao.png);
+	position:absolute;
+	top:50%;
+	margin: -5px 0 0;
+	right:-5px;
+	display:block;
+	_font-size:0;
+}
+.last_page, .next_page{
+	position: absolute;
+	bottom: 5px;
+	margin: 0;
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+.last_page{
+	left: 12px;
+}
+.next_page{
+    right: 12px;
+}
+.have_mess{
+	color: #6A8E0D;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.no_mess{
+	color: #828282;
+	text-decoration: none;
+	cursor: default;
+}
+#show_more_str{color:red;}

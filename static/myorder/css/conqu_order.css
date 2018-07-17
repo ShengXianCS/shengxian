@@ -1,0 +1,22 @@
+/**Èö½¿Ö§¸¶**/
+.conqulink_order {color:#f39800 !important;}
+.conqu_order_01 { width:638px; height:281px; background:url(../images/coquetrypout_share.jpg) no-repeat; position:absolute; }
+.conqu_order_01 .conqu_order_close { width:13px; height:13px; margin-right:16px; margin-top:14px; background:url(../images/coquetryclose_btn01.jpg) no-repeat; float:right; margin-bottom:26px; cursor:pointer; }
+.conqu_order_01 .conqu_order_payA { height:24px; line-height:24px; text-align:left; clear:both; }
+.conqu_order_payA span { font-weight:bold; color:#8f1716; margin:0 16px 0 54px; }
+.conqu_order_payA input { width:316px; height:18px; color:#797671; }
+.conqu_order_payA b { width:90px; height:23px; background:url(../images/coquetrycopy_btn.png) no-repeat; position:relative; margin-left:12px; cursor:pointer; }
+
+.conqu_order_hand { height:24px; padding-left:146px; color:#2e2e2e; text-align:left; margin-top:2px; }
+.conqu_order_hand .text { line-height:24px; }
+.conqu_order_hand b { font-weight:normal; text-decoration:underline; color:#2e2e2e; }
+.conqu_order_hand strong { font-weight:normal; font-style:italic; color:#8f1716; }
+
+.conqu_order_person { padding-left:146px; color:#2e2e2e; text-align:left; margin-top:54px; clear:both; }
+.conqu_order_person  span { color:#8f1716; text-decoration:underline; }
+.conqu_order_person b { font-weight:normal; text-decoration:underline; }
+
+.conqu_order_true { clear:both; }
+.conqu_order_true b { width:88px; height:27px; background:url(../images/coquetryclose_btn02.jpg) no-repeat; float:right; margin-right:272px; margin-top:26px; cursor:pointer; }
+
+.share-icon{width:300px;}

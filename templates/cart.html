@@ -1,0 +1,1692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>我的购物车_中粮我买网</title>
+    <link rel="stylesheet" type="text/css" href="/static/cart/css/checkoutcommon.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/cart/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/cart/css/cart.css"/>
+    <script type="text/javascript" src="/static/cart/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/static/cart/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/cart/js/passportback.js"></script>
+    <script type="text/javascript" src="/static/cart/js/arrivalnotice.js"></script>
+    <script type="text/javascript">var mid = "0";
+    var cityid = "31000";
+    var webIndex = "green2012";
+    var frontPath = "";
+    var priceServer = "http://price.womai.com/PriceServer";
+    var wineServer = "http://jiu.womai.com";
+    var sellerServer = "http://zs.womai.com";
+    var picPrefix = "http://pic2.womai.com/upload/";
+    var staticPrefix = "http://static.womai.com";
+    var includeFlashbuy = "false";
+    var isMobileValidated = "true";
+    var isNeedMobileCertification = "false";
+    var columnName = "生鲜食品";
+    var checkoutAddressName = "";
+    </script>
+    <script type="text/javascript" src="/static/cart/js/checkoutcommon.js"></script>
+    <script type="text/javascript" src="/static/cart/js/cart.js"></script>
+    <script type="text/javascript" src="/static/cart/js/recommend_infosmart.js"></script>
+    <script type="text/javascript" src="/static/cart/js/recommend_all.js"></script>
+    <script type="text/javascript" src="/static/cart/js/recommend_cart_new.js"></script>
+</head>
+<body>
+<div class="cart_content">
+    <div id="header" class="m">
+        <div class="w">
+            <ul class="fr">
+                <li class="myaccount" id="myaccount" data-first="y"><a
+                        href="/Member/index.jsp?mid=0&tt=0.3774874180135763" class="ian white">我的账户</a><i></i><i
+                        class="accountpng" id="topaccountpng" style="display:none"></i>
+                    <div id="myaccount_cont" class="myaccount_cont loadding"></div>
+                </li>
+            </ul>
+            <ul class="fr" id="top_login_span">
+                <li class='none'><span class='nickname'>哈拉嘿呦</span></li>
+                <li class='none'><a href='/Member/Exit.do?mid=0'>退出</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_div w">
+        <div class="logo_a"><a href='http://www.womai.com' target='_blank'><img data-order="100"
+                                                                                src='/static/cart/picture/2018042510164955.png'
+                                                                                width='210' height='80' alt='返回首页'
+                                                                                border='0'/></a></div>
+        <ul class="step_ul">
+            <li class="step_1"></li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="/static/cart/js/commonalert.js"></script>
+    <link type="text/css" rel="StyleSheet" href="/static/cart/css/commonalert.css"/>
+
+
+    <div class="trip_div">
+        <div class="trip_content"><span class="tc_left">我的购物车</span></div>
+
+        <div class="delivery-tip fl">
+            <div class="delivery-tit fl">送至：</div>
+            <div id="loadRegion" class="addr_select fl"></div>
+            <div class="clear"></div>
+            <script type="text/javascript">loadArealist(0, 1);</script>
+        </div>
+
+
+        <a href="/index-31000-0.htm" class="fr">继续购物></a>
+        <div class="clear"></div>
+    </div>
+    <div class="shopping_cart">
+        <div class="order_nav">
+            <ul class="fl">
+                <li data-curtab="1" data-tab="1" data-index="1" data-cartids="1" data-mid="0" class="hover_li"><strong>我买网发货单(<em
+                        id="loadshowcart1_carttitle_totalamount">2</em>)</strong><span>我买网发货单(<em
+                        id="loadshowcart1_carttitle_totalamount">2</em>)</span></li>
+                <script type="text/javascript">orderNavHover();</script>
+            </ul>
+            <div id="j-totalwithdeliveryrule" class="fr"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="order_contents">
+            <div class="crossordertip">
+                <div>1.海外仓运费25元（购满199免运费），国内保税仓运费10元（购满99元免运费)；</div>
+                <div>2.跨境购不同仓的商品需要分开结算，给您造成不便敬请谅解。</div>
+            </div>
+            <div class="ordercont_titleline">
+                <div class="odct_title ordercon_title1">商品</div>
+                <div class="odct_title ordercon_title2">单价</div>
+                <div class="odct_title ordercon_title3">数量</div>
+                <div class="odct_title ordercon_title4">重量</div>
+                <div class="odct_title ordercon_title5">小计</div>
+                <div class="odct_title ordercon_title6">操作</div>
+                <div class="clear"></div>
+            </div>
+            <div class="ordercont_content" data-first="n" style="display:block">
+
+
+                <div id="loadshowcart1">
+
+
+                    <script type="text/javascript">
+                        var flag = false, cartId = 0, userGroupId = 100;
+                        var ifBuySalePids = "";
+                        var everyDayFreshPids = "";
+                        var c_pId = "";
+                    </script>
+
+
+                    <input id="j-relationFreeConfig1" type="hidden" data-mid="0" data-type="2" data-sellerid="0"
+                           value=""/>
+
+
+                    <div class="ordercont_content_cw">
+
+
+                        <div class="coupontip">
+
+                        </div>
+
+
+                        <div class="ordercont-title-cw ">
+                            <div class="title fl">
+
+
+                                <input type="checkbox" id="all1" class="fl" cartids="1" checked="checked"
+                                       onclick="selectAllCartItem('all1',0);"/>
+                                <label for="all1">自营生鲜品 </label>
+
+
+                                <div class="clear"></div>
+                            </div>
+                            <div id="j-mian1" class="fl"></div>
+
+
+                            <div class="fl promotion">
+
+
+                                <div class="coupontip">
+
+
+                                    &ldquo;特惠品&rdquo;不参与优惠券使用~
+
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="total fr">
+                                <span>重量合计2.5kg</span>
+                                <span>金额合计￥63.60</span>
+
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+
+                        <div class="ordercont-cw-con">
+
+
+                            <div class="content_type content_type1 content_type_zp">
+
+                                <div class="ct1 contype1_cont1 ct_zp">
+                                    <div>
+
+                                        <input id="sel616969" type="checkbox" class="fl" name="content-check1"
+                                               checked="checked" issel="1"
+                                               onclick="selectCartItem(1,0,616969,0,100,1,96);"/>
+
+                                        <a target="_blank" href="http://tuan.womai.com/tuan/product-0-369416.htm"
+                                           class="img_a">
+                                            <img src="/static/cart/picture/616969_0_pic60_390.jpg"/>
+                                        </a>
+                                        <div class="contype1_cont1_cent fl">
+
+
+                                            <a target="_blank" href="http://tuan.womai.com/tuan/product-0-369416.htm"
+                                               class="content1_a"
+                                               title="惠享【自营】[安萃]进口红心火龙果5枚 盒装2000g，细腻鲜嫩，入口爽滑，红艳欲滴，清甜爽口。">
+
+
+                                                <span></span>
+
+
+                                                惠享【自营】[安萃]进口红心火龙果5枚 盒装2000g，细腻鲜嫩，入口爽滑，红艳欲滴，清甜爽...
+                                                <span>
+										
+					                    
+					                    
+					                    [团购]
+					                    
+									</span>
+                                            </a>
+
+
+                                            <div class="sevendays-preference">
+
+
+                                                <div class="clear"></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+
+
+                                </div>
+
+
+                                <div class="ct1 contype1_cont2">
+
+
+                                    ￥39.80
+
+
+                                </div>
+
+                                <div class="ct1 contype1_cont3">
+
+
+                                    <div id="p_dec1_0" class="oper_goods reduce_g"
+                                         onclick="decamount(1,0,616969,0,100,96);"></div>
+                                    <div id="p_dec_disabled1_0" class="oper_goods reduce_g" style="display:none"></div>
+
+                                    <div class="input_goods" id="input_goods_1_0_616969">
+                                        <input id="amount1_0_616969" value="1" class="item_amount"
+                                               onkeyup="valiAmountInp(this)" onafterpaste="valiAmountInp(this)"
+                                               onblur="updateAmount(1, 0,'616969','0',1,'100','96');"/>
+                                        <input type="hidden" id="oldAmount1_0_616969" value="1"/>
+                                        <input type="hidden" id="isPromotion1_0_616969" value=""/>
+                                        <div class="restr_popup">
+                                            <p class="flashbuy-orderlimit">此闪购活动每单限购 <span></span>件商品</p>
+                                            <p class="flashbuy-userlimit">此闪购活动每账户限购<span></span>件商品</p>
+                                        </div>
+                                        <span class="restr_arrow"></span>
+                                    </div>
+
+                                    <div id="p_add1_0" class="oper_goods plus_g"
+                                         onclick="addamount(1,0,616969,0,100,96);"></div>
+                                    <div id="p_add_disabled1_0" class="oper_goods plus_g" style="display:none;"></div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="ct1 contype1_cont4">
+
+
+                                    2
+                                </div>
+
+
+                                <div class="ct1 contype1_cont5"><span>￥39.80</span></div>
+
+                                <div class="ct1 contype1_cont6">
+                                    <a href="javascript:;" onclick="cartAddFavor(0,616969);" class="operation_a"
+                                       name="favorite">收藏</a>
+                                    <div class="fath_div_1">
+                                        <a onclick="delSelectedCartItem(this)" href="javascript:void(0);" data-id="1"
+                                           data-mid="0" data-productid="616969">删除</a>
+                                        <span class="top_img"></span>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+
+
+                            <div class="content_type content_type1 content_type_zp">
+
+                                <div class="ct1 contype1_cont1 ct_zp">
+                                    <div>
+
+                                        <input id="sel651123" type="checkbox" class="fl" name="content-check1"
+                                               checked="checked" issel="1"
+                                               onclick="selectCartItem(1,1,651123,0,100,1,17);"/>
+
+                                        <a target="_blank" href="http://www.womai.com/Product-0-651123.htm"
+                                           class="img_a">
+                                            <img src="/static/cart/picture/651123_1_pic60_4144.jpg"/>
+                                        </a>
+                                        <div class="contype1_cont1_cent fl">
+
+
+                                            <a target="_blank" href="http://www.womai.com/Product-0-651123.htm"
+                                               class="content1_a" title=" 山东 乒乓球葡萄盒装500g">
+
+
+                                                <span></span>
+
+
+                                                山东 乒乓球葡萄盒装500g
+                                                <span>
+										
+					                    
+					                    
+					                    
+					                    
+									</span>
+                                            </a>
+
+
+                                            <div class="sevendays-preference">
+
+
+                                                <p class="season_icon2">当季时令</p>
+
+
+                                                <div class="clear"></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+
+
+                                </div>
+
+
+                                <div class="ct1 contype1_cont2">
+
+
+                                    ￥23.80
+
+
+                                </div>
+
+                                <div class="ct1 contype1_cont3">
+
+
+                                    <div id="p_dec1_1" class="oper_goods reduce_g"
+                                         onclick="decamount(1,1,651123,0,100,17);"></div>
+                                    <div id="p_dec_disabled1_1" class="oper_goods reduce_g" style="display:none"></div>
+
+                                    <div class="input_goods" id="input_goods_1_1_651123">
+                                        <input id="amount1_1_651123" value="1" class="item_amount"
+                                               onkeyup="valiAmountInp(this)" onafterpaste="valiAmountInp(this)"
+                                               onblur="updateAmount(1, 1,'651123','0',1,'100','17');"/>
+                                        <input type="hidden" id="oldAmount1_1_651123" value="1"/>
+                                        <input type="hidden" id="isPromotion1_1_651123" value=""/>
+                                        <div class="restr_popup">
+                                            <p class="flashbuy-orderlimit">此闪购活动每单限购 <span></span>件商品</p>
+                                            <p class="flashbuy-userlimit">此闪购活动每账户限购<span></span>件商品</p>
+                                        </div>
+                                        <span class="restr_arrow"></span>
+                                    </div>
+
+                                    <div id="p_add1_1" class="oper_goods plus_g"
+                                         onclick="addamount(1,1,651123,0,100,17);"></div>
+                                    <div id="p_add_disabled1_1" class="oper_goods plus_g" style="display:none;"></div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="ct1 contype1_cont4">
+
+
+                                    0.5
+                                </div>
+
+
+                                <div class="ct1 contype1_cont5"><span>￥23.80</span></div>
+
+                                <div class="ct1 contype1_cont6">
+                                    <a href="javascript:;" onclick="cartAddFavor(0,651123);" class="operation_a"
+                                       name="favorite">收藏</a>
+                                    <div class="fath_div_1">
+                                        <a onclick="delSelectedCartItem(this)" href="javascript:void(0);" data-id="1"
+                                           data-mid="0" data-productid="651123">删除</a>
+                                        <span class="top_img"></span>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+
+
+                            <div id="loadpresentbycart0">
+
+                                <div class="sales-promotion j-total1">
+                                    <span class="cu png fl"></span>
+
+
+                                    <ul class="tit">
+                                        <a name="anchor-relationFree1"></a>
+
+
+                                        <li class="fl">【自有优选】<i></i></li>
+
+
+                                        <li class="fl">【超值换购】<i></i></li>
+
+
+                                        <li class="fl j-relationFree1 relationFree">凑单免邮<i></i></li>
+
+                                        <div class="clear"></div>
+                                    </ul>
+
+
+                                    <div class="cont">
+                                        <div class="tip">【自有优选】购买生鲜品类商品即可加价换购指定商品（部分商品除外），数量有限换完为止</div>
+                                        <ul class="pro-img">
+
+
+                                            <script type="text/javascript">firstBuyRule.setFirstBuyRule(1, 0);</script>
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-643739.htm"
+                                                           target="_blank" title="中粮悠采 笑笑猬红豆包50g*6" id="sales_643739"
+                                                           data-ga="sales-promotion" data-gzpid="643739"><img
+                                                                src="/static/cart/picture/643739_1_pic60_743.jpg"
+                                                                alt="中粮悠采 笑笑猬红豆包50g*6"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-643739.htm"
+                                                               id="_gatrack_sales_listtitle-643739">
+                                                                中粮悠采 笑笑猬红豆包50g*6
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥18.80</strong>
+                                                            <span class="shieldwomai">￥30.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 643739);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-643740.htm"
+                                                           target="_blank" title="中粮悠采 乖乖猪香莓包50g*6" id="sales_643740"
+                                                           data-ga="sales-promotion" data-gzpid="643740"><img
+                                                                src="/static/cart/picture/643740_1_pic60_210.jpg"
+                                                                alt="中粮悠采 乖乖猪香莓包50g*6"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-643740.htm"
+                                                               id="_gatrack_sales_listtitle-643740">
+                                                                中粮悠采 乖乖猪香莓包50g*6
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥18.80</strong>
+                                                            <span class="shieldwomai">￥30.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 643740);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-643741.htm"
+                                                           target="_blank" title="中粮悠采 跳跳兔奶黄包50g*6" id="sales_643741"
+                                                           data-ga="sales-promotion" data-gzpid="643741"><img
+                                                                src="/static/cart/picture/643741_1_pic60_4524.jpg"
+                                                                alt="中粮悠采 跳跳兔奶黄包50g*6"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-643741.htm"
+                                                               id="_gatrack_sales_listtitle-643741">
+                                                                中粮悠采 跳跳兔奶黄包50g*6
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥18.80</strong>
+                                                            <span class="shieldwomai">￥30.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 643741);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-638999.htm"
+                                                           target="_blank" title="中粮悠采 雪花戗面大馒头560g" id="sales_638999"
+                                                           data-ga="sales-promotion" data-gzpid="638999"><img
+                                                                src="/static/cart/picture/638999_1_pic60_3474.jpg"
+                                                                alt="中粮悠采 雪花戗面大馒头560g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-638999.htm"
+                                                               id="_gatrack_sales_listtitle-638999">
+                                                                中粮悠采 雪花戗面大馒头560g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥14.90</strong>
+                                                            <span class="shieldwomai">￥25.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 638999);">放入购物车</a>
+                                                </div>
+                                            </li>
+                                            <div class="clear"></div>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-638997.htm"
+                                                           target="_blank" title="中粮悠采 豌豆包350g" id="sales_638997"
+                                                           data-ga="sales-promotion" data-gzpid="638997"><img
+                                                                src="/static/cart/picture/638997_1_pic60_1232.jpg"
+                                                                alt="中粮悠采 豌豆包350g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-638997.htm"
+                                                               id="_gatrack_sales_listtitle-638997">
+                                                                中粮悠采 豌豆包350g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥14.90</strong>
+                                                            <span class="shieldwomai">￥25.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 638997);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-639000.htm"
+                                                           target="_blank" title="中粮悠采 红豆包350g" id="sales_639000"
+                                                           data-ga="sales-promotion" data-gzpid="639000"><img
+                                                                src="/static/cart/picture/639000_1_pic60_8671.jpg"
+                                                                alt="中粮悠采 红豆包350g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-639000.htm"
+                                                               id="_gatrack_sales_listtitle-639000">
+                                                                中粮悠采 红豆包350g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥14.90</strong>
+                                                            <span class="shieldwomai">￥25.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 639000);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-639001.htm"
+                                                           target="_blank" title="中粮悠采 葱油花卷300g" id="sales_639001"
+                                                           data-ga="sales-promotion" data-gzpid="639001"><img
+                                                                src="/static/cart/picture/639001_1_pic60_1784.jpg"
+                                                                alt="中粮悠采 葱油花卷300g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-639001.htm"
+                                                               id="_gatrack_sales_listtitle-639001">
+                                                                中粮悠采 葱油花卷300g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥13.90</strong>
+                                                            <span class="shieldwomai">￥25.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 639001);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-620918.htm"
+                                                           target="_blank" title="中粮悠采 传统面点-柿子 （枣泥馅）（袋装 400g）"
+                                                           id="sales_620918" data-ga="sales-promotion"
+                                                           data-gzpid="620918"><img
+                                                                src="/static/cart/picture/620918_2_pic60_2665.jpg"
+                                                                alt="中粮悠采 传统面点-柿子 （枣泥馅）（袋装 400g）"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-620918.htm"
+                                                               id="_gatrack_sales_listtitle-620918">
+                                                                中粮悠采 传统面点-柿子 （枣泥馅）（袋装 400g）
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥20.90</strong>
+                                                            <span class="shieldwomai">￥22.80</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 620918);">放入购物车</a>
+                                                </div>
+                                            </li>
+                                            <div class="clear"></div>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-620914.htm"
+                                                           target="_blank" title="中粮悠采 传统面点-寿桃 400g（红豆馅）（袋装 400g）"
+                                                           id="sales_620914" data-ga="sales-promotion"
+                                                           data-gzpid="620914"><img
+                                                                src="/static/cart/picture/620914_0_pic60_1254.jpg"
+                                                                alt="中粮悠采 传统面点-寿桃 400g（红豆馅）（袋装 400g）"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-620914.htm"
+                                                               id="_gatrack_sales_listtitle-620914">
+                                                                中粮悠采 传统面点-寿桃 400g（红豆馅）（袋装 400g）
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥20.90</strong>
+                                                            <span class="shieldwomai">￥22.80</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 620914);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-620915.htm"
+                                                           target="_blank" title="中粮悠采 传统面点-红锦鲤（红豆沙馅）（袋装 500g）"
+                                                           id="sales_620915" data-ga="sales-promotion"
+                                                           data-gzpid="620915"><img
+                                                                src="/static/cart/picture/620915_1_pic60_8460.jpg"
+                                                                alt="中粮悠采 传统面点-红锦鲤（红豆沙馅）（袋装 500g）"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-620915.htm"
+                                                               id="_gatrack_sales_listtitle-620915">
+                                                                中粮悠采 传统面点-红锦鲤（红豆沙馅）（袋装 500g）
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥26.80</strong>
+                                                            <span class="shieldwomai">￥28.80</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 620915);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-634273.htm"
+                                                           target="_blank" title="中粮悠采 跳跳兔奶黄包50g" id="sales_634273"
+                                                           data-ga="sales-promotion" data-gzpid="634273"><img
+                                                                src="/static/cart/picture/634273_1_pic60_7166.jpg"
+                                                                alt="中粮悠采 跳跳兔奶黄包50g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-634273.htm"
+                                                               id="_gatrack_sales_listtitle-634273">
+                                                                中粮悠采 跳跳兔奶黄包50g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥3.30</strong>
+                                                            <span class="shieldwomai">￥5.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 634273);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-634275.htm"
+                                                           target="_blank" title="中粮悠采 乖乖猪香莓包50g" id="sales_634275"
+                                                           data-ga="sales-promotion" data-gzpid="634275"><img
+                                                                src="/static/cart/picture/634275_1_pic60_1805.jpg"
+                                                                alt="中粮悠采 乖乖猪香莓包50g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-634275.htm"
+                                                               id="_gatrack_sales_listtitle-634275">
+                                                                中粮悠采 乖乖猪香莓包50g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥3.30</strong>
+                                                            <span class="shieldwomai">￥5.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 634275);">放入购物车</a>
+                                                </div>
+                                            </li>
+                                            <div class="clear"></div>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-634274.htm"
+                                                           target="_blank" title="中粮悠采 笑笑猬红豆包50g" id="sales_634274"
+                                                           data-ga="sales-promotion" data-gzpid="634274"><img
+                                                                src="/static/cart/picture/634274_1_pic60_8827.jpg"
+                                                                alt="中粮悠采 笑笑猬红豆包50g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-634274.htm"
+                                                               id="_gatrack_sales_listtitle-634274">
+                                                                中粮悠采 笑笑猬红豆包50g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥3.30</strong>
+                                                            <span class="shieldwomai">￥5.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3506280, 634274);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <div class="clear"></div>
+                                        </ul>
+
+                                        <ul class="pro-icon"></ul>
+                                    </div>
+
+
+                                    <div class="cont">
+                                        <div class="tip">【超值换购】购物满1元即可参加换购在购物车处挑选（部分商品除外），数量有限售完即止！</div>
+                                        <ul class="pro-img">
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-643740.htm"
+                                                           target="_blank" title="中粮悠采 乖乖猪香莓包50g*6" id="sales_643740"
+                                                           data-ga="sales-promotion" data-gzpid="643740"><img
+                                                                src="/static/cart/picture/643740_1_pic60_210.jpg"
+                                                                alt="中粮悠采 乖乖猪香莓包50g*6"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-643740.htm"
+                                                               id="_gatrack_sales_listtitle-643740">
+                                                                中粮悠采 乖乖猪香莓包50g*6
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥18.80</strong>
+                                                            <span class="shieldwomai">￥30.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3504075, 643740);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-643739.htm"
+                                                           target="_blank" title="中粮悠采 笑笑猬红豆包50g*6" id="sales_643739"
+                                                           data-ga="sales-promotion" data-gzpid="643739"><img
+                                                                src="/static/cart/picture/643739_1_pic60_743.jpg"
+                                                                alt="中粮悠采 笑笑猬红豆包50g*6"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-643739.htm"
+                                                               id="_gatrack_sales_listtitle-643739">
+                                                                中粮悠采 笑笑猬红豆包50g*6
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥18.80</strong>
+                                                            <span class="shieldwomai">￥30.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3504075, 643739);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-638999.htm"
+                                                           target="_blank" title="中粮悠采 雪花戗面大馒头560g" id="sales_638999"
+                                                           data-ga="sales-promotion" data-gzpid="638999"><img
+                                                                src="/static/cart/picture/638999_1_pic60_3474.jpg"
+                                                                alt="中粮悠采 雪花戗面大馒头560g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-638999.htm"
+                                                               id="_gatrack_sales_listtitle-638999">
+                                                                中粮悠采 雪花戗面大馒头560g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥14.90</strong>
+                                                            <span class="shieldwomai">￥25.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3504075, 638999);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-639000.htm"
+                                                           target="_blank" title="中粮悠采 红豆包350g" id="sales_639000"
+                                                           data-ga="sales-promotion" data-gzpid="639000"><img
+                                                                src="/static/cart/picture/639000_1_pic60_8671.jpg"
+                                                                alt="中粮悠采 红豆包350g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-639000.htm"
+                                                               id="_gatrack_sales_listtitle-639000">
+                                                                中粮悠采 红豆包350g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥14.90</strong>
+                                                            <span class="shieldwomai">￥25.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3504075, 639000);">放入购物车</a>
+                                                </div>
+                                            </li>
+                                            <div class="clear"></div>
+
+
+                                            <li class="fl">
+                                                <dl>
+                                                    <dt class="fl">
+                                                        <a href="http://www.womai.com/Product-0-638997.htm"
+                                                           target="_blank" title="中粮悠采 豌豆包350g" id="sales_638997"
+                                                           data-ga="sales-promotion" data-gzpid="638997"><img
+                                                                src="/static/cart/picture/638997_1_pic60_1232.jpg"
+                                                                alt="中粮悠采 豌豆包350g"/></a>
+                                                    </dt>
+                                                    <dd class="fl">
+                                                        <div class="name">
+                                                            <a href="http://www.womai.com/Product-0-638997.htm"
+                                                               id="_gatrack_sales_listtitle-638997">
+                                                                中粮悠采 豌豆包350g
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <strong>￥14.90</strong>
+                                                            <span class="shieldwomai">￥25.00</span>
+                                                        </div>
+                                                    </dd>
+                                                    <div class="clear"></div>
+                                                </dl>
+                                                <div class="btn"><a href="javascript:;"
+                                                                    onclick="javascript:submitPresentForm(0, 1, 3504075, 638997);">放入购物车</a>
+                                                </div>
+                                            </li>
+
+
+                                            <div class="clear"></div>
+                                        </ul>
+
+                                        <ul class="pro-icon"></ul>
+                                    </div>
+
+
+                                    <div class="cont j-relationFree1 relationFree" id="j-relationFree1"></div>
+
+
+                                    <script type="text/javascript">initRelationFree(1);</script>
+
+                                </div>
+                                <script type="text/javascript">$(".content_type2").each(function () {
+                                    if ($(this).find(".galist_content").length == 0) {
+                                        $(this).remove();
+                                    }
+                                });</script>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+
+                    <input type="hidden" value="" name="hasActivityCart"/>
+                    <input type="hidden" value="0" name="cartMid"/>
+                    <input type="hidden" value=",1" name="payCartIds1" id="payCartIds1"/>
+                    <input type="hidden" value="2" name="carttitle_totalamount_val"/>
+                    <input type="hidden" value=",616969,651123" name="productids_fresh"/>
+                    <input type="hidden" value="" name="productids_notfresh"/>
+
+
+                    <div class="order_amount">
+                        <div class="fl">
+
+                            <div class="ordercont_edit">
+                                <div class="ordercont_allcheck fl">
+                                    <input type="checkbox" id="all_two1" class="checkall" cartids="1" checked="checked"
+                                           onclick="selectAllCartItem('all_two1',0);"/>
+                                    <label for="all_two1">全选</label>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="collect fl"><a href="javascript:;" onclick="addAllFavor_event(0, 1);">收藏</a>
+                                </div>
+                                <div class="pos fl">
+                                    <a href="javascript:void(0);" id="delSelCartItems1" cartids="1" todel="1"
+                                       onclick="delSelectedCart(0,1);" class="delete_all">删除</a>
+                                    <span class="top_img"></span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="oal_img"></div>
+                            <div class="ordercont-sign"><span><a href="http://www.womai.com/sale/2018/cz1807b/"
+                                                                 target='_blank'>先充值再买单更优惠：充1000赠价值33.9元简沃卷纸一提，积分还可换洗衣液，首充新客再送悦活塑纤饮料4瓶！</a></span>
+                            </div>
+
+                            <div></div>
+
+
+                        </div>
+
+                        <div class="ordam_right">
+
+                            <div class="ordam-item1">
+                                <span class="oar_title fl">总重量：</span>
+                                <span class="oar_weight fl">2.5kg</span>
+                                <span class="oar_title fl">预估运费：</span>
+                                <span id="j-totaldeliveryrule1" class="oar-money fl"></span>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ordam-money">
+                                <span class="oar_title fl">商品金额：</span>
+                                <span class="oar-money fl">￥63.60</span>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="ordam-money ordam-fav">
+                                <span class="oar_title fl">促销优惠：</span>
+                                <span class="oar-money fl">－￥0.00</span>
+                                <div class="clear"></div>
+                            </div>
+
+
+                            <div class="ordam-total">
+                                <span class="num fl">已选 <em>2</em> 件</span>
+                                <script type="text/javascript">synchronousNavAmount(2); // 同步当前标题商品数量</script>
+                                <span id="j-totaltopay1" class="oar-money-total fl">￥63.60</span>
+                                <span class="oar_title-total fl">应付金额：</span>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="btn">
+                                <div class="j-phone">
+                                    <div class="phone-hover">
+
+                                        <img data-order="100" src='/static/cart/picture/20150609011403857.png' width='120'
+                                             height='120' alt='' border='0'/>
+                                        <span>移动端专享，每天省一点</span>
+                                    </div>
+                                    <span class="phone-hui fl">
+			   		
+			   		<img data-order="100" src='/static/cart/picture/20150609011335549.png' width='75' height='35' alt='' border='0'/>
+			   	</span>
+                                </div>
+                                <a href="javascript:topay(true,'cofcocheck');" class="fl topay topay1" data-first="y"
+                                   topay="1" id="cofcocheck">去结算</a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+
+                        <script type="text/javascript">loadCartDeliveryRule(63.6, 0);</script>
+
+
+                        <div class="clear"></div>
+                    </div>
+
+
+                    <div id="loginAndRegisterPopup" style="position:absolute;top:200px;left:220px;z-index:10002;"></div>
+
+
+                    <div class="goods_list" style="display: none">
+                        <div class="golist_title">
+                            <ul>
+                                <li class="recommendlike 14 false" style="display: none">猜你喜欢</li>
+                                <li class="current lastfavor" style="display: none">最近收藏</li>
+
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                        <div class="golist_all"></div>
+                    </div>
+
+                    <script type="text/javascript">setcart_mahout_request();// 加载猜你喜欢、最近收藏</script>
+
+
+                    <script type="text/javascript">confinedArea();</script>
+
+
+                </div>
+
+            </div>
+            <div class="ordercont_content" data-first="y" style="display:none"></div>
+            <div class="ordercont_content" data-first="y" style="display:none"></div>
+            <div class="ordercont_content" data-first="y" style="display:none"></div>
+            <div class="ordercont_content" data-first="y" style="display:none"></div>
+            <div class="ordercont_content" data-first="y" style="display:none"></div>
+            <div class="ordercont_content" data-first="y" style="display:none"></div>
+        </div>
+    </div>
+    <script type="text/javascript">initCartItemsEvents();</script>
+</div>
+<script type="text/javascript" src="/static/cart/js/favouritemodal.js"></script>
+<script type="text/javascript" src="/static/cart/js/addtocartmessage.js"></script>
+<script type="text/javascript" src="/static/cart/js/addtocart.js"></script>
+<script type="text/javascript" src="/static/cart/js/rwcookie.js"></script>
+<script type="text/javascript" src="/static/cart/js/addtrackrec.js"></script>
+<script type="text/javascript" src="/static/cart/js/alertmsg.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="/static/cart/css/simplebottom.css"/>
+<div class="success-footer w">
+    <p>
+        <div class="beian">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102000458">
+
+                <img src="/static/cart/picture/beian.png"/>
+    <p style="color:#606060;">京公网安备 11010102000458号</p>
+    </a>
+</div>
+<span>|</span> 京ICP备 13003995号 <span>|</span> 营业执照（统一社会信用代码）91110000055590239L <span>|</span>
+食品经营许可证：JY11105020028185</p>
+<p class="copyright">Copyright&#169;2009-2018 womai.com.hk 版权所有</p>
+</div>
+
+<img src="/static/cart/picture/387bbc9e1ae743778d061a45ae55876d.gif"
+     style="display:none;width:0;height:0;margin:0;padding:0;border:0;"></body>
+</html>
+<script type="text/javascript"> if (false) {
+    comAlert("商品价格有更新,价格已刷新请点击" + "\‘" + "确定" + "\’" + "返回购物车")
+}
+;
+if (false) {
+    comAlert("购物车中含有售罄商品,请点击" + "\‘" + "确定" + "\’" + "返回购物车")
+}
+;
+if (false) {
+    comAlert("结算时出现城市变更,请点击！" + "\‘" + "确定" + "\’" + "返回购物车")
+}
+;
+if (false) {
+    comAlert("该商品已超出活动限购数量，超出部分将按照团购原价结算哦~")
+}
+;
+if (false) {
+    comAlert("该活动优惠人数已满，将按原价结算哦~")
+}
+;
+if (false) {
+    comAlert("购物车中含有BEST会员专享品，您暂时无购买资格哦")
+}
+; </script>
+
+<script type="text/javascript" src="/static/cart/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/static/cart/js/userinfo.js"></script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        window.bd_cpro_rtid = "P101PWm";
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?3d400e618922947d47d0b95855f8b230";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script type="text/javascript">(function () {
+    var script0 = document.createElement("script");
+    script0.src = "//j03.optimix.asia/events/opxLoader.js";
+    script0.type = "text/javascript";
+    script0.async = "async";
+    document.getElementsByTagName("head")[0].appendChild(script0);
+    var opxUid = '0';
+    var opxcounter = '1';
+    var opxClientID = '330';
+    var opxParams = "opxvrsn=ut;opxUid=" + opxUid + ";opxClientID=" + opxClientID + ";opxcounter=" + opxcounter + ";";
+    if (script0.readyState) {
+        script0.onreadystatechange = function () {
+            if (script0.readyState == "loaded" || script0.readyState == "complete") {
+                opxLoad("//e03.optimix.asia", opxParams);
+            }
+        };
+    } else {
+        script0.onload = function () {
+            opxLoad("//e03.optimix.asia", opxParams);
+        };
+    }
+})();</script>
+<script type="text/javascript">
+    var _fxcmd = _fxcmd || [];
+    _fxcmd.sid = 'dad82a7fe513d4091944229540d582e1';
+    (function () {
+        var _pzfx = document['createElement']('script');
+        _pzfx.type = 'text/javascript';
+        _pzfx.async = true;
+        _pzfx.src = '//static.w3t.cn/fx/1/1/fx.js';
+        var sc = document.getElementsByTagName('script')[0];
+        sc.parentNode.insertBefore(_pzfx, sc);
+    })();
+
+</script>
+
+
+<script>
+
+    (function () {
+
+        var bp = document.createElement('script');
+
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+
+        var s = document.getElementsByTagName("script")[0];
+
+        s.parentNode.insertBefore(bp, s);
+
+    })();
+
+</script>
+
+<!-- Piwik cookie-->
+<script type="text/javascript">
+    var piwikCookie = $.cookie("piwik_uniqueid");
+    if (typeof piwikCookie == "undefined" || piwikCookie == "" || piwikCookie == null) {
+        var domainValue = ".womai.com";
+        $.cookie("piwik_uniqueid", uuid(32), {path: '/', domain: domainValue, expires: 180});
+    }
+
+    //make u uuid
+    function uuid(len, radix) {
+        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+        var uuid = [], i;
+        radix = radix || chars.length;
+
+        if (len) {
+            // Compact form
+            for (i = 0; i < len; i++) {
+                uuid[i] = chars[0 | Math.random() * radix];
+            }
+        } else {
+            // rfc4122, version 4 form
+            var r;
+
+            // rfc4122 requires these characters
+            uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+            uuid[14] = '4';
+
+            // Fill in random data.  At i==19 set the high bits of clock sequence as
+            // per rfc4122, sec. 4.1.5
+            for (i = 0; i < 36; i++) {
+                if (!uuid[i]) {
+                    r = 0 | Math.random() * 16;
+                    uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+                }
+            }
+        }
+        return uuid.join('');
+    }
+</script>
+<!-- End Piwik Code -->
+
+
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['enableLinkTracking']);
+
+    (function () {
+
+        var u = "//tracking.womaiapp.com/piwik/";
+        var userId = getUserId();
+        _paq.push(['setTrackerUrl', u + 'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        _paq.push(['setCookieDomain', '*.womai.com']);
+        _paq.push(['setDomains', '*.womai.com']);
+        _paq.push(['setDocumentTitle', document.domain + "/" + document.title]);
+        _paq.push(['setUserId', userId == "" ? "" : userId]);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript';
+        g.async = true;
+        g.defer = true;
+        g.src = u + 'piwik.js';
+        s.parentNode.insertBefore(g, s);
+    })();
+    _paq.push(['trackPageView']);
+
+</script>
+<noscript><p><img src="/static/cart/picture/piwik.php" style="border:0;" alt=""/></p></noscript>
+<!-- End Piwik Code -->
+<div id="j-piwik" style="display:none;"></div>
+
+<script type="text/javascript">
+    var _mvq = window._mvq || [];
+    window._mvq = _mvq;
+
+    _mvq.push(
+        ['$setAccount', 'm-127-0'],
+        ['$logConversion']
+    );
+
+    (function () {
+        var mvjs = document.createElement('script');
+        mvjs.type = 'text/javascript';
+        mvjs.async = true;
+        mvjs.src = document.location.protocol + '//cdn.dsp.com/static//static/cart/js/mv_loader.js';
+        (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(mvjs);
+    })();
+</script>
+
+
+<script language="javascript" type="text/javascript">
+    var sg_dsp_data = sg_dsp_data || [];
+    var sg_dsp_id = '18701352';
+    /*id固定*/
+</script>
+
+<!-- 360DMP -->
+<script type="text/javascript" src="/static/cart/js/79543.js" async defer></script>
+
+
+<script type="text/javascript">var prodIdArr = [], pnameArr = [], pcatArr = [], pvaluesArr = [];
+prodIdArr.push('0-616969');
+pnameArr.push('[安萃]进口红心火龙果5枚 礼盒装2000g 单果320-450g');
+pcatArr.push('生鲜食品');
+pvaluesArr.push('39.8');
+prodIdArr.push('0-651123');
+pnameArr.push('山东 乒乓球葡萄盒装500g');
+pcatArr.push('生鲜食品');
+pvaluesArr.push('23.8');
+var google_tag_params = {
+    ecomm_prodid: prodIdArr,
+    ecomm_pname: pnameArr,
+    ecomm_pcat: pcatArr,
+    ecomm_pvalues: pvaluesArr,
+    ecomm_pagetype: '购物车'
+};</script><!-- Google Code for Remarketing Tag --><!--------------------------------------------------Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup--------------------------------------------------->
+<script type="text/javascript">/* <![CDATA[ */
+var google_conversion_id = 1047338677;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */</script>
+<script type="text/javascript" src="/static/cart/js/conversion.js"></script>
+<noscript>
+    <div style="display:inline;"><img height="1" width="1" style="border-style:none;" alt=""
+                                      src="/static/cart/picture/7ee116ecd6b447a68260989f8a086705.gif"/></div>
+</noscript>
+
+
+<script type="text/javascript" src="/static/cart/js/conv_pro.js"></script>
+<script type="text/javascript">function Ps_Click() {
+    pubsage_conv && pubsage_conv.sendClickEvent('false', '68701');
+}</script>
+
+<script type="text/javascript">var _mvq = _mvq || [];
+_mvq.push(['$setAccount', 'm-127-0']);
+_mvq.push(['$setGeneral', 'cartview', '', /*用户名*/ '', /*用户id*/ '']);
+_mvq.push(['$logConversion']);
+_mvq.push(['$addItem', '', /*商品id*/ '616969', '', '']);
+_mvq.push(['$logData']);
+var _mvq = _mvq || [];
+_mvq.push(['$setAccount', 'm-127-0']);
+_mvq.push(['$setGeneral', 'cartview', '', /*用户名*/ '', /*用户id*/ '']);
+_mvq.push(['$logConversion']);
+_mvq.push(['$addItem', '', /*商品id*/ '651123', '', '']);
+_mvq.push(['$logData']);</script>
+
+
+<script type="text/javascript">var bd_cpro_rtid = "nHcdnf";</script>
+<script type="text/javascript" src="/static/cart/js/rt.js"></script>
+<noscript>
+    <div style="display:none;"><img height="0" width="0" style="border-style:none;" src="/static/cart/picture/rt.jpg"/></div>
+</noscript>
+<script type="text/javascript">var bd_cpro_rtid = "nWRdPjD";</script>
+<script type="text/javascript" src="/static/cart/js/rt.js"></script>
+<noscript>
+    <div style="display:none;"><img height="0" width="0" style="border-style:none;" src="/static/cart/picture/rt.jpg"/></div>
+</noscript>
+
+
+<script type='text/javascript'>
+    var _hmt = _hmt || [];
+    var rtTag = {
+        "data": {
+            "ecom_cart": {
+                "prod": [{"p_id": "616969", "p_price": "39.8", "p_num": "1"}, {
+                    "p_id": "651123",
+                    "p_price": "23.8",
+                    "p_num": "1"
+                }]
+            }
+        }
+    }
+    _hmt.push(['_trackRTEvent', rtTag]);
+</script>
+
+
+<script type="text/javascript" src="/static/cart/js/recommend_infosmart.js"></script>
+<div id="mahout_container_layer" style="display:none"></div>
+<script type="text/javascript">var tempitems = {};
+tempitems['itemsid'] = [];
+tempitems['prices'] = [];
+tempitems['amount'] = [];
+tempitems['jiu_itemsid'] = [];
+tempitems['jiu_prices'] = [];
+tempitems['jiu_amount'] = [];
+tempitems['seller_itemsid'] = [];
+tempitems['seller_prices'] = [];
+tempitems['seller_amount'] = [];
+tempitems['itemsid'].push("616969");
+tempitems['prices'].push("39.8");
+tempitems['amount'].push("1");
+tempitems['itemsid'].push("651123");
+tempitems['prices'].push("23.8");
+tempitems['amount'].push("1");
+(function () {
+    var item = {};
+    item['prdid'] = "womai";
+    item['itemid'] = tempitems['itemsid'].join("@");
+    item['userid'] = getUniqueUserId();
+    item['type'] = "g";
+    item['score'] = 1;
+    item['cost'] = tempitems['prices'].join("@");
+    item['buycnt'] = tempitems['amount'].join("@");
+    item['refer'] = document.referrer;
+    item['page'] = document.URL;
+    item['recid'] = "cart";
+    item['recpos'] = "cart_like";
+    item['recmethod'] = "like";
+    window.mahout_rec = [];
+    window.mahout_rec.push(item);
+    mahout_rec_fn();
+    if ([] != tempitems['jiu_itemsid'] && tempitems['jiu_itemsid'].length > 0) {
+        var jiu_item = {};
+        jiu_item['prdid'] = "womaijiu";
+        jiu_item['userid'] = getUniqueUserId();
+        jiu_item['itemid'] = tempitems['jiu_itemsid'].join("@");
+        jiu_item['type'] = "g";
+        jiu_item['score'] = 1;
+        jiu_item['cost'] = tempitems['jiu_prices'].join("@");
+        jiu_item['buycnt'] = tempitems['jiu_amount'].join("@");
+        jiu_item['refer'] = document.referrer;
+        jiu_item['page'] = document.URL;
+        window.mahout_rec = [];
+        window.mahout_rec.push(jiu_item);
+        mahout_rec_fn();
+    }
+    if ([] != tempitems['seller_itemsid'] && tempitems['seller_itemsid'].length > 0) {
+        var seller_item = {};
+        seller_item['prdid'] = "womaiseller";
+        seller_item['userid'] = getUniqueUserId();
+        seller_item['itemid'] = tempitems['seller_itemsid'].join("@");
+        seller_item['type'] = "g";
+        seller_item['score'] = 1;
+        seller_item['cost'] = tempitems['seller_prices'].join("@");
+        seller_item['buycnt'] = tempitems['seller_amount'].join("@");
+        seller_item['refer'] = document.referrer;
+        seller_item['page'] = document.URL;
+        window.mahout_rec = [];
+        window.mahout_rec.push(seller_item);
+        mahout_rec_fn();
+    }
+})();</script>
+
+
+<script type="text/javascript">
+    (window.__zp_tag_params = window.__zp_tag_params || {})["src"] = "PC";
+</script>
+<script type='text/javascript'>
+
+    var level = getUserLevel();
+    var isXinke = 0;
+    if (level == 1 || level == 2) {
+        isXinke = 1;
+    } else if (level >= 3 && level <= 5) {
+        isXinke = 0;
+    }
+
+
+    window.__zp_tag_params = {
+        src: "PC",
+        productId_list: "0-616969,0-651123",
+        totalPrice: "63.60",
+        totalNum: "2",
+        isXinke: isXinke
+    };
+    (function (param) {
+        var c = {query: [], args: param || {}};
+        c.query.push(["_setAccount", "75"]);
+        c.query.push(["_setSiteID", "1"]);
+        (window.__zpSMConfig = window.__zpSMConfig || []).push(c);
+        var zp = document.createElement("script");
+        zp.type = "text/javascript";
+        zp.async = true;
+        zp.src = ("https:" == document.location.protocol ? "https:" : "http:") + "//cdn.zampda.net/s.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(zp, s);
+    })(window.__zp_tag_params);
+
+</script>
+
+
+<script language="javascript" type="text/javascript">
+
+    var sg_tag = {
+        "data": {
+            "ecom_cart": {
+                "prod": [
+
+
+                    {
+                        "p_id": "616969",
+                        "p_price": "",
+                        "p_num": "1"
+                    }
+                    ,
+
+
+                    {
+                        "p_id": "651123",
+                        "p_price": "",
+                        "p_num": "1"
+                    }
+
+
+                ]
+            },
+            "ecom_login": {
+                "uid": getUserId(),
+                "uname": getUserId() == "" ? "" : getNickname(),
+                "email": getUserId() == "" ? "" : getUserEmail()
+            }
+        }
+    };
+
+    sg_dsp_data.push(sg_tag);
+
+</script>
+
+
+<script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'gaTracker');
+
+    var PageGroup = "cart";
+
+    var userId = getUserId() == "" ? "" : getUserId();
+    gaTracker('create', 'UA-10228579-1', 'auto', 'Truemetrics', {'userId': userId});
+
+    gaTracker('Truemetrics.require', 'linkid', 'linkid.js');
+
+    gaTracker('Truemetrics.require', 'ec');
+
+    gaTracker('Truemetrics.set', 'contentGroup1', PageGroup);
+
+    gaTracker(function () {
+        var clientID = gaTracker.getByName('Truemetrics').get('clientId');
+        gaTracker('Truemetrics.set', 'dimension1', clientID);
+    });
+
+    gaTracker('Truemetrics.set', 'dimension2', userId);
+    gaTracker('Truemetrics.send', 'pageview');
+
+    function product_click(articleId, name, action) {//列表页点击
+        gaTracker('Truemetrics.ec:addProduct', {
+            'id': articleId,                        // 产品的SKU（string），id或name必需设置其一
+            'name': name,         // 产品的名称（string） 
+            'category': '',                        // 空值或删去
+            'brand': '',                //空值或删去
+            'variant': '',               //空值或删去
+            'position': ''            // 空值或删去
+        });
+        gaTracker('Truemetrics.ec:setAction', 'click', {
+            'list': action                    // 产品列表名称(string)，必需
+        });
+        gaTracker('Truemetrics.send', 'event', PageGroup, action, 'product_click');
+        //事件参数category为页面pageGroup，action为产品所在区域，label为固定值product_click
+    }
+
+    function product_add(articleId, articleName, action) {
+        gaTracker('Truemetrics.ec:addProduct', {
+            "id": articleId,          // 产品的SKU（string），id或name必需设置其一
+            "name": articleName,     // 产品的名称（string）， id或name必需设置其一
+            "category": "",      			// 产品的类别（string），非必需
+            "brand": "",                	//产品的品牌（string），非必需
+            "price": "",    //产品价格（number），非必需
+            "quantity": "",         	//产品数量（number），非必需
+            "variant": ""              // 产品的属性(string)，非必需
+        });
+        gaTracker('Truemetrics.ec:setAction', 'add');
+        gaTracker('Truemetrics.send', 'event', PageGroup, action, 'product_add');
+        //事件参数category为页面pageGroup，action为产品所在区域，label为固定值product_add
+    }
+
+    function product_delete(articleId) {
+        gaTracker('Truemetrics.ec:addProduct', {
+
+            "id": articleId,                        // 产品的SKU（string），id或name必需设置其一
+            "name": "",         // 产品的名称（string）， id或name必需设置其一
+            "category": "",      // 产品的类别（string），非必需
+            "brand": "",                //产品的品牌（string），非必需
+            "price": "",                    //产品价格（number），非必需
+            "quantity": "",         //产品数量（number），非必需
+            "variant": ""               // 产品的属性(string)，非必需
+        });
+        gaTracker('Truemetrics.ec:setAction', 'remove');
+        gaTracker('Truemetrics.send', 'event', PageGroup, 'shoppingCart', 'product_delete');
+        //事件参数category为页面pageGroup，action为产品所在区域，label为固定值product_delete
+    }
+
+    $("a[id^='_gatrack_productlist_listpic_']").live("click", function () {
+        var $this = $(this);
+        product_click($this.attr("data-gzpid"), $this.find("img").attr("alt"), $this.attr("data-ga"));
+    });
+    $("a[id^='_gatrack_productlist_listtitle-']").live("click", function () {
+        var id = $(this).attr("id").split("-")[1];
+        var $this = $('#_gatrack_productlist_listpic_' + id);
+        product_click($this.attr("data-gzpid"), $this.find("img").attr("alt"), $this.attr("data-ga"));
+    });
+    //除了凑单免邮之外的促销
+    $("a[id^='sales_']").live("click", function () {
+        var $this = $(this);
+        product_click($this.attr("data-gzpid"), $this.find("img").attr("alt"), $this.attr("data-ga"));
+    });
+    $("a[id^='_gatrack_sales_listtitle-']").live("click", function () {
+        var id = $(this).attr("id").split("-")[1];
+        var $this = $('#sales_' + id);
+        product_click($this.attr("data-gzpid"), $this.find("img").attr("alt"), $this.attr("data-ga"));
+    });
+</script>
+
+
+<script type="text/javascript">
+    (function (w, n) {
+        w[n] = function () {
+            (w[n].c = w[n].c || []).push(arguments);
+        }
+
+        _qha('send', {
+            et: 32,
+            goods: [
+
+
+                {
+                    id: '616969', /*商品ID,必填项*/
+                    vendorId: '0', /*供应商id*/
+                    name: '[安萃]进口红心火龙果5枚 礼盒装2000g 单果320-450g', /*商品名称*/
+                    price: '39.8', /*商品价格*/
+                    quantity: '1', /*商品数量*/
+                    stock: '', /*商品库存*/
+                    com: '', /*商品佣金*/
+                    img: 'http://pic2.womai.com/upload/601/603/606/64306/280374/219481/616969/616969_0_pic60_390.jpg', /*商品图片url*/
+                    brand: '安萃', /*品牌名*/
+                    brandID: '977743', /*品牌id*/
+                    category: '生鲜食品', /*分类信息（共四级）*/
+                    des: '', /*产品描述*/
+                },
+
+
+                {
+                    id: '651123', /*商品ID,必填项*/
+                    vendorId: '0', /*供应商id*/
+                    name: '山东 乒乓球葡萄盒装500g', /*商品名称*/
+                    price: '23.8', /*商品价格*/
+                    quantity: '1', /*商品数量*/
+                    stock: '', /*商品库存*/
+                    com: '', /*商品佣金*/
+                    img: 'http://pic3.womai.com/upload/601/603/358812/378407/495407/495410/651123/651123_1_pic60_4144.jpg', /*商品图片url*/
+                    brand: '水果', /*品牌名*/
+                    brandID: '974018', /*品牌id*/
+                    category: '生鲜食品', /*分类信息（共四级）*/
+                    des: '', /*产品描述*/
+                }
+
+            ]
+        });
+    })(window, '_qha');
+</script>
+ 

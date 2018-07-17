@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>我的订单</title>
+
+
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/commonalert.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/ll.ui.datepicker.1.0.0.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/new_sell_list.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/conqu_order.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/live800button.css"/>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/addtocartmessage.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/ll.ui.datepicker.1.0.0.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/sny1.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/order_common.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/new_order_sell_list.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/engine.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/util.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/orderpayservice.js"></script>
+    <script type="text/javascript" src="/static/myorder/js/commonalert.js"></script>
+    <script type="text/javascript">
+        var staticPath = "http://static.womai.com";
+        var frontPath = "";
+    </script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/live800button.js" charset="utf-8"></script>
+</head>
+<body>
+<form action="/Member/menumyorderlist.do" id="myOrderListForm" method="get">
+    <input id="mid" name="mid" type="hidden" value="0"/>
+    <input id="ColumnId" name="ColumnId" type="hidden" value=""/>
+    <input id="orderType" name="orderType" type="hidden" value="8"/>
+    <input id="limitStates" name="limitStates" type="hidden" value="1"/>
+    <input id="state" name="state" type="hidden" value="101"/>
+    <input id="page" name="page" type="hidden" value="1"/>
+    <input id="isSignfor" name="isSignfor" type="hidden" value="0"/>
+    <input id="tag" name="tag" type="hidden" value="5"/>
+    <input id="aliasCode" name="aliasCode" type="hidden" value=""/>
+    <input id="beginDate" name="beginDate" type="hidden" value=""/>
+    <input id="endDate" name="endDate" type="hidden" value=""/>
+    <input id="orderStateValue" name="orderStateValue" type="hidden" value="订单状态"/>
+    <input id="isHaveSearch" name="isHaveSearch" type="hidden" value="0"/>
+    <input id="isSolr" name="isSolr" type="hidden" value="y"/>
+    <input id="mzhOrderCount" name="mzhOrderCount" type="hidden" value="0"/>
+    <input id="ttmenumyorderlist" name="tt" type="hidden" value="0.5350400116339185"/>
+</form>
+<input id="j-cancel-orderid" type="hidden" value=""/>
+<input id="j-cancel-orderaliasid" type="hidden" value=""/>
+<input id="j-cancel-flag" type="hidden" value=""/>
+<div id="gotopay" style="display: none;"></div>
+
+<div class="wrap_list">
+
+
+    <script type="text/javascript">
+        window.parent.setNoPayOrder();
+        window.parent.setAccountMessage();
+    </script>
+
+
+    <div class="list_1f"><b></b>我的订单</div>
+
+
+    <div class="new_two">
+
+
+        <input type="text" id="aliasCodeInput" class="nt_one" value="订单编号"/>
+        <div class="huihis_seainp1" style="position:absolute;left:191px;"><input type="text" name="beginDateInput"
+                                                                                 value="起始日期" id="beginDateInput"/>
+        </div>
+        <span class="nt_four">-</span>
+        <div class="huihis_seainp2" style="position:absolute;left:325px;"><input type="text" name="endDateInput"
+                                                                                 value="结束日期" id="endDateInput"/></div>
+        <div class="nt_three">
+            <input type="text" id="orderStateInput" value="订单状态"/>
+            <ul class="nt_ul1">
+                <li>全部订单</li>
+                <li>等待付款</li>
+                <li>等待收货</li>
+                <li>交易完成</li>
+                <li>已取消</li>
+            </ul>
+        </div>
+        <div class="nt_two"></div>
+    </div>
+
+
+    <div class="list_2f">
+
+        <div class="l2f_1f">
+
+
+            <div id="tabDiv" class="l2f_1f_left">
+                <ul>
+                    <li>
+                        <div class="active">全部订单</div>
+                    </li>
+                    <li>
+                        <div>待付款<span id="linopayordercount"></span></div>
+                    </li>
+                    <li>
+                        <div>待收货<span id="liwaitordercount"></span></div>
+                    </li>
+                    <li>
+                        <div>待评价<span id="lifinishordercount"></span></div>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="l2f_2f"></div>
+        <div class="l2f_2fin">
+            <ul>
+                <li class="w291">商品</li>
+                <li class="w83">数量</li>
+                <li class="w128">订单金额</li>
+                <li class="w78">订单状态</li>
+                <li class="w106">操作</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+
+
+        <div class="div_popup" style="display:block;">
+            <div class="l2f_3f">
+                <div class="l2f_3f_title">
+                    <ul class="l2f_3f_title_ul">
+                        <li class="title_li01">订单编号：
+                            <a target="_blank" id="orderdetailid50" href="#">
+                                <span> WMBJ18071787417619</span>
+                            </a>
+                            <script type="text/javascript">
+                                var aa = jQuery("#orderdetailid50");
+                                if (aa) {
+                                    aa.attr("href", "/Member/ParentOrderDetail.do?id=126563792&t=" + Math.random());
+                                }
+                            </script>
+                        </li>
+                        <li class="title_li02">下单时间：
+
+                            2018-07-17
+
+                        </li>
+                        <li class="title_li03">￥93.60
+
+                            （含30元运费）
+                        </li>
+                    </ul>
+                </div>
+                <div class="l2f_3f_detail">
+
+                    <div class="fl detail_left">
+
+
+                        <ul>
+                            <li class="w291">
+                                <dl class="dl2">
+                                    <dt>
+                                        <a target="_blank" href="http://www.womai.com/Product-0-616969.htm">
+                                            <img title="【自营】[安萃]进口红心火龙果5枚 礼盒装2000g 单果320-450g"
+                                                 src="/static/myorder/picture/616969_0_pic60_390.jpg"/>
+                                        </a>
+                                    </dt>
+                                    <dd><a target="_blank" href="http://www.womai.com/Product-0-616969.htm"
+                                           title="【自营】[安萃]进口红心火龙果5枚 礼盒装2000g 单果320-450g">【自营】[安萃]进口红心火龙果5枚 礼盒装2000g
+                                        单果320-450g</a></dd>
+                                </dl>
+                            </li>
+                            <li class="w83">X&nbsp;1</li>
+                        </ul>
+
+
+                        <ul>
+                            <li class="w291">
+                                <dl class="dl2">
+                                    <dt>
+                                        <a target="_blank" href="http://www.womai.com/Product-0-651123.htm">
+                                            <img title="【自营】山东 乒乓球葡萄盒装500g" src="/static/myorder/picture/651123_1_pic60_4144.jpg"/>
+                                        </a>
+                                    </dt>
+                                    <dd><a target="_blank" href="http://www.womai.com/Product-0-651123.htm"
+                                           title="【自营】山东 乒乓球葡萄盒装500g">【自营】山东 乒乓球葡萄盒装500g</a></dd>
+                                </dl>
+                            </li>
+                            <li class="w83">X&nbsp;1</li>
+                        </ul>
+
+
+                    </div>
+                    <ul class="fl detail_right">
+                        <li class="w128 jh01">
+                            <div class="outer jh01">
+                                <div class="middle">
+                                    <div class="inner">
+                                        <p>应付：
+                                            <span class="c_red">93.60</span>
+                                        </p>
+
+
+                                        <p>在线支付 [银行卡 信用卡 支付宝支付]</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="w78 jh02">
+                            <div class="outer jh01">
+                                <div class="middle">
+                                    <div class="inner">
+                                        <p class="color_01">等待付款</p>
+                                        <div class="list_time">
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="w106 topaybtn jh03" style="z-index: 99;">
+                            <div class="outer jh01">
+                                <div class="middle">
+                                    <div class="inner">
+
+                                        <div id="cancelbtn_0">
+
+
+                                            <span id="canceltopay" class="topayimg" orderid="126563792"
+                                                  parentaliasid="WMBJ18071787417619" paymodeid="0"><a target="_blank"
+                                                                                                      href="javascript:void(0);"
+                                                                                                      onclick="return judgeBank('支付宝',this);"><input
+                                                    id="AlipayBankURL" type="hidden"
+                                                    value='https://mapi.alipay.com/gateway.do?show_url=http%3A%2F%2Fwww.womai.com%2FMember%2FOrderDetail.do%3Fid%3D126563792&_input_charset=GBK&receive_address=%B8%DF%D0%C2%C1%F9%C2%B7%C1%A2%C8%CB%BF%C6%BC%BC&service=create_direct_pay_by_user&logistics_payment=BUYER_PAY&price=93.60&out_trade_no=244508958&return_url=http%3A%2F%2Fwww.womai.com%2FCart%2FAlipayReturn.do&subject=%CE%D2%C2%F2%CD%F8-%A1%BE%D7%D4%D3%AA%A1%BF%5B%B0%B2%DD%CD%5D%BD%F8%BF%DA%BA%EC%D0%C4%BB%F0%C1%FA%B9%FB5%C3%B6+%C0%F1%BA%D0%D7%B02000g+%B5%A5%B9%FB320-450g%B5%C8%C9%CC%C6%B7+%B6%A9%B5%A5%BA%C5%3AWMBJ18071787417619%C4%DA%B2%BF%B1%E0%BA%C5%3A126563792&discount=0&notify_url=http%3A%2F%2Fwww.womai.com%2Fpaymode%2FAlipayNotify.do&body=%C7%EB%B2%E9%BF%B4%B6%A9%B5%A5%CF%EA%C7%E9&payment_type=1&quantity=1&receive_name=%B9%FE%B9%FE&logistics_fee=0&agent=2088801901156089&logistics_type=EXPRESS&receive_mobile=18700469641&seller_email=wmsk%40womai.com&partner=2088801901156089&it_b_pay=1d&sign=a39bf3677a8dbbe460a31747055d9233&sign_type=MD5'/><img
+                                                    id='alipayImg' src='/static/myorder/picture/s1_alipay.png' alt=''/></a><input
+                                                    type=hidden id='alipayScanInput'
+                                                    value='https://mapi.alipay.com/gateway.do?show_url=http%3A%2F%2Fwww.womai.com%2FMember%2FOrderDetail.do%3Fid%3D126563792&_input_charset=GBK&receive_address=%B8%DF%D0%C2%C1%F9%C2%B7%C1%A2%C8%CB%BF%C6%BC%BC&service=create_direct_pay_by_user&logistics_payment=BUYER_PAY&price=93.60&out_trade_no=244508958&return_url=http%3A%2F%2Fwww.womai.com%2FCart%2FAlipayScanReturn.do&subject=%CE%D2%C2%F2%CD%F8-%A1%BE%D7%D4%D3%AA%A1%BF%5B%B0%B2%DD%CD%5D%BD%F8%BF%DA%BA%EC%D0%C4%BB%F0%C1%FA%B9%FB5%C3%B6+%C0%F1%BA%D0%D7%B02000g+%B5%A5%B9%FB320-450g%B5%C8%C9%CC%C6%B7+%B6%A9%B5%A5%BA%C5%3AWMBJ18071787417619%C4%DA%B2%BF%B1%E0%BA%C5%3A126563792&discount=0&notify_url=http%3A%2F%2Fwww.womai.com%2Fpaymode%2FAlipayNotify.do&body=%C7%EB%B2%E9%BF%B4%B6%A9%B5%A5%CF%EA%C7%E9&payment_type=1&quantity=1&receive_name=%B9%FE%B9%FE&logistics_fee=0&qr_pay_mode=1&agent=2088801901156089&logistics_type=EXPRESS&receive_mobile=18700469641&seller_email=wmsk%40womai.com&partner=2088801901156089&it_b_pay=1d&sign=7ea07b231ac5726a2da4e17d80d6d9ba&sign_type=MD5'></span>
+
+
+                                            <a id="canCancel" href="javascript:void(0);"
+                                               onclick="orderCancel(126563792,'WMBJ18071787417619',1);"
+                                               class="offorder">取消订单</a>
+
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                    <div class="clear"></div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="pglist_page">
+            <div class='page'>
+                <div class='page_l'><a href='#' class='prev' title='目前已是第一页'>上一页</a><a class='select'>1</a><a
+                        class='next' title='目前已是最后一页'>下一页</a></div>
+                <div class='page_m'>共<span>1</span>页</div>
+                <div class='page_m_2'>到第</div>
+                <div class='page_m_3'><input type='text' class='page_input' value='1'></div>
+                <div class='page_m_4'>页</div>
+                <div class='page_r'><input
+                        onclick="javascript:var goPage=this.parentNode.parentNode.getElementsByTagName('input')[0].value;if(isNaN(goPage)||goPage>1||goPage<1||goPage==1)return;document.location='/Member/menumyorderlist.do?orderStateValue=%B6%A9%B5%A5%D7%B4%CC%AC&&ColumnId=-1&&t=0.14807791594273967&&orderType=8&&tag=5&&state=-1&&limitStates=-1&page='+goPage;return false;"
+                        type='button'></div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div id="j-reasonlist" style="display:none">
+
+
+    <div class="reason">
+        <ul>
+
+            <li data-reason-id="1">暂不购买<b></b></li>
+
+            <li data-reason-id="2">重复下单<b></b></li>
+
+            <li data-reason-id="3">收货人信息有误<b></b></li>
+
+            <li data-reason-id="4">未使用折扣券<b></b></li>
+
+            <li data-reason-id="5">支付方式有误<b></b></li>
+
+            <li data-reason-id="6">发票信息有误/未开<b></b></li>
+
+            <li data-reason-id="7">商品价格较贵<b></b></li>
+
+            <li data-reason-id="8">添加/删除商品<b></b></li>
+
+            <li data-reason-id="9">无法支付订单<b></b></li>
+
+            <li data-reason-id="10">订购错误<b></b></li>
+
+            <li class="reason-remind"><i class="png"></i>请您选择订单取消原因，以帮助我们改进服务</li>
+            <div class="clear"></div>
+        </ul>
+        <dl class="remind">
+            <dt>提示：</dt>
+            <dd>
+                <p>1. 订单取消后无法恢复（若订单参加活动，则活动名额也会相应取消）。</p>
+                <p>2. 我买卡与优惠券支付金额将实时到账，取消后您可以在帐户中查询。</p>
+                <p>3. 其他支付方式退款时间会在1-3个工作日内退回。</p>
+                <p>4. 已经支付的款项按原支付路径返还，没有手续费。</p>
+            </dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+
+</div>
+<input type="hidden" id="theorderId"/>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>制作贺卡留言</title>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/imgareaselect-default.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/ordermessage.css"/>
+    <script type="text/javascript" src="/static/myorder/js/jquery.imgareaselect.pack.js"></script>
+    <script type="text/javascript" src="/static/myorder/js/jqueryrotate.js"></script>
+    <script type="text/javascript" src="/static/myorder/js/jquery.uploadify.min.js"></script>
+    <script type="text/javascript" src="/static/myorder/js/picture.js"></script>
+    <script type="text/javascript" src="/static/myorder/js/ordermessage.js"></script>
+    <script type="text/javascript">
+        var frontPath = "";
+        var staticPath = "http://static.womai.com";
+    </script>
+    <!--[if IE 6]>
+	<script type="text/javascript" src="/static/myorder/js/dd_belatedpng.js"></script>
+	<script type="text/javascript"> 
+	    DD_belatedPNG.fix('.png');
+	</script> 
+	<![endif]-->
+</head>
+<body>
+
+<input type="hidden" id="ordermessageword">
+<input type="hidden" id="ordermessagewordnum">
+<input type="hidden" id="ordermessageimagepath">
+<input type="hidden" name="x1" value="0"/>
+<input type="hidden" name="y1" value="0"/>
+<input type="hidden" name="x2" value="0"/>
+
+
+<div class="mask"></div>
+
+
+<div class="mengniu-popup">
+
+    <div class="close" id="j-close">×</div>
+
+    <div class="header width"><img src="/static/myorder/picture/logo.jpg"/></div>
+
+
+    <div class="main width">
+        <div class="main-l fl">
+            <a class="edit" id="edita"></a>
+            <a class="save" id="savea"></a>
+            <div id="fileQueueDiv" class="filequeuediv"></div>
+        </div>
+
+        <div class="main-r fl">
+
+            <div class="custom-editor">
+                <div class="content">
+                    <div class="content-pic fl">
+                        <div class="pic-size">
+                            <div class="pic-title"><p>添加您的照片</p>
+                                <p>让您的祝福更加贴心</p></div>
+                            <div class="pic-file"><img id="preview"/></div>
+                            <p class="select-file"><input id="uploadify" type="file"/><span>从计算机中选择图片</span></p>
+                        </div>
+                        <div class="pic-intro">
+                            <h3>照片要求说明</h3>
+                            <p>1、上传图片只支持jpg、png、gif图片，大小不超过3M;</p>
+                            <p>2、上传图片尺寸不小于142*228</p>
+                        </div>
+                    </div>
+                    <div class="content-sign fl">
+                        <div class="edit-sign"><i></i><textarea id="j-write" onkeyup="messagewritedown();"
+                                                                onkeydown="messagewritedown();">亲自书写心意</textarea><span
+                                id="wordsize">0/24</span></div>
+                        <ul class="sign">
+                            <li><img src="/static/myorder/picture/sign_1.png" onclick="choicewords(1);" id="choicewords1"
+                                     data-src="http://static.womai.com/zhongliang/templets/ordermessage/images/preview-sign1.png"/>
+                            </li>
+                            <li><img src="/static/myorder/picture/sign_2.png" onclick="choicewords(2);" id="choicewords2"
+                                     data-src="http://static.womai.com/zhongliang/templets/ordermessage/images/preview-sign2.png"/>
+                            </li>
+                            <li><img src="/static/myorder/picture/sign_3.png" onclick="choicewords(3);" id="choicewords3"
+                                     data-src="http://static.womai.com/zhongliang/templets/ordermessage/images/preview-sign3.png"/>
+                            </li>
+                            <li><img src="/static/myorder/picture/sign_4.png" onclick="choicewords(4);" id="choicewords4"
+                                     data-src="http://static.womai.com/zhongliang/templets/ordermessage/images/preview-sign4.png"/>
+                            </li>
+                            <li><img src="/static/myorder/picture/sign_5.png" onclick="choicewords(5);" id="choicewords5"
+                                     data-src="http://static.womai.com/zhongliang/templets/ordermessage/images/preview-sign5.png"/>
+                            </li>
+                            <li><img src="/static/myorder/picture/sign_6.png" onclick="choicewords(6);" id="choicewords6"
+                                     data-src="http://static.womai.com/zhongliang/templets/ordermessage/images/preview-sign6.png"/>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="btn">
+                    <a class="scale fl" href="#" id="scale">预览</a>
+                    <a class="quit fl" href="#" onclick="$('.mask,.mengniu-popup').hide();">放弃</a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+            <div class="preview">
+                <div class="preview-content">
+                    <div class="pic-bg">
+                        <a class="save fl" id="scale" onclick="addordermessage();" href="#">保存完成</a>
+                        <a class="back fl" href="#">返回修改</a>
+                    </div>
+                    <div class="flower"><img src="/static/myorder/picture/flower.png" class="png"/></div>
+                    <div class="pic" id="pic"><img id="yulangImage"/></div>
+                    <div class="wishes" id="yulangword"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+
+    <div class="mask-edit"></div>
+
+
+    <div class="pic-edit">
+        <div class="close" id="j-edit-close">×</div>
+        <h2>图片编辑</h2>
+        <form id="crop_form" method="post" action="success.html">
+
+            <input id="id_top" type="hidden" name="top" value="90">
+            <input id="id_left" type="hidden" name="left" value="61">
+            <input id="id_right" type="hidden" name="right" value="201">
+            <input id="id_bottom" type="hidden" name="bottom" value="200">
+            <input id="rotation" type="hidden" value="0" name="rotation">
+        </form>
+        <div>
+            <div class="fl widthfl">
+                <div class="picture-parent">
+                    <div class="picture" id="picture"><img id="avatar"/></div>
+                </div>
+                <div class="revolve">
+                    <div class="select-file fl"><input id="uploadifytwo" type="file"/><span>&nbsp;</span></div>
+                    <a href="javascript:;" class="turn" onclick="avatarrotateright();"></a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="small-pic fl">
+                <p>拖拽控件，</p>
+                <p>生成自己满意的图片</p>
+                <div class="small-preview" id="small-preview"><img id="avatar1"/></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="btn"><a onclick="addmessageImg();" href="#">保存</a></div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
+
+<div class="mengniu-popup-imagepath"><img id="ordermessageimage" src=""/><i
+        onclick="$('.mengniu-popup-imagepath').hide();"></i></div>
+<style type="text/css">
+    .header {
+        display: none;
+    }
+
+    .main {
+        width: 780px;
+        height: 475px;
+        border: none;
+    }
+
+    .main-l {
+        display: none;
+    }
+
+    .mengniu-popup {
+        width: 785px;
+        left: 3%
+    }
+</style>
+</body>
+</html>
+
