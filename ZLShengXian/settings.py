@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import sys
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -21,6 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'a8&2$w2z&%lu42^=gvmgydjn8i8l$^5qop)6_yq3&_nj2pkxlt'
+
+#设置APP存放的位置
+sys.path.insert(0,os.path.join(BASE_DIR,'myapps'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,10 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapps.userapp',
-    'myapps.orderapp',
-    'myapps.productapp',
-]
+    'orderapp',
+    'productapp',
+    'userapp',
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
