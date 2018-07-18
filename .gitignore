@@ -1,3 +1,5 @@
-*.sqlite3
-__pycache__
 .idea
+__pycache__
+*.sqlite3
+.idea/
+

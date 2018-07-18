@@ -11,26 +11,26 @@
     <script type="text/javascript" src="/static/user/js/register.js"></script>
     <script type="text/javascript" src="/static/user/js/commonalert.js"></script>
     <script type="text/javascript" src="/static/user/js/emailautocomplete.js"></script>
-    <script type="text/javascript">
-        (function () {
-            _fmOpt = {
-                partner: 'cofco',
-                appName: 'cofco_web',
-                token: 'A734D93498E8AB7C4607972419F265B7'
-            };
-            var cimg = new Image(1, 1);
-            cimg.onload = function () {
-                _fmOpt.imgLoaded = true;
-            };
-            cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=cofco&appName=cofco_web&tokenId=" + _fmOpt.token;
-            var fm = document.createElement('script');
-            fm.type = 'text/javascript';
-            fm.async = true;
-            fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(fm, s);
-        })();
-    </script>
+{#    <script type="text/javascript">#}
+{#        (function () {#}
+{#            _fmOpt = {#}
+{#                partner: 'cofco',#}
+{#                appName: 'cofco_web',#}
+{#                token: 'A734D93498E8AB7C4607972419F265B7'#}
+{#            };#}
+{#            var cimg = new Image(1, 1);#}
+{#            cimg.onload = function () {#}
+{#                _fmOpt.imgLoaded = true;#}
+{#            };#}
+{#            cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=cofco&appName=cofco_web&tokenId=" + _fmOpt.token;#}
+{#            var fm = document.createElement('script');#}
+{#            fm.type = 'text/javascript';#}
+{#            fm.async = true;#}
+{#            fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);#}
+{#            var s = document.getElementsByTagName('script')[0];#}
+{#            s.parentNode.insertBefore(fm, s);#}
+{#        })();#}
+{#    </script>#}
 </head>
 <body onload="register();">
 <div class="login_content" style="position: relative;">
@@ -39,7 +39,7 @@
                                                                                      src='/static/user/picture/2018042510164955.png'
                                                                                      width='210' height='80' alt='返回首页'
                                                                                      border='0'/></a></div>
-        <div class="header_title">欢迎注册</div>
+        <div class="header_title" style="color: green ">欢迎注册</div>
         <div class="header_tip"><span>已有我买网账户？</span><a onclick="javascript:document.loginPost.submit();">请登录</a></div>
         <div class="header_line"></div>
         <div class="clear"></div>
@@ -138,7 +138,6 @@
                             <div class="mcicont_btn spe_mcicbtn"><input type="btn" class="input_button_submit showinfo"
                                                                         value="立即注册"/>
                                 <input id="submitBtn" type="submit" class="input_button_submit" value="立即注册"/>
-                                <span class="mcibtn_spright" onclick="checkChange(this)">我有邀请码></span>
                                 <div class="ma_input"><input id="invitationCode" name="invitationCode"
                                                              class="input_new"/><label id="invitationCodeLabel"
                                                                                        for="invitationCode"
