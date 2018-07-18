@@ -4,9 +4,9 @@
 html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,pre,a,em,font,img,small,strong,b,u,i,s,dl,dt,dd,ol,ul,li,
 	fieldset,form,label{padding:0px; margin:0px;}
 body{color:#606060; font:12px/150% Arial, Tahoma,"ËÎÌå"}
-h2,h3{font:bold 14px 'Î¢ÈíÑÅºÚ'}
+h2,h3{font:bold 18px 'Î¢ÈíÑÅºÚ'}
 blockquote, q{quotes: none}
-blockquote:before, blockquote:after,q:before, q:after{content:''content: none}
+blockquote:before, blockquote:after,q:before, q:after{content:''}
 .clear{clear:both;height:0px;overflow:hidden;font-size:0;}
 .clearfix:after{content:'\0020';display:block;height:0;clear:both;font-size:0;visibility: hidden}
 :focus{outline:0}
