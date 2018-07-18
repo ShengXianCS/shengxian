@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'orderapp',
     'productapp',
     'userapp',
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,11 +84,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'shengxian',
-        'HOST': '10.35.163.30',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'CHARSET': 'utf8'
+        'HOST':'10.35.163.30',
+        'PORT':3306,
+        'USER':'root',
+        'PASSWORD':'root',
+        'CHARSET':'utf8'
     }
 }
 
@@ -116,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/shanghai'
 
 USE_I18N = True
 
@@ -136,3 +135,5 @@ STATICFILES_DIRS = [
 ]
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
+
+MEDIA_ROOT=os.path.join(BASE_DIR,'static/user/upload')
