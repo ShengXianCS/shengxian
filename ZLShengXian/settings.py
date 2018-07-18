@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+sys.path.insert(0,os.path.join(BASE_DIR,'myapps'))
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'orderapp',
     'productapp',
     'userapp',
+
 ]
 
 MIDDLEWARE = [
@@ -115,7 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
+
 TIME_ZONE = 'Asia/shanghai'
+
 
 USE_I18N = True
 

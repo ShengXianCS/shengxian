@@ -18,6 +18,9 @@ from django.conf.urls import url
 from myapps.productapp import views
 
 urlpatterns = [
-    url('',views.home),
+    url(r'^/', views.home),
+    url(r'^pdshow', views.prodshow),
+
+
 
 ]
