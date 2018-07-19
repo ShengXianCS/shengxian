@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 ('productimg', models.CharField(max_length=300)),
                 ('price', models.DecimalField(decimal_places=2, default=0.0, max_digits=10)),
                 ('salenums', models.BigIntegerField(default=0)),
-                ('type', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='productapp.ProdTyp')),
+                ('type', models.CharField(max_length=20,default='')),
             ],
             options={
                 'db_table': 'sx_products',

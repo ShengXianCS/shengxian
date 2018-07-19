@@ -177,55 +177,20 @@
     </div><!--content begin-->
     <div class="main_nav_wrap">
         <div class="main_nav width">
-            <div class="all_kinds"><h2 class="head"><b><img src="/static/product/picture/1465890501282.png" title="生鲜蔬果"></b>生鲜蔬果</h2>
+            <div class="all_kinds" ><h2 class="head"><b><img src="/static/product/picture/1465890501282.png" title="生鲜蔬果"></b>生鲜蔬果</h2>
                 <ul class="cont">
+                    {% for prodTyp in prodTyps %}
+
                     <li class="kinds">
-                        <div class="title"><h3><a href="/Sort-31000-500219.htm" target="_blank" style="">精品水果</a>/<a
-                                href="/Sort-31000-82800.htm" target="_blank">进口水果</a></h3>
-                         </div>
-                    </li>
-                    <li class="kinds">
-                        <div class="title"><h3><a href="/Sort-31000-219300.htm" target="_blank">海鲜水产</a></h3>
+                        <div class="title"><h3><a href="/sy/pdshow/{{ prodTyp.typeid }}" target="_blank">{{ prodTyp.typename }}</a></h3>
                         </div>
-
+                        <div class="clear"></div>
+                        <div class="clear"></div>
                     </li>
-                    <li class="kinds">
-                        <div class="title"><h3><a href="/Sort-31000-82402.htm" target="_blank">生肉禽蛋</a>/<a
-                                href="/Sort-31000-206960.htm" target="_blank">精品蔬菜</a></h3>
-                        </div>
-
-                            <div class="clear"></div>
-                            <div class="clear"></div>
-                    </li>
-                    <li class="kinds">
-                        <div class="title"><h3><a href="/Sort-31000-89500.htm" target="_blank">低温乳品/饮料</a></h3>
-                        </div>
-
-                            <div class="clear"></div>
-                            <div class="clear"></div>
-                    </li>
-                    <li class="kinds">
-                        <div class="title"><h3><a href="/Sort-31000-219424.htm" target="_blank">精选主食</a>/<a
-                                href="/Sort-31000-219400.htm" target="_blank">熟食</a>/<a href="/Sort-31000-82817.htm"
-                                                                                        target="_blank">佐餐</a>
-                        </h3>
-                        </div>
-                    </li>
-                            <div class="clear"></div>
-                            <div class="clear"></div>
-
-                    <li class="kinds">
-                        <div class="title"><h3><a href="/Sort-31000-206740.htm" target="_blank">冰品</a></h3>
-
-                         </div>
-                    </li>
-
-                    <li class="kinds">
-                        <div class="title"><h3><a href="/Sort-31000-82802.htm" target="_blank">礼品礼券</a></h3>
-                        </div>
-
-                    </li>
+                    {% endfor %}
                 </ul>
+
+
             </div>
             <div class="nav_v">
                 <ul class="nav">

@@ -13,13 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#/(?P<categoryid>\d+)$/(?P<chilid>\d+)$/(?P<sortid>\d+)$
 from django.conf.urls import url
 
 from myapps.productapp import views
 
 urlpatterns = [
-    url(r'^/', views.home),
-    url(r'^pdshow', views.prodshow),
+    url(r'^home', views.home),
+    url(r'^pdshow/(?P<id>\d+)$', views.prodshow1),
 
 
 

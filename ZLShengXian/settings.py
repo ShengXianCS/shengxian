@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'orderapp',
-    'productapp',
-    'userapp',
+    'myapps.orderapp',
+    'myapps.productapp',
+    'myapps.userapp',
 
 ]
 
@@ -115,10 +115,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'zh-hans'
+LANGUAGE_CODE = 'en-us'
 
 
-TIME_ZONE = 'Asia/shanghai'
+TIME_ZONE = 'UTC'
 
 
 USE_I18N = True
