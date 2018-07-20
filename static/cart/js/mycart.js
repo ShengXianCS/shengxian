@@ -166,6 +166,6 @@ $(function () {
             //下单
             window.open('/order/toorder/0',target='_self')
         }
-    })
+    });
 
 });

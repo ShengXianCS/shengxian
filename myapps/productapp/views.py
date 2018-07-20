@@ -1,12 +1,22 @@
 from django.shortcuts import render
 
-
-# Create your views here.
-from myapps.productapp.models import ProdTyp, Products
-
+from userapp.models import User
+from orderapp.models import Cart
+from productapp.models import ProdTyp, Products
+from django.db.models import *  #导入聚合函数
 
 def home(req):
-    return render(req, 'home.html', {'prodTyps':ProdTyp.objects.all()})
+    userid=1
+    user = User.objects.get(id=userid)
+    cart = user.cart_set
+    if cart:
+        cartcnt = 0
+    else:
+        cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
+    return render(req, 'home.html', {
+        'prodTyps':ProdTyp.objects.all().order_by('typesort'),
+        'cartcnt': cartcnt
+    })
 
 # , 'productlist': Products.objects.filter(prodTyp__typeid=id)
 
@@ -42,7 +52,13 @@ def prodshow(req,sortid=0,categoryid=0,chilid=0):
                    'sortid':sortid})
 def prodshow1(req,id,sortid=0,categoryid=0,chilid=0):
     productslist = None
-
+    userid = 1
+    user = User.objects.get(id=userid)
+    cart = user.cart_set
+    if cart:
+        cartcnt = 0
+    else:
+        cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
     sortColumn = 'salenums'
     if sortid == 1:
         sortColumn = '-price'
@@ -69,6 +85,8 @@ def prodshow1(req,id,sortid=0,categoryid=0,chilid=0):
                        'categoryid': str(categoryid),
                        'childTypes': childTypes,
                        'chilid': str(chilid),
-                       'sortid': sortid})
+                       'sortid': sortid,
+                       'cartcnt': cartcnt})  #购物车商品总数
     prodTyps= ProdTyp.objects.all()
-    return render(req,'productshow.html', {'productlist': Products.objects.filter(typeid=id).all()})
+    return render(req,'productshow.html', {'productlist': Products.objects.filter(typeid=id).all(),
+                                           'cartcnt': cartcnt})
