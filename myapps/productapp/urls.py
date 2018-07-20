@@ -21,7 +21,4 @@ from myapps.productapp import views
 urlpatterns = [
     url(r'^home', views.home),
     url(r'^pdshow/(?P<id>\d+)$', views.prodshow1),
-
-
-
 ]
