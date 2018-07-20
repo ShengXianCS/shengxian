@@ -14,7 +14,7 @@ class Products(models.Model):
     productimg = models.CharField(max_length=300)
     price = models.DecimalField(default=0.0,max_digits=10,decimal_places=2)
     salenums = models.BigIntegerField(default=0)
-    typeid = models.ForeignKey(ProdTyp,on_delete=models.SET_NULL,null=True)
+    typeid = models.CharField(max_length=20,default='')
 
     class Meta:
         db_table = 'sx_products'

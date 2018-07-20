@@ -24,6 +24,7 @@ class Address(models.Model):
     detailAddr=models.TextField(null=False,verbose_name='详细收货地址')
     phone=models.CharField(max_length=12,null=False)
     zipCode=models.IntegerField(null=True,verbose_name='邮编')
+    isselect = models.BooleanField(default=True,verbose_name="默认地址")
     user=models.ForeignKey(User,on_delete=models.CASCADE) #级联删除
     class Meta:
         db_table='sx_address'
