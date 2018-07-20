@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'orderapp',
-    'productapp',
-    'userapp',
+    'myapps.orderapp',
+    'myapps.productapp',
+    'myapps.userapp',
 
 ]
 
@@ -118,7 +118,9 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'zh-hans'
 
 
+
 TIME_ZONE = 'Asia/Shanghai'
+
 
 
 USE_I18N = True
