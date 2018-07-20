@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>精品水果|精品水果【品牌 价格 产地 网购】_水果蔬菜-中粮我买网</title>
+		<title> 生鲜果蔬 | 生鲜果蔬【品牌 价格 产地 网购】_水果蔬菜-中粮我买网</title>
 		<meta name="keywords" content="精品水果,精品水果品牌,精品水果价格,精品水果产地,精品水果网购"/>
 		<meta name="description" content="选购精品水果？想体验精品水果网上购物？我买网提供精品水果品牌，价格，产地等最新行情，正品特价、中粮品质，是您网购精品水果的首选网站！"/>
 		<!-- 没有搜到商品的判断 -->
@@ -162,43 +162,46 @@
 		id="isBrandPage" name="isBrandPage" type="hidden"
 		value="0" />
 </form>
-<div class="sort">
-	<div class="sort-1 clearfix">
-		<a id="orderDefault" data-orderby=""
-			onclick="searchQueryListOrderBy(this.id,'-1'); return false;"
-			href="javascript:;"
-			class="select">综合</a> <a
-			id="orderSellCount" data-orderby="mer_sellcount---string---desc"
-			onclick="searchQueryListOrderBy(this.id,'-1');"
-			href="javascript:;"
-			>销量</a>
-			<a id="orderPrice" data-orderby="mer_price---string---asc"
-				onclick="searchQueryListOrderBy(this.id,'-1'); return false;"
-				href="javascript:;" class="sort-price">价格<i class="up"></i></a>
-		<a id="orderComment" data-orderby="commentCount---int---desc"
-			onclick="searchQueryListOrderBy(this.id,'-1'); return false;"
-			href="javascript:;"
-			>评论数</a>
-		<a id="orderModifyDate" data-orderby="mndsModifyDate---string---desc"
-			onclick="searchQueryListOrderBy(this.id,'-1'); return false;"
-			href="javascript:;"
-			>时间</a>
-		<div class="inp fl">
-			<input type="text" class="beginprice" value="最低价"
-				onfocus="this.value=''" onblur="if(!value){value=defaultValue;}" />
-			<span>－</span> <input type="text" class="endprice"
-				value="最高价" onfocus="this.value=''"
-				onblur="if(!value){value=defaultValue;}" /> <input type="button"
-				value="确定" class="btn-sub"
-				onclick="searchQueryListByPrice(); return false;" />
-		</div>
-		<div class="result-sum clearfix">
-			<span>总共126件相关商品 1/4</span>
-				<i class="next"
-					 onclick="searchQueryListByPage(2); return false;"></i>
-		</div>
-	</div>
-	<ul class="sort-2 clearfix">
+<div class="sort" >
+    <div class="sort-1 clearfix" style=" width: 1060px; padding: 10px 0; border-bottom: 1px solid #eeeced; overflow: hidden;">
+        {% for childType in childTypes %}
+            <a>
+                {% ifequal childType.id chilid %}
+                   <span class="select">
+                {% else %}
+                   <span>
+                {% endifequal %}
+                {{ childType.name }}</span>
+            </a>
+        {% endfor %}
+    </div>
+    <div>
+        <a href="/sf/pdshow/{{ categoryid }}/{{ chilid }}/1">
+            {% if sortid == 1 %}
+                <span class="select">
+            {% else %}
+                <span style=" float: left; position: relative; width: 52px; text-align: center; color: #43a400; text-decoration: none; border-color: #43a400" >
+            {% endif %}
+             综合</span>
+            </a>
+        <a href="/sy/pdshow/{{ categoryid }}/{{ chilid }}/2">
+            {% if  sortid == 2 %}
+                <span class="select">
+            {% else %}
+                <span  style=" float: left; position: relative; width: 52px; text-align: center; color: #43a400; text-decoration: none;" >
+            {% endif %}
+            价格</span>
+        </a>
+        <a href="/sy/pdshow/{{ categoryid }}/{{ chilid }}>/3">
+            {% if sortid == 3%}
+                <span class="select">
+            {% else %}
+                <span  style=" float: left; position: relative; width: 52px; text-align: center; color: #43a400; text-decoration: none;" >
+            {% endif %}
+            销量</span>
+        </a>
+    </div>
+    <ul class="sort-2 clearfix">
 		<li><a href="javascript:;"
 			onclick="queryListBySpecialOrSellable('sellable','-1'); return false;">有货</a></li>
 		<li><a href="javascript:;"
@@ -210,6 +213,51 @@
 		<li><a href="javascript:;"
 			onclick="queryListBySpecialOrSellable('isPromotions','-1'); return false;">促销</a></li>
 	</ul>
+</div>
+
+	<div class="sort-1 clearfix">
+{#		<a id="orderDefault" data-orderby=""#}
+{#			onclick="searchQueryListOrderBy(this.id,'-1'); return false;"#}
+{#			href="javascript:;"#}
+{#			class="select">综合</a> <a#}
+{#			id="orderSellCount" data-orderby="mer_sellcount---string---desc"#}
+{#			onclick="searchQueryListOrderBy(this.id,'-1');"#}
+{#			href="javascript:;"#}
+{#			>销量</a>#}
+{#			<a id="orderPrice" data-orderby="mer_price---string---asc"#}
+{#				onclick="searchQueryListOrderBy(this.id,'-1'); return false;"#}
+{#				href="javascript:;" class="sort-price">价格<i class="up"></i></a>#}
+{#            <a id="orderModifyDate" data-orderby="mndsModifyDate---string---desc"#}
+{#                onclick="searchQueryListOrderBy(this.id,'-1'); return false;"#}
+{#                href="javascript:;"#}
+{#                >时间</a>#}
+{#		<div class="inp fl">#}
+{#			<input type="text" class="beginprice" value="最低价"#}
+{#				onfocus="this.value=''" onblur="if(!value){value=defaultValue;}" />#}
+{#			<span>－</span> <input type="text" class="endprice"#}
+{#				value="最高价" onfocus="this.value=''"#}
+{#				onblur="if(!value){value=defaultValue;}" /> <input type="button"#}
+{#				value="确定" class="btn-sub"#}
+{#				onclick="searchQueryListByPrice(); return false;" />#}
+{#		</div>#}
+{#		<div class="result-sum clearfix">#}
+{#			<span>总共126件相关商品 1/4</span>#}
+{#				<i class="next"#}
+{#					 onclick="searchQueryListByPage(2); return false;"></i>#}
+{#		</div>#}
+{#	</div>#}
+{#	<ul class="sort-2 clearfix">#}
+{#		<li><a href="javascript:;"#}
+{#			onclick="queryListBySpecialOrSellable('sellable','-1'); return false;">有货</a></li>#}
+{#		<li><a href="javascript:;"#}
+{#			onclick="queryListBySeller(0,'-1');">自营</a></li>#}
+{#		<li><a href="javascript:;"#}
+{#			onclick="queryListBySeller(-1,'-1');">产地直送</a></li>#}
+{#		<li><a href="javascript:;"#}
+{#			onclick="queryListByFlgCross(-1,'-1');">跨境购</a></li>#}
+{#		<li><a href="javascript:;"#}
+{#			onclick="queryListBySpecialOrSellable('isPromotions','-1'); return false;">促销</a></li>#}
+{#	</ul>#}
 </div>
 <div class="product-list">
 	<ul>
