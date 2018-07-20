@@ -17,27 +17,57 @@
     <div class="usercenter_address">
     	<h2 class="header"><span></span>收货地址</h2>
         <ul class="content">
-         <li id="defalutAddress" class="adds old_add_default"></li>
-         
-            <input type="hidden" value="20868010" id="defalutAddressId">
-        	<li class="adds old_add" id="old_add_20868010">
-            	<div class="name_infor">
-                	<div class="name_etc">
-                    	<span class="name" title="哈哈">哈哈</span><span>收</span><span>187****9641</span><span class="default_add">默认地址</span>
+
+        {% for myAddr in myAddrs %}
+            {% if myAddr.isselect == 1 %}
+                <li id="defalutAddress" class="adds old_add_default"></li>
+                <input type="hidden" value="20868010" id="defalutAddressId">
+                    <li class="adds old_add" id="old_add_20868010">
+                    <div class="name_infor">
+                        <div class="name_etc" style="width: 220px">
+                            <span class="name"
+                                  title="{{ myAddr.name }}">{{ myAddr.name }}…</span><span>收</span><span>{{ myAddr.phone }}</span>
+                            <span class="default_add">默认地址</span>
+                        </div>
+                        <ul class="btns" style="width: 150px">
+                            <li class="delete"><a href="javascript:;" onclick="addrDel(20868118);return false;"
+                                                  class="myad_s2">删除</a></li>
+                            <li class="edit"><a href="javascript:;" onclick="update(20868118);return false;"
+                                                class="thickbox myad_s1">编辑</a></li>
+                            <li class="set_default"><a href="javascript:" onclick="updateDefaultAddress();">设为默认</a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="btns">
-                        <li class="delete"><a href="javascript:;" onClick="addrDel(20868010);return false;" class="myad_s2">删除</a></li>
-                        <li class="edit"><a href="javascript:;" onClick="update(20868010);return false;" class="thickbox myad_s1">编辑</a></li>
-                        <li class="set_default"><a href="javascript:" onclick="updateDefaultAddress('203835','20868010','哈哈','高新六路立人科技','187****9641','****','1');">设为默认</a></li>
-                    </ul>
+                    <div class="add_infor">
+                        <strong class="add_city"><span>{{ myAddr.detailAddr }}</span></strong>
+
+                    </div>
+                </li>
+                {% else %}
+                <li class="adds old_add" id="old_add_20868118">
+            <div class="name_infor">
+                <div class="name_etc">
+                    <span class="name" title="{{ myAddr.name }}">{{ myAddr.name }}…</span><span>收</span><span>{{ myAddr.phone }}</span>
+                    <span class="default_add">默认地址</span>
                 </div>
-                <div class="add_infor">
-                    <strong class="add_city"><span>陕西省</span><span>西安市</span><span>雁塔区</span></strong>
-                	<strong title="高新六路立人科技">高新六路立人科技</strong>
-                	<strong class="unit">单位</strong>
-                </div>
-            </li>
-         
+                <ul class="btns">
+                    <li class="delete"><a href="javascript:;" onclick="addrDel(20868118);return false;" class="myad_s2">删除</a></li>
+                    <li class="edit"><a href="javascript:;" onclick="update(20868118);return false;" class="thickbox myad_s1">编辑</a></li>
+                    <li class="set_default"><a href="javascript:" onclick="updateDefaultAddress();">设为默认</a></li>
+                </ul>
+            </div>
+            <div class="add_infor">
+                <strong class="add_city"><span>{{ myAddr.detailAddr }}</span></strong>
+
+            </div>
+        </li>
+            {% endif %}
+
+        {% endfor %}
+
+
+
+
          <li class="addnew_add">
              <ul>
                  <li class="addpic"></li>
