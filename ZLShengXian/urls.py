@@ -20,9 +20,11 @@ from django.urls import path, include
 from myapps import orderapp,userapp,productapp
 
 urlpatterns = [
+
     url(r'admin/', admin.site.urls),
     url(r'^order/',include('orderapp.urls')),
     url(r'^user/',include('userapp.urls')),
     url(r'^sy/',include('productapp.urls')),
+
 ]
 

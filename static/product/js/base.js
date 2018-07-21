@@ -983,21 +983,21 @@ function initAllSortsMenu(){
 	});
 
 }
-//清除一级菜单延迟执行函数
-function clearFstMenuTimer(){
-	clearTimeout(categorys_t);
-	categorys_t = -1;
-}
-//显示一级菜单
-function showFstMenu(){
-	$("#all_kinds .cont").slideDown(400,clearFstMenuTimer);
-	$("#all_kinds").unbind("click").bind("click",hideFstMenu);
-}
-//隐藏一级菜单
-function hideFstMenu(){
-	$("#all_kinds .cont").slideUp(400,clearFstMenuTimer);
-	$("#all_kinds").unbind("click").bind("click",showFstMenu);
-}
+// //清除一级菜单延迟执行函数
+// function clearFstMenuTimer(){
+// 	clearTimeout(categorys_t);
+// 	categorys_t = -1;
+// }
+// //显示一级菜单
+// function showFstMenu(){
+// 	$("#all_kinds .cont").slideDown(400,clearFstMenuTimer);
+// 	$("#all_kinds").unbind("click").bind("click",hideFstMenu);
+// }
+// //隐藏一级菜单
+// function hideFstMenu(){
+// 	$("#all_kinds .cont").slideUp(400,clearFstMenuTimer);
+// 	$("#all_kinds").unbind("click").bind("click",showFstMenu);
+// }
 $(function(){
 	//设置样式 
 	if(screenwidth < 1210){
