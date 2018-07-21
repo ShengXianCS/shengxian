@@ -75,8 +75,8 @@ a:hover {text-decoration:underline;}
 
 /* 其它账号登录 开始 */
 .mc_inside .mci_account {margin-top:22px;padding-top:15px;background:url(../images/line_03_1.png) 0px top repeat-x;}
-.mci_account .mcia_title {height:16px;line-height:16px;color:#595757;}
-.mci_account ul.mcia_con {line-height:20px;overflow:auto;zoom:1;}
+.mci_account .mcia_title {height:16px;line-height:16px;color:#595757; font-size: 14px}
+.mci_account ul.mcia_con {line-height:20px;overflow:auto;zoom:1;font-size: 14px}
 .mcia_con li {height:20px;line-height:20px;float:left;padding:0px 16px 0px 22px;margin:16px 16px 0px 0px;display:inline;border-right:#dcdddd 1px solid;position:relative;}
 .mcia_con .spe_li {margin-right:12px;padding-right:12px;}
 .mcia_con li i {width:16px;height:20px;display:block;background-image:url(../images/login_1.png);background-repeat:no-repeat;cursor:pointer;position:absolute;top:0px;left:0px;}
@@ -99,7 +99,7 @@ a:hover {text-decoration:underline;}
 
 /* 底部 */
 #footer {padding-top:20px;background:#efefef}
-#footer li {line-height:26px}
+#footer li {line-height:26px;font-size: 12px}
 #footer .s4 {height:28px;background:#8cb91e}
 .ac {text-align:center;}
 .w {width:1000px;margin:0 auto;}

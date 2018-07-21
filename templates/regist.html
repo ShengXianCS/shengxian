@@ -3,36 +3,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>填写信息_会员注册 - </title>
+    <link rel="stylesheet" type="text/css" href="/static/user/main/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/user/css/login2.css"/>
     <link rel="stylesheet" type="text/css" href="/static/user/css/commonalert.css"/>
+
+    <link rel="stylesheet" href="/static/user/main/reset.css">
+    <link rel="stylesheet" href="/static/user/main/base.css">
     <script type="text/javascript">var frontPath = "";</script>
     <script type="text/javascript" src="/static/user/js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="/static/user/js/registerandlogin.js"></script>
-    <script type="text/javascript" src="/static/user/js/register.js"></script>
-    <script type="text/javascript" src="/static/user/js/commonalert.js"></script>
+{#    <script type="text/javascript" src="/static/user/js/registerandlogin.js"></script>#}
+{#    <script type="text/javascript" src="/static/user/js/register.js"></script>#}
+{#    <script type="text/javascript" src="/static/user/js/commonalert.js"></script>#}
+    <script type="text/javascript" src="/static/user/main/regist.js"></script>
+{#    <script type="text/javascript" src="/static/user/main/login.js"></script>#}
+
     <script type="text/javascript" src="/static/user/js/emailautocomplete.js"></script>
-    <script type="text/javascript">
-        (function () {
-            _fmOpt = {
-                partner: 'cofco',
-                appName: 'cofco_web',
-                token: 'A734D93498E8AB7C4607972419F265B7'
-            };
-            var cimg = new Image(1, 1);
-            cimg.onload = function () {
-                _fmOpt.imgLoaded = true;
-            };
-            cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=cofco&appName=cofco_web&tokenId=" + _fmOpt.token;
-            var fm = document.createElement('script');
-            fm.type = 'text/javascript';
-            fm.async = true;
-            fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(fm, s);
-        })();
-    </script>
 </head>
-<body onload="register();">
+<body >
 <div class="login_content" style="position: relative;">
     <div class="header">
         <div class="header_logo"><a href='http://www.womai.com' target='_blank'><img data-order="100"
@@ -40,7 +27,7 @@
                                                                                      width='210' height='80' alt='返回首页'
                                                                                      border='0'/></a></div>
         <div class="header_title" style="color: green ">欢迎注册</div>
-        <div class="header_tip"><span>已有我买网账户？</span><a onclick="javascript:document.loginPost.submit();">请登录</a></div>
+        <div class="header_tip"><span>已有我买网账户？</span><a href="/user/login">请登录</a></div>
         <div class="header_line"></div>
         <div class="clear"></div>
     </div>
@@ -57,7 +44,7 @@
             <input type="hidden" name="returnUrl" value=""/>
         </form>
 
-        <form name="protocolForm" action="/register/Protocol.do" method="get">
+        <form name="protocolForm" action="/user/regist" method="get">
             <input type="hidden" name="mid" value="0"/>
         </form>
 
@@ -65,67 +52,58 @@
             <div class="mc_outside">
                 <div class="mc_inside">
                     <div class="mci_content">
-                        <form action=""
-                              onsubmit="return submitRegisterForm(this,'/register/register.do?isseo=',callbackRegister);"
-                              method="post">
-                            <div class="mcicont_input parentCls">
-                                <input type="hidden" name="serverPath" value="http://www.womai.com/"/>
-                                <input type="hidden" name="" value="227bd7d0322f4e049dc2e1e8e104630f"/>
-                                <input id="Email" name="EmailOrPhone" class="cont_input long_input inputElem"/><label
-                                    id="EmailLabel" for="Email" class="prompt_login">邮箱/手机</label>
-                                <div id="EmailMsg" class="input_error"></div>
+                        <form action="/user/regist" method="post" class="form-horizontal" id="myForm">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <span class="input-group-addon">用户名</span>
+                                <input class="form-control" title="用户名" name="name">
                             </div>
-                            <div class="mcicont_input"><input id="loginId" name="loginId"
-                                                              class="cont_input long_input"/><label id="loginIdLabel"
-                                                                                                    for="loginId"
-                                                                                                    class="prompt_login">用户名</label>
-                                <div id="loginIdMsg" class="input_error"></div>
+                            <p class="has-error" style="font-size: 10px "></p>
+                            <div style="height: 13px"></div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon">邮&nbsp;&nbsp;&nbsp;箱</span>
+                                <input class="form-control" title="邮箱" name="email">
                             </div>
-                            <div class="mcicont_input"><input id="password" name="password" type="password"
-                                                              class="cont_input long_input"/><label id="passwordLabel"
-                                                                                                    for="password"
-                                                                                                    class="prompt_login">设置密码</label>
-                                <div id="passwordMsg" class="input_error"></div>
+                            <p class="has-error" style="font-size: 10px"></p>
+                            <div style="height: 13px"></div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon">电&nbsp;&nbsp;&nbsp;话</span>
+                                <input class="form-control" title="电话" name="phone">
                             </div>
-                            <div class="mcicont_input"><input id="password2" name="password2" type="password"
-                                                              class="cont_input long_input"/><label id="password2Label"
-                                                                                                    for="password2"
-                                                                                                    class="prompt_login">确认密码</label>
-                                <div id="password2Msg" class="input_error"></div>
+                            <p class="has-error" style="font-size: 10px"></p>
+                            <div style="height: 13px"></div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon">密&nbsp;&nbsp;&nbsp;码</span>
+                                <input class="form-control" title="密码" name="passwd1" type="password">
                             </div>
-                            <div class="mcicont_input hide" id="sendValidataPhoneByEmail"><input id="phone" name="phone"
-                                                                                                 class="cont_input long_input"/><label
-                                    id="phoneLabel" for="phone" class="prompt_login">填写手机号</label>
-                                <div id="phoneMsg" class="input_error"></div>
+                            <p class="has-error" style="font-size: 10px"></p>
+                            <div style="height: 13px"></div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon">确认密码</span>
+                                <input class="form-control" title="确认密码" name="passwd2" type="password">
                             </div>
-                            <script type="text/javascript">rCheckAlways()</script><!-- 手机验证码 -->
-                            <div class="mcicont_input" id="sendValidatePhone"><input onselectstart="return false;"
-                                                                                     onpaste="return false;"
-                                                                                     class="cont_input short_input"
-                                                                                     id="getCode" name="getCode"/><label
-                                    id="validatePhoneCodeLabel" for="getCode" class="prompt_login">手机验证码</label><input
-                                    type="button" class="six-s height24" value="发送验证码" id="validBtn"/><input
-                                    type="button" class="six-s height24 hide" value="发送验证码" id="validBtnDisabled"
-                                    style="background: #e8ecf0; color: #acacad"/>
-                                <div id="tip" class="six-s hide"><span id="minutes" class="registmain_phone_vc"></span>秒后可重发
-                                </div>
-                                <div class="clear"></div>
-                                <div class="info_tips"><p class="sms_tip hide">短信已经发送，请输入短信中的验证码</p>
-                                    <p class="voice_tip1 hide"><span class="voice_left">无法收取短信请</span><span
-                                            style="color: #96BF32; cursor: pointer;" id="sendVoiceCheckcode">语音获取</span>
-                                    </p>
-                                    <p class="voice_tip2 voice_tip2_info hide">电话呼入中...请留意接听01084681996来电</p>
-                                    <p class="voice_tip2 voice_tip2_timeout hide"></p></div>
-                                <div class="clear"><br/></div>
-                                <div id="validatePhoneCodeMsg" class="input_error valid_error"
-                                     style="margin-top: 5px; width: 100%"></div>
+                            <p class="has-error" style="font-size: 10px"></p>
+                            <div style="height: 13px"></div>
+
+                            <div class="input-group" >
+                                <span class="input-group-addon" ><img src="/user/code" alt="看不清，请更换" width="100" height="20" onclick="refreshcode(this)"></span>
+                                <input class="form-control" name="code" >
                             </div>
-                            <div class="mcicont_line">
-                                <div class="mciline_left" style="display:block; margin-top: 8px;"><span
+                            <p id="error-code" class="has-error" style="font-size: 10px"></p>
+                            <div style="height: 13px"></div>
+
+
+
+                            <div class="mcicont_line" style="font-size: 12px">
+                                <div class="mciline_left" style="display:block; margin-top: 4px;"><span
                                         class="choose-checkbox"><input id="checkBox" onclick="validateTermsofService();"
-                                                                       type="checkbox" checked="checked"/><label
-                                        for="checkBox" id="checkBoxLabel"></label></span>我已阅读并同意<a target="_blank"
-                                                                                                   onclick="document.protocolForm.submit();">《我买网网上商城服务条款》</a>
+                                                                       type="checkbox" checked="checked"/>
+                                    <label for="checkBox" id="checkBoxLabel"></label></span>我已阅读并同意<a target="_blank"
+                                                                                                   onclick="document.protocolForm.submit();">《我买网上商城服务条款》</a>
                                 </div>
                                 <br/>
                                 <div class="clear"></div>
@@ -133,26 +111,11 @@
                                     <div class="clear"></div>
                                 </div>
                             </div>
-                            <div class="mcicont_btn spe_mcicbtn"><input type="btn" class="input_button_submit showinfo"
-                                                                        value="立即注册"/>
-                                <input id="submitBtn" type="submit" class="input_button_submit" value="立即注册"/>
-                                <div class="ma_input"><input id="invitationCode" name="invitationCode"
-                                                             class="input_new"/><label id="invitationCodeLabel"
-                                                                                       for="invitationCode"
-                                                                                       class="prompt_login">输入邀请码（选填）</label>
-                                </div>
-                                <i></i></div>
-                            <div class="reginfo_tr4" style="margin: 40px 0 0 20px; display: none;" id="afterMsg"></div>
-                            <div style="clear: both;"></div>
-                            <input value="" type="hidden" name="providerName"/>
-                            <input type="hidden" id="memberGroup"  name="memberGroup" value="100"/>
-                            <input type="hidden" name="parentId" value=""/>
-                            <input type="hidden" value="" name="parendId"/>
-                            <input type="hidden" name="mid" value=""/>
-                            <input type="hidden" name="usertype" value=""/>
 
-
-                            <input type="hidden" name="activityid" value=""/>
+                            <div class="input-group" style="margin: 0px auto">
+                                <button type="button" onclick="submitForm()" class="btn btn-success">注册</button>
+                                <a href="/user/login" class="btn btn-link">已注册用户登录</a>
+                            </div>
 
 
                         </form>
@@ -171,7 +134,7 @@
     <li class="w s2">Copyright&#169;2009-2018 womai.com.hk All Rights Reserved 中粮海优（北京）有限公司版权所有<br/>中粮海优（北京）有限公司
         北京市朝阳区朝阳门南大街8号18F-09室<br/>
         <div class="beian">
-            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102000458">
+            <a >
 
                 <img src="/static/user/picture/beian.png"/>
                 <p>京公网安备 11010102000458号</p>
@@ -198,6 +161,13 @@
 </body>
 <script type="text/javascript" src="/static/user/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="/static/user/js/userinfo.js"></script>
+
+<script>
+    function refreshcode(img) {
+        img.src="/user/code?tm=" + Math.random()
+    }
+</script>
+
 
 
 <script>
