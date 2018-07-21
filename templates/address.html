@@ -17,7 +17,6 @@
     <div class="usercenter_address">
     	<h2 class="header"><span></span>收货地址</h2>
         <ul class="content">
-
         {% for myAddr in myAddrs %}
             {% if myAddr.isselect == 1 %}
                 <li id="defalutAddress" class="adds old_add_default"></li>
@@ -50,6 +49,7 @@
                     <span class="name" title="{{ myAddr.name }}">{{ myAddr.name }}…</span><span>收</span><span>{{ myAddr.phone }}</span>
                     <span class="default_add">默认地址</span>
                 </div>
+
                 <ul class="btns">
                     <li class="delete"><a href="javascript:;" onclick="addrDel(20868118);return false;" class="myad_s2">删除</a></li>
                     <li class="edit"><a href="javascript:;" onclick="update(20868118);return false;" class="thickbox myad_s1">编辑</a></li>
@@ -64,9 +64,6 @@
             {% endif %}
 
         {% endfor %}
-
-
-
 
          <li class="addnew_add">
              <ul>

@@ -30,5 +30,7 @@ urlpatterns = [
     url(r'^toorder/(?P<ordernum>\d+)$',views.toOrder),  #下订单或查看订单详细
     url(r'^pay/(?P<ordernum>\d+)/(?P<payType>[012])$',views.payOrder),  #支付订单
     url(r'^allorder/(?P<state>[01234])$',views.orderList),  #订单管理
-    url(r'^test',TemplateView.as_view(template_name='myhome.html'))
+    url(r'^myhome$',views.myHome),  #个人中心
+    url(r'^delorder/(?P<ordernum>\d+)/(?P<deltype>[01])$',views.delOrder),  #删除或取消订单
+
 ]

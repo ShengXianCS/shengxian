@@ -25,143 +25,329 @@
     <script type="text/javascript" src="/static/product/js/jquery.cookie_1.js"></script>
     <script type="text/javascript" src="/static/product/js/jquery.lazyload_1.js"></script>
     <script type="text/javascript">
-	var isNew = "1";
-	var webIndex = "green2012";
-	var frontPath = "";
-	var mid = 0;
-	var cityid = '31000';
-	var priceServer = "http://price.womai.com/PriceServer";
-	var crossDomain = "";
-	var picPrefix = "http://pic2.womai.com/upload/";
-	var staticPrefix = "http://static.womai.com";
-</script>
-	<script type="text/javascript" src="/static/product/js/base_1.js"></script>
+        var isNew = "1";
+        var webIndex = "green2012";
+        var frontPath = "";
+        var mid = 0;
+        var cityid = '31000';
+        var priceServer = "http://price.womai.com/PriceServer";
+        var crossDomain = "";
+        var picPrefix = "http://pic2.womai.com/upload/";
+        var staticPrefix = "http://static.womai.com";
+    </script>
+    <script type="text/javascript" src="/static/product/js/base_1.js"></script>
+    <script type="text/javascript" src="/static/product/js/addpro.js"></script>
     <script type="text/javascript" src="/static/product/js/tinyscrollbar_1.js">
-    </script><script type="text/javascript" src="/static/product/js/changecity_1.js"></script>
+    </script>
+    <script type="text/javascript" src="/static/product/js/changecity_1.js"></script>
     <script type="text/javascript" src="/static/product/js/cps_1.js"></script>
-    <script type="text/javascript" src="/static/product/js/passportback_1.js"></script><!--[if IE 6]>
+    <script type="text/javascript" src="/static/product/js/passportback_1.js"></script>
+    <!--[if IE 6]>
 	<script type="text/javascript" src="/static/product/js/dd_belatedpng_0.0.8a-min_1.js"></script>
 	<script type="text/javascript">DD_belatedPNG.fix('.png');</script>
 <![endif]-->
-		<script type="text/javascript" src="/static/product/js/recommend_infosmart_1.js" ></script>
-		<script type="text/javascript" src="/static/product/js/recommend_all_1.js"></script>
-		<script type="text/javascript" src="/static/product/js/json2.js" ></script>
-		<script type="text/javascript" src="/static/product/js/recommend_searchlist_new_1.js" ></script>
-		<script type="text/javascript" src="/static/product/js/recommend_notice_new.js"></script>
-		<script type="text/javascript" src="/static/product/js/favouritemodal.js"></script>
-		<script type="text/javascript" src="/static/product/js/productlist.js" ></script>
-		<script type="text/javascript" src="/static/product/js/arrivalnotice.js"></script>
-		<script type="text/javascript" src="/static/product/js/solrsearchlist.js" ></script>
-		<script type="text/javascript" src="/static/product/js/search.js" ></script>
-		<script type="text/javascript" src="/static/product/js/list.js" ></script>
-		<script type="text/javascript" src="/static/product/js/jquery.cookie_1.js"></script>
-	</head>
-	<body>
-		<span style="display: none;" data-msg="q">fl%3Did%26tie%3D0.5%26qs%3D100%26shards.tolerant%3Dtrue%26q%3D*%253A*%26fq%3DtokenPath%253A1%255C%252F601%255C%252F603%255C%252F606%255C%252F64306%255C%252F280374%255C%252F500219%26fq%3DisEngage_31000%253A1%26fq%3DisShowAlone_0%253A1%26fq%3DisCheap%253A0%26fq%3DisCheapPack%253A0%26fq%3D-id%253A10123434%2B-id%253A10126067%2B-id%253A10131796%2B-id%253A10131356%2B-id%253A10131357%2B-id%253A10131888%2B-id%253A10132037%2B-id%253A10132036%26fq%3D-tokenPath%253A1%255C%252F601%255C%252F604%255C%252F226781%255C%252F394416%2B-tokenPath%253A1%255C%252F601%255C%252F603%255C%252F217621%255C%252F217622%255C%252F615009%2B-tokenPath%253A1%255C%252F601%255C%252F610%255C%252F611%255C%252F615010%2B-tokenPath%253A1%255C%252F601%255C%252F604%255C%252F51700%255C%252F647141%2B-tokenPath%253A1%255C%252F601%255C%252F604%255C%252F86401%255C%252F647142%2B-tokenPath%253A1%255C%252F601%255C%252F604%255C%252F212740%255C%252F646921%2B-tokenPath%253A1%255C%252F601%255C%252F603%255C%252F217621%255C%252F217622%255C%252F797005%2B-tokenPath%253A1%255C%252F601%255C%252F603%255C%252F808575%26sort%3DisOos_31000%2Basc%252Cboost_0_500219%2Bdesc%252C_score%2Bdesc%26group%3Dtrue%26group.field%3DloadVariety%26group.ngroups%3Dtrue%26group.sort%3Dscore%2Bdesc%26start%3D0%26rows%3D40</span> 
-		<span style="display: none;" data-msg="searchParam">searchOffSpringColumns=true&colMust=false&isFacet=true&front=true&cacheQualified=true&acceptCorrect=true&pageSize=40&page=1&mid=0&queryString=-id%3A10123434+-id%3A10126067+-id%3A10131796+-id%3A10131356+-id%3A10131357+-id%3A10131888+-id%3A10132037+-id%3A10132036&isCheapPack=0&pushType=1&isShowAlone=1&isCheap=0&excludeColumns=394416&excludeColumns=615009&excludeColumns=615010&excludeColumns=647141&excludeColumns=647142&excludeColumns=646921&excludeColumns=797005&cid=500219&cityId=31000&brandId=-1&certifyState=1&displayRatio=1&zhId=0&rypId=0</span>
-		<span style="display: none;" data-msg="ids">649707,655048,650434,644624,520430,650436,652574,652573,655419,655049,10573432,647441,647445,651363,520431,655926,10716832,652572,10700849,621735,568351,616968,558127,606339,655227,627255,616969,612155,545752,10695035,652432,653862,628897,649712,606484,651122,651177,10720027,647991,654679</span>
-		<span style="display: none;" data-msg="cached">false</span>
-	<script type="text/javascript">includetop();</script><div class="site_nav"><div class="nav width"><ul class="nav_l"><li id="siteinfo" data-showsite="" class="png site"></li></ul><ul class="nav_l" id="top_login_span" stle="clear:both;"></ul><ul class="nav_r"><li class="t_item mycount" id="myaccount" data-first="yes"><p><a name="_gatrack_event_myaccount" data-ga="site_nav" data-gatext="我的账户" href="/Member/index.jsp?mid=0&tt=0.7581704536081146" id="t_item_mycount" rel="nofollow" target="_blank" ><span class="text">我的账户<i class="png"></i></span></a></p><div class="mycount_cont loadding" id="myaccount_cont"></div></li><li class="cart t_item"><a name="_gatrack_event_shoppingcart" data-ga="site_nav" data-gatext="购物车" onclick="gotoCart('cartlink');" href="/Cart/ShowCart.do?amp;tt=0.7239524504448682" class="cartlink_curr" target="_blank"> 购物车<b class="smallcart_totalamount"></b>件 </a></li><li class="t_item line">|</li><li class="t_item mycount"><p><a href="javascript:void(0);"><span class="text">客户服务<i class="png"></i></span></a></p><div class="mycount_cont width75"><ul class="item"><li class="nopay"><a target="_blank" name="_gatrack_event_help" data-ga="site_nav" data-gatext="帮助中心" href="http://help.womai.com" rel="nofollow">帮助中心</a></li><li><a target="_blank" name="_gatrack_event_newguide" data-ga="site_nav" data-gatext="新手上路" href="/Info/IncludeHelpInfo-cid=50111.htm" rel="nofollow">新手上路</a></li></ul></div></li><li class="t_item line">|</li>
-		            <li class="t_item">
-		<a target="_blank" name="_gatrack_event_sitemap" data-ga="site_nav" data-gatext="企业购" href="http://www.womai.com/sale/dake/dw2016_t" rel="nofollow">企业购</a>
-</li><li class="t_item line">|</li><li class="t_item backexchange"><a target="_blank" rel="nofollow" href="http://www.womai.com/sale/2012/icbclika/"><span class="icbcexchange"></span></a>
-		                		<a target="_blank" rel="nofollow" href="http://www.womai.com/sale/2017/zgyd1711/"><span class="zhongxinexchange_hb"></span></a>
-		                </li></ul><script type="text/javascript">initMyAccountInfo();</script></div></div><div class="clear"></div><div class="header  clearfix png"><div class="width"><div class="logo"><a href="/index-31000-0.htm" target="_blank" name="_gatrack_event_logo" data-ga="header_logo" data-gatext="logo"><img src="/static/product/picture/1524622484074_1.png" original="http://pic3.womai.com/upload/backend/2018/04/25/10/1524622484074.png" alt=""/></a></div><div class="logo_adv fl" id="_gatrack_adv_hearder_left" data-ga="header_adv_left">
-		<a data-ga="header_left" id="_gatrack_adv_header_adv_left" name="_AD_home_2016_header_image" href=" http://www.womai.com/sale/2017/sxsssy1709/"  target='_blank'><img data-order="100" src='/static/product/picture/1507693295073_1.jpg' width='110' height='80' alt='生鲜速食' border='0' /></a>
-	</div><div id="searchtop"><form onsubmit="return checkTopSearchForm()" id="searchform" name="searchform" method="get" style="margin: 0px" action="/ProductList.do?mid=0"><input type="hidden" id="SortCid2" name="Cid" value="606"><input type="hidden" id="rypId" name="rypId" value="608"><input type="hidden" id="zhId" name="zhId" value="605"><input type="hidden" name="mid" value="0" /> <input type="hidden" id="thKeywords" name="Keywords" /><input type="hidden" name="searchlist" value="1" /><input type="hidden" id="topmainColumnId" name="mainColumnId" value="-1"/><input type="hidden" id="isKeyCommendClick" name="isKeyCommendClick" value="0" /><input type="hidden" id="oldSearchKeyword" name="oldSearchKeyword"/><input type="hidden" id="searchKeywordPosition" name="searchKeywordPosition"/><input type="hidden" id="topmainColumnIdtitle" name="mainColumnIdtitle"/><div class="search_wrap"><div class="search_c"><div class="form fl" id="inputDiv"><input id="topKeywords" name="topKeywords" type="text" value="粮油休闲1元起，部分满99减30" isSearch="y"data-write=n data-defvalue="粮油休闲1元起，部分满99减30" data-URL="http://www.womai.com/sale/2018/gcsp1807/"></div><div class="btn fr" name="_gatrack_event_search" data-ga="header_search" data-gatext="搜索"><button type="submit">搜索</button></div></div><div class="search_r"><a name="_gatrack_event_combiserach" data-ga="header_search" data-gatext="高级搜索" href="/Search.do?mid=0">高级<br>搜索</a></div><div class="search_b"><span class="hot"></span><a class="grey"  name="_gatrack_event_keyword" data-ga="header_search" data-gatext="实物我买卡" href="http://www.womai.com/sale/2017/swwmk/" target="_blank" >实物我买卡</a><a class="grey"  name="_gatrack_event_keyword" data-ga="header_search" data-gatext="小龙虾" href="/ProductList.do?mid=0&Cid=606&rypId=608&zhId=605&isKeyCommendClick=1&Keywords=%D0%A1%C1%FA%CF%BA,title,mer_title,mer_title_,brand,cloumnName,keyword,keywords,articleRuleTitle,activeName,ProductFeatures&topKeywords=%D0%A1%C1%FA%CF%BA" target="_blank" >小龙虾</a><a class="grey"  name="_gatrack_event_keyword" data-ga="header_search" data-gatext="每日坚果" href="/ProductList.do?mid=0&Cid=606&rypId=608&zhId=605&isKeyCommendClick=1&Keywords=%C3%BF%C8%D5%BC%E1%B9%FB,title,mer_title,mer_title_,brand,cloumnName,keyword,keywords,articleRuleTitle,activeName,ProductFeatures&topKeywords=%C3%BF%C8%D5%BC%E1%B9%FB" target="_blank" >每日坚果</a><a class="grey"  name="_gatrack_event_keyword" data-ga="header_search" data-gatext="啤酒" href="/ProductList.do?mid=0&Cid=606&rypId=608&zhId=605&isKeyCommendClick=1&Keywords=%C6%A1%BE%C6,title,mer_title,mer_title_,brand,cloumnName,keyword,keywords,articleRuleTitle,activeName,ProductFeatures&topKeywords=%C6%A1%BE%C6" target="_blank" >啤酒</a><a class="grey"  name="_gatrack_event_keyword" data-ga="header_search" data-gatext="防晒" href="/ProductList.do?mid=0&Cid=606&rypId=608&zhId=605&isKeyCommendClick=1&Keywords=%B7%C0%C9%B9,title,mer_title,mer_title_,brand,cloumnName,keyword,keywords,articleRuleTitle,activeName,ProductFeatures&topKeywords=%B7%C0%C9%B9" target="_blank" >防晒</a><a class="grey"  name="_gatrack_event_keyword" data-ga="header_search" data-gatext="冰淇淋" href="/ProductList.do?mid=0&Cid=606&rypId=608&zhId=605&isKeyCommendClick=1&Keywords=%B1%F9%E4%BF%C1%DC,title,mer_title,mer_title_,brand,cloumnName,keyword,keywords,articleRuleTitle,activeName,ProductFeatures&topKeywords=%B1%F9%E4%BF%C1%DC" target="_blank" >冰淇淋</a></div></div></form></div><div class="app" id="_gatrack_adv_hearder_right"  data-ga="header_adv_right">
-		<a data-ga="header_right" id="_gatrack_adv_header_adv_right" href=" http://www.womai.com/sale/2016/shouji/index.html#page1"  target='_blank'><img data-order="1" src='/static/product/picture/1493100962866_1.jpg' width='160' height='80' alt='手机' border='0' /></a>
-	</div></div></div><!--content begin--><div class="main_nav_wrap"><div class="main_nav width">
+    <script type="text/javascript" src="/static/product/js/recommend_infosmart_1.js"></script>
+    <script type="text/javascript" src="/static/product/js/recommend_all_1.js"></script>
+    <script type="text/javascript" src="/static/product/js/json2.js"></script>
+    <script type="text/javascript" src="/static/product/js/recommend_searchlist_new_1.js"></script>
+    <script type="text/javascript" src="/static/product/js/recommend_notice_new.js"></script>
+    <script type="text/javascript" src="/static/product/js/favouritemodal.js"></script>
+    <script type="text/javascript" src="/static/product/js/productlist.js"></script>
+    <script type="text/javascript" src="/static/product/js/arrivalnotice.js"></script>
+    <script type="text/javascript" src="/static/product/js/solrsearchlist.js"></script>
+    <script type="text/javascript" src="/static/product/js/search.js"></script>
+    <script type="text/javascript" src="/static/product/js/list.js"></script>
+    <script type="text/javascript" src="/static/product/js/jquery.cookie_1.js"></script>
+</head>
+<body>
+<span style="display: none;" data-msg="q">fl%3Did%26tie%3D0.5%26qs%3D100%26shards.tolerant%3Dtrue%26q%3D*%253A*%26fq%3DtokenPath%253A1%255C%252F601%255C%252F603%255C%252F606%255C%252F64306%255C%252F280374%255C%252F500219%26fq%3DisEngage_31000%253A1%26fq%3DisShowAlone_0%253A1%26fq%3DisCheap%253A0%26fq%3DisCheapPack%253A0%26fq%3D-id%253A10123434%2B-id%253A10126067%2B-id%253A10131796%2B-id%253A10131356%2B-id%253A10131357%2B-id%253A10131888%2B-id%253A10132037%2B-id%253A10132036%26fq%3D-tokenPath%253A1%255C%252F601%255C%252F604%255C%252F226781%255C%252F394416%2B-tokenPath%253A1%255C%252F601%255C%252F603%255C%252F217621%255C%252F217622%255C%252F615009%2B-tokenPath%253A1%255C%252F601%255C%252F610%255C%252F611%255C%252F615010%2B-tokenPath%253A1%255C%252F601%255C%252F604%255C%252F51700%255C%252F647141%2B-tokenPath%253A1%255C%252F601%255C%252F604%255C%252F86401%255C%252F647142%2B-tokenPath%253A1%255C%252F601%255C%252F604%255C%252F212740%255C%252F646921%2B-tokenPath%253A1%255C%252F601%255C%252F603%255C%252F217621%255C%252F217622%255C%252F797005%2B-tokenPath%253A1%255C%252F601%255C%252F603%255C%252F808575%26sort%3DisOos_31000%2Basc%252Cboost_0_500219%2Bdesc%252C_score%2Bdesc%26group%3Dtrue%26group.field%3DloadVariety%26group.ngroups%3Dtrue%26group.sort%3Dscore%2Bdesc%26start%3D0%26rows%3D40</span>
+<span style="display: none;" data-msg="searchParam">searchOffSpringColumns=true&colMust=false&isFacet=true&front=true&cacheQualified=true&acceptCorrect=true&pageSize=40&page=1&mid=0&queryString=-id%3A10123434+-id%3A10126067+-id%3A10131796+-id%3A10131356+-id%3A10131357+-id%3A10131888+-id%3A10132037+-id%3A10132036&isCheapPack=0&pushType=1&isShowAlone=1&isCheap=0&excludeColumns=394416&excludeColumns=615009&excludeColumns=615010&excludeColumns=647141&excludeColumns=647142&excludeColumns=646921&excludeColumns=797005&cid=500219&cityId=31000&brandId=-1&certifyState=1&displayRatio=1&zhId=0&rypId=0</span>
+<span style="display: none;" data-msg="ids">649707,655048,650434,644624,520430,650436,652574,652573,655419,655049,10573432,647441,647445,651363,520431,655926,10716832,652572,10700849,621735,568351,616968,558127,606339,655227,627255,616969,612155,545752,10695035,652432,653862,628897,649712,606484,651122,651177,10720027,647991,654679</span>
+<span style="display: none;" data-msg="cached">false</span>
+<script type="text/javascript">includetop();</script>
+<div class="site_nav">
+    <div class="nav width">
+        <ul class="nav_l">
+            <li id="siteinfo" data-showsite="" class="png site"></li>
+        </ul>
+        <ul class="nav_l" id="top_login_span" stle="clear:both;"></ul>
+        <ul class="nav_r">
+            <li class="t_item mycount" id="myaccount" data-first="yes">
+                <p><a name="_gatrack_event_myaccount"
+                      data-ga="site_nav" data-gatext="我的账户"
+                      href="/order/myhome"
+                      id="t_item_mycount" rel="nofollow"
+                      target="_blank"><span class="text">我的账户<i class="png"></i></span></a></p>
 
-		        	<div class="nav_v"><ul class="nav">
-	<li>
-					<a href="http://www.womai.com/" target="_blank" id="_gatrack_event_topnav_1" data-ga="top-nav" data-gatext="首页" class="title" name="_AD_home_2016_header_menu_1">首页</a>
-			<div class="nav_cont"></div></li><li>
-					<a href="http://tuan.womai.com/tuan/productlist.do?cityid=31000&mid=0" target="_blank" id="_gatrack_event_topnav_2" data-ga="top-nav" data-gatext="团购" class="title" name="_AD_home_2016_header_menu_2">团购</a>
-			<div class="nav_cont"></div></li><li>
-					<a href="http://www.womai.com/Sort-0-362207.htm" target="_blank" id="_gatrack_event_topnav_3" data-ga="top-nav" data-gatext="每日鲜" class="title" name="_AD_home_2016_header_menu_3">每日鲜</a>
-			<div class="nav_cont"></div></li><li>
-					<a href="http://jiu.womai.com/" target="_blank" id="_gatrack_event_topnav_4" data-ga="top-nav" data-gatext="我买酒" class="title" name="_AD_home_2016_header_menu_4">我买酒</a>
-			<div class="nav_cont"></div></li><li>
-					<a href="http://www.womai.com/Sort-31000-522611.htm" target="_blank" id="_gatrack_event_topnav_5" data-ga="top-nav" data-gatext="我买严选" class="title" name="_AD_home_2016_header_menu_5">我买严选</a>
-			<div class="nav_cont"></div></li><li>
-					<a href="http://www.womai.com/sale/2017/zzpzy1703/" target="_blank" id="_gatrack_event_topnav_6" data-ga="top-nav" data-gatext="安心享" class="title" name="_AD_home_2016_header_menu_6">安心享</a>
-			<div class="nav_cont"></div></li><li>
-					<a href="http://zs.womai.com/" target="_blank" id="_gatrack_event_topnav_7" data-ga="top-nav" data-gatext="包邮直送" class="title" name="_AD_home_2016_header_menu_7">包邮直送</a>
-			<div class="nav_cont"></div></li><li>
-					<a href="http://www.womai.hk/cross/index-0-0.htm " target="_blank" id="_gatrack_event_topnav_8" data-ga="top-nav" data-gatext="全球购" class="title" name="_AD_home_2016_header_menu_8">全球购</a>
-			<div class="nav_cont"></div></li><li>
-					<a href="http://www.womai.com/sale/2017/sxstst1707/" target="_blank" id="_gatrack_event_topnav_9" data-ga="top-nav" data-gatext="三同专区" class="title" name="_AD_home_2016_header_menu_9">三同专区</a>
-			<div class="nav_cont"></div></li></ul>
-</div><div class="min_cart" id="smallcart"><div class="btn"><span class="cart-icon png"><i class="smallcart_totalamount num png"></i><input id="smallcart_items_amount" name="smallcart_items_amount" type="hidden" value="init" data-count="0"></span><span class="text"><a id="cartlink" name="_gatrack_event_carlink" data-ga="site_nav" data-gatext="购物车" onclick="gotoCart('cartlink');" href="/Cart/ShowCart.do?tt=0.7581704536081146">购物车</a></span><span class="arrow png"></span></div><div class="cart_cont" id="smallcart_cont"><div class="loadding"></div></div></div></div></div>
-<div class="mydiv-img"></div><script type="text/javascript" src="/static/product/js/commonalert_1.js"></script><link type="text/css" rel="StyleSheet" href="/static/product/css/commonalert_1.css"/>
-		<div class="width adv">
-			<div class="advsmall"></div>
-			<div class="advbig"><a href='http://www.womai.com/sale/2018/gcsp1807/' target='_blank'><img data-order="100" src='/static/product/picture/20180713100243756.jpg'  width='1210' height='60' alt='' border='0' /></a></div>
-		</div>
-		 <!--  搜到了商品 -->
-			<div class="main-wrap width clearfix">
-				<div class="main-l fl">
-		        	<div class="packup-sidebar">
-		            	展开侧栏 <em>&gt;</em>
-		            </div>
-		            <div class="unfold-sidebar">
-		            	<div class="promotion">
-		                    <h3><p id="tgadvspan">推广商品</p><span class="unfold"><em>&lt;</em> 收起侧栏</span></h3>
-		                    <ul>
-		                    	<li>
-		                    	</li> 
-		                    	<li>
-		                    	</li> 
-		                    </ul>
-		                </div>
-		                <div class="lookandbuy">
-							<h3>搜了<span title=""></span>最终购买的</h3>
-							<ul id="lookandbuy_content" data-first="y"></ul>
-						</div>
-<script>
-	var urlSourceIds = [1085, 1086, 1087, 1088, 1089];
-	var targetPageId = '1';
-	var actionId = '1';
-	var columnName = '精品水果';
-</script>
-	<input type="hidden" id="relationWeekHotSellIds" value="628897,624167,520430,655048,649707,613270"></input>
-	<div class="host-sale" id="relationWeekHotSellDiv"></div>
-		            </div>
-				</div>
-				<div class="main-r fl" id="ajaxrightshow"> <!-- 加载展示搜索结果的页面 -->
-<form onsubmit="return searchCheckTopSearchForm();"
-	action="/ProductList.do" id="searchProductListForm"
-	method="get">
-	<input id="mid" name="mid" type="hidden" value="0" /> <input
-		id="Cid" name="Cid" type="hidden" value="500219" /> <input
-		id="mainColumnId" name="mainColumnId" type="hidden"
-		value="" /> <input id="page" name="page" type="hidden"
-		value="1" /> <input id="brand" name="brand" type="hidden"
-		value="-1" /> <input type="hidden" id="rypId" name="rypId"
-		value="608"> <input type="hidden" id="zhId" name="zhId"
-		value="605"> <input id="orderBy" name="orderBy" type="hidden"
-		value="" /> <input id="isPromotions" name="isPromotions"
-		type="hidden" value="" /> <input id="sellable"
-		name="sellable" type="hidden" value="" /> <input
-		id="allcolums" name="allcolums" type="hidden" /> <input
-		id="searchProductListKeywords" name="Keywords" type="hidden"
-		value="" /> <input id="searchProductListKeyword"
-		name="Keyword" type="hidden" value="" /> <input
-		type="hidden" id="isKeyCommendClick" name="isKeyCommendClick"
-		value="1" /> <input id="sellerId" name="sellerid" type="hidden"
-		value="" /> <input id="selAttr" name="selAttr"
-		type="hidden" value="" /> <input id="selCol"
-		name="selCol" type="hidden" value="" /> <input
-		id="isFlgCross" name="isFlgCross" type="hidden"
-		value="0" />
-	<input id="BeginPrice" name="BeginPrice" type="hidden"
-		value="" /> <input id="EndPrice" name="EndPrice"
-		type="hidden" value="" /> <input id=activity
-		name="activity" type="hidden" value="-1" />
-	<input id="urllist" name="urllist" type="hidden" /> <input
-		id="isBrandPage" name="isBrandPage" type="hidden"
-		value="0" />
-</form>
+            </li>
+            <li class="cart t_item">
+                <a name="_gatrack_event_shoppingcart"
+                   href="/order/mycart" class="cartlink_curr" target='_blank'>
+                    购物车 <b class="smallcart_totalamount" id="headcnt"></b>{{ cartcnt }} 件 </a></li>
+            <li class="t_item line">|</li>
+            <li class="t_item mycount"><p><a href=""><span class="text">客户服务<i
+                    class="png"></i></span></a></p>
+                <div class="mycount_cont width75">
+                    <ul class="item">
+                        <li class="nopay"><a name="_gatrack_event_help" data-ga="site_nav"
+                                             data-gatext="帮助中心" href="" rel="nofollow">帮助中心</a>
+                        </li>
+                        <li><a name="_gatrack_event_newguide" data-ga="site_nav" data-gatext="新手上路"
+                               href="" rel="nofollow">新手上路</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="t_item line">|</li>
+
+
+            <li class="t_item">
+               <a name="_gatrack_event_sitemap" data-ga="site_nav" data-gatext="企业购"
+                   href="" rel="nofollow">企业购</a>
+
+            </li>
+            <li class="t_item line">|</li>
+            <li class="t_item backexchange"><a rel="nofollow"
+                                               href=""><span
+                    class="icbcexchange"></span></a>
+                <a  rel="nofollow" href=""><span
+                        class="zhongxinexchange_hb"></span></a>
+
+
+            </li>
+        </ul>
+        <script type="text/javascript">initMyAccountInfo();</script>
+    </div>
+</div>
+  <div class="clear"></div>
+<div class="header  clearfix png">
+    <div class="width">
+            <div class="logo"><a href=""  name="_gatrack_event_logo"
+                                 data-ga="header_logo" data-gatext="logo">
+                <img src="/static/product/picture/1524622484074.png"
+                           original="http://pic3.womai.com/upload/backend/2018/04/25/10/1524622484074.png"
+                           alt=""/></a></div>
+            <div class="logo_adv fl" id="_gatrack_adv_hearder_left" data-ga="header_adv_left">
+                <a data-ga="header_left" id="_gatrack_adv_header_adv_left" name="_AD_home_2016_header_image"
+                   href=" " ><img data-order="100"
+                src='/static/product/picture/1507693295073.jpg'
+                width='110' height='80'
+                alt='生鲜速食' border='0'/></a>
+            </div>
+            <div id="searchtop">
+                <form onsubmit="" id="searchform" name="searchform" method="get"
+                      style="margin: 0px" action=""><input type="hidden" id="SortCid2" name="Cid"
+                                                                                value="606">
+                    <input type="hidden"
+                    id="rypId"
+                    name="rypId"
+                    value="608">
+                    <input type="hidden" id="zhId" name="zhId" value="605">
+                    <input type="hidden" name="mid" value="0"/>
+                    <input type="hidden" id="thKeywords" name="Keywords"/>
+                    <input type="hidden" name="searchlist" value="1"/>
+                    <input type="hidden"
+                       id="topmainColumnId"
+                       name="mainColumnId"
+                       value="-1"/>
+                    <input type="hidden" id="isKeyCommendClick" name="isKeyCommendClick" value="0"/>
+                    <input type="hidden" id="oldSearchKeyword" name="oldSearchKeyword"/>
+                    <input type="hidden"
+                    id="searchKeywordPosition"
+                    name="searchKeywordPosition"/><input
+                            type="hidden" id="topmainColumnIdtitle" name="mainColumnIdtitle"/>
+                    <div class="search_wrap">
+                        <div class="search_c">
+                            <div class="form fl" id="inputDiv">
+                                <input id="topKeywords" name="topKeywords" type="text"
+                          value="粮油休闲1元起，部分满99减30" isSearch="y" data-write=n
+                          data-defvalue="粮油休闲1元起，部分满99减30"
+                          data-URL="">
+                            </div>
+                            <div class="btn fr" name="_gatrack_event_search" data-ga="header_search" data-gatext="搜索">
+                                <button type="submit">搜索</button>
+                            </div>
+                        </div>
+                        <div class="search_r">
+                            <a name="_gatrack_event_combiserach" data-ga="header_search"
+                                                 data-gatext="高级搜索" href="">高级<br>搜索</a></div>
+                        <div class="search_b"><span class="hot"></span><a class="grey" name="_gatrack_event_keyword"
+                                                                          data-ga="header_search" data-gatext="实物我买卡"
+                                                                          href="">实物我买卡</a>
+                            <a class="grey"
+                              name="_gatrack_event_keyword"
+                              data-ga="header_search"
+                              data-gatext="小龙虾"
+                              target="_blank">小龙虾</a>
+                            <a class="grey" name="_gatrack_event_keyword" data-ga="header_search" data-gatext="每日坚果"
+                                href="">每日坚果</a>
+                            <a class="grey" name="_gatrack_event_keyword"
+                               data-ga="header_search" data-gatext="啤酒"
+                            >啤酒</a><a class="grey"
+                                name="_gatrack_event_keyword"
+                                data-ga="header_search"
+                                data-gatext="防晒"
+                                target="_blank">防晒</a><a
+                                class="grey" name="_gatrack_event_keyword" data-ga="header_search" data-gatext="冰淇淋"
+                                target="_blank">冰淇淋</a></div>
+                    </div>
+                </form>
+            </div>
+            <div class="app" id="_gatrack_adv_hearder_right" data-ga="header_adv_right">
+                <a data-ga="header_right" id="_gatrack_adv_header_adv_right"
+                   href="" >
+                    <img data-order="1"
+                       src='/static/product/picture/1493100962866.jpg'
+                       width='160'
+                       height='80'
+                       alt='手机'
+                       border='0'/></a>
+            </div>
+        </div>
+    </div><!--content begin-->
+<div class="main_nav_wrap">
+    <div class="main_nav width">
+        <div class="nav_v">
+            <ul class="nav">
+                <li>
+                    <a href="/sy/home" id="_gatrack_event_topnav_1" data-ga="top-nav" data-gatext="首页"
+                       class="title" name="_AD_home_2016_header_menu_1">首页</a>
+                    <div class="nav_cont"></div>
+                </li>
+                <li>
+                    <a href=""  id="_gatrack_event_topnav_2" data-ga="top-nav" data-gatext="团购"
+                       class="title" name="_AD_home_2016_header_menu_2">团购</a>
+                    <div class="nav_cont"></div>
+                </li>
+                <li>
+                    <a href="" target="_blank" id="_gatrack_event_topnav_3" data-ga="top-nav" data-gatext="每日鲜"
+                       class="title" name="_AD_home_2016_header_menu_3">每日鲜</a>
+                    <div class="nav_cont"></div>
+                </li>
+                <li>
+                    <a href=""  id="_gatrack_event_topnav_4" data-ga="top-nav" data-gatext="我买酒"
+                       class="title" name="_AD_home_2016_header_menu_4">我买酒</a>
+                    <div class="nav_cont"></div>
+                </li>
+                <li>
+                    <a href="" id="_gatrack_event_topnav_5" data-ga="top-nav" data-gatext="我买严选"
+                       class="title" name="_AD_home_2016_header_menu_5">我买严选</a>
+                    <div class="nav_cont"></div>
+                </li>
+                <li>
+                    <a href="" id="_gatrack_event_topnav_6" data-ga="top-nav" data-gatext="安心享"
+                       class="title" name="_AD_home_2016_header_menu_6">安心享</a>
+                    <div class="nav_cont"></div>
+                </li>
+                <li>
+                    <a href=""  id="_gatrack_event_topnav_7" data-ga="top-nav" data-gatext="包邮直送"
+                       class="title" name="_AD_home_2016_header_menu_7">包邮直送</a>
+                    <div class="nav_cont"></div>
+                </li>
+                <li>
+                    <a href="" id="_gatrack_event_topnav_8" data-ga="top-nav" data-gatext="全球购"
+                       class="title" name="_AD_home_2016_header_menu_8">全球购</a>
+                    <div class="nav_cont"></div>
+                </li>
+                <li>
+                    <a href="" id="_gatrack_event_topnav_9" data-ga="top-nav" data-gatext="三同专区"
+                       class="title" name="_AD_home_2016_header_menu_9">三同专区</a>
+                    <div class="nav_cont"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="min_cart" id="smallcart">
+            <div class="btn" id="cartpng"><span class="cart-icon png">
+                <i class="smallcart_totalamount num png " id="cntimg" >{{ cartcnt }}</i>
+                <input
+                    id="smallcart_items_amount" name="smallcart_items_amount" type="hidden" value="init" data-count="0"></span>
+                <span class="text">
+                    <a id="cartlink" name="_gatrack_event_carlink"
+                                    href="/order/mycart">购物车</a>
+                </span>
+                <span class="arrow "></span></div>
+                <div class="loadding"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mydiv-img"></div>
+<script type="text/javascript" src="/static/product/js/commonalert_1.js"></script>
+<link type="text/css" rel="StyleSheet" href="/static/product/css/commonalert_1.css"/>
+<div class="width adv">
+    <div class="advsmall"></div>
+    <div class="advbig"><a href='http://www.womai.com/sale/2018/gcsp1807/' target='_blank'><img data-order="100"
+                                                                                                src='/static/product/picture/20180713100243756.jpg'
+                                                                                                width='1210' height='60'
+                                                                                                alt='' border='0'/></a>
+    </div>
+</div>
+<!--  搜到了商品 -->
+<div class="main-wrap width clearfix">
+    <div class="main-l fl">
+        <div class="packup-sidebar">
+            展开侧栏 <em>&gt;</em>
+        </div>
+        <div class="unfold-sidebar">
+            <div class="promotion">
+                <h3><p id="tgadvspan">推广商品</p><span class="unfold"><em>&lt;</em> 收起侧栏</span></h3>
+                <ul>
+                    <li>
+                    </li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+            <div class="lookandbuy">
+                <h3>搜了<span title=""></span>最终购买的</h3>
+                <ul id="lookandbuy_content" data-first="y"></ul>
+            </div>
+            <script>
+                var urlSourceIds = [1085, 1086, 1087, 1088, 1089];
+                var targetPageId = '1';
+                var actionId = '1';
+                var columnName = '精品水果';
+            </script>
+            <input type="hidden" id="relationWeekHotSellIds" value="628897,624167,520430,655048,649707,613270"></input>
+            <div class="host-sale" id="relationWeekHotSellDiv"></div>
+        </div>
+    </div>
+    <div class="main-r fl" id="ajaxrightshow"> <!-- 加载展示搜索结果的页面 -->
+        <form onsubmit="return searchCheckTopSearchForm();"
+              action="/ProductList.do" id="searchProductListForm"
+              method="get">
+            <input id="mid" name="mid" type="hidden" value="0"/> <input
+                id="Cid" name="Cid" type="hidden" value="500219"/> <input
+                id="mainColumnId" name="mainColumnId" type="hidden"
+                value=""/> <input id="page" name="page" type="hidden"
+                                  value="1"/> <input id="brand" name="brand" type="hidden"
+                                                     value="-1"/> <input type="hidden" id="rypId" name="rypId"
+                                                                         value="608"> <input type="hidden" id="zhId"
+                                                                                             name="zhId"
+                                                                                             value="605"> <input
+                id="orderBy" name="orderBy" type="hidden"
+                value=""/> <input id="isPromotions" name="isPromotions"
+                                  type="hidden" value=""/> <input id="sellable"
+                                                                  name="sellable" type="hidden" value=""/> <input
+                id="allcolums" name="allcolums" type="hidden"/> <input
+                id="searchProductListKeywords" name="Keywords" type="hidden"
+                value=""/> <input id="searchProductListKeyword"
+                                  name="Keyword" type="hidden" value=""/> <input
+                type="hidden" id="isKeyCommendClick" name="isKeyCommendClick"
+                value="1"/> <input id="sellerId" name="sellerid" type="hidden"
+                                   value=""/> <input id="selAttr" name="selAttr"
+                                                     type="hidden" value=""/> <input id="selCol"
+                                                                                     name="selCol" type="hidden"
+                                                                                     value=""/> <input
+                id="isFlgCross" name="isFlgCross" type="hidden"
+                value="0"/>
+            <input id="BeginPrice" name="BeginPrice" type="hidden"
+                   value=""/> <input id="EndPrice" name="EndPrice"
+                                     type="hidden" value=""/> <input id=activity
+                                                                     name="activity" type="hidden" value="-1"/>
+            <input id="urllist" name="urllist" type="hidden"/> <input
+                id="isBrandPage" name="isBrandPage" type="hidden"
+                value="0"/>
+        </form>
 <div class="sort" >
     <div class="sort-1 clearfix" style=" width: 1060px; padding: 10px 0; border-bottom: 1px solid #eeeced; overflow: hidden;">
         {% for childType in childTypes %}
@@ -200,6 +386,10 @@
             {% endif %}
             销量</span>
         </a>
+          <div class="result-sum clearfix">
+                    <span>总共{{ productlist.count }}件相关商品</span>
+
+                </div>
     </div>
     <ul class="sort-2 clearfix">
 		<li><a href="javascript:;"
@@ -310,32 +500,47 @@
 										class="png"></b>收藏</span> <span class="addCart"
 										id="items_buy_{{ product.productid }}" style="display: none;"
 										onclick="isGoToCart({{ product.productid }}, 0);"><b
-										class="png"></b>加入购物车</span> <span class="addCart"
-
-										id="items_apacketmial_{{ product.productid }}" style="display: none;"
-										onclick="packetMailToCart({{ product.productid }}, 0);"><b
-										class="png"></b>立即结算</span> <span class="addCart"
-										id="items_soldout_{{ product.productid }}" style="display: none;"
-										onclick="addNotice(0,{{ product.productid }})" name="notice"><b
-										class="png"></b>到货通知</span>
-								</div>
-							</div>
-			</li>
-        {% endfor %}
-
-
-
-
-		<script>LoadProductPrice("itemPrice","saleIcon");</script>
-	</ul>
-	<div class="hidehengtiao"></div>
-		<div class="pglist_page">
-			<div class='page'><div class='page_l'><a href='#' class='prev' title='目前已是第一页'>上一页</a><a class='select'>1</a>
-                <a href='javascript:;' onclick="pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page=2')" >2</a><a href='javascript:;' onclick="pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page=3')" >3</a>
-                <a href='javascript:;' onclick="pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page=4')" >4</a><a href='javascript:;' onclick="pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page=2');" class='next' title='下一页'>下一页</a></div>
-                <div class='page_m'>共<span>4</span>页</div><div class='page_m_2'>到第</div><div class='page_m_3'><input type='text' class='page_input' value='1'></div><div class='page_m_4'>页</div><div class='page_r'><input onclick="javascript:var goPage=this.parentNode.parentNode.getElementsByTagName('input')[0].value;if(isNaN(goPage)||goPage>4||goPage<1||goPage==1)return;pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page='+goPage);return false;" type='button'></div></div>
-		</div>
+										class="png"></b>加入购物车</span> <span class="addCart" id="items_apacketmial_{{ product.productid }}"
+                                                                       style="display: none;"><b
+                                    class="png"></b>加入购物车</span> <span class="addCart"
+                                                                      id="items_soldout_{{ product.productid }}"
+                                                                      style="display: none;"
+                                                                      onclick="addNotice(0,{{ product.productid }})"
+                                                                      name="notice"><b
+                                    class="png"></b>加入购物车</span>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+     <script>LoadProductPrice("itemPrice", "saleIcon");</script>
+            </ul>
+            <div class="hidehengtiao"></div>
+            <div class="pglist_page">
+                <div class='page'>
+                    <div class='page_l'><a href='#' class='prev' title='目前已是第一页'>上一页</a><a class='select'>1</a>
+                        <a href='javascript:;'
+                           onclick="pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page=2')">2</a><a
+                                href='javascript:;'
+                                onclick="pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page=3')">3</a>
+                        <a href='javascript:;'
+                           onclick="pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page=4')">4</a><a
+                                href='javascript:;'
+                                onclick="pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page=2');"
+                                class='next' title='下一页'>下一页</a></div>
+                    <div class='page_m'>共<span>4</span>页</div>
+                    <div class='page_m_2'>到第</div>
+                    <div class='page_m_3'><input type='text' class='page_input' value='1'></div>
+                    <div class='page_m_4'>页</div>
+                    <div class='page_r'><input
+                            onclick="javascript:var goPage=this.parentNode.parentNode.getElementsByTagName('input')[0].value;if(isNaN(goPage)||goPage>4||goPage<1||goPage==1)return;pageAjaxReq('/ProductList.htm?id=500219&&Cid=500219&&mid=0&&cityid=31000&page='+goPage);return false;"
+                            type='button'></div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
 </div>
+
 <div class="width">
     <div id="lookandbuy" data-first="y"></div>
     <div class="guess-like" id="detail_foot">
@@ -500,62 +705,31 @@
     </div>
 </div>
 <div class="wm-toolbar">
-    <div class="toolbar-left">
-        <div class="wm-toolbar-top">
-            <div class="wm-toolbar-tab wm-trigger wm-toolbar-hd cart"><em></em>购物车<span
-                    class="suspendcart_totalamount"></span><input id="suspendcart_items_amount"
-                                                                  name="smallcart_items_amount" type="hidden"
-                                                                  value="init" data-count="0"></div>
-        </div>
-        <div class="wm-toolbar-footer">
-            <ul>
-                <li class="wm-toolbar-tab wm-trigger" id="suspendcollect"><span style="overflow: hidden; height: 34px;">我的收藏</span><em
-                        class="collect"></em></a></li>
-                <li class="wm-toolbar-tab"><a href="/Member/index.jsp?mid=0&tt=0.5849379398716129"
-                                              target="_blank"><span>账户中心</span><em class="accoun"></em></a></li>
-                <li class="wm-toolbar-tab"><a
-                        href="/Member/index.jsp?mid=0&tt=0.5849379398716129&url=/Member/newwomaicard.do?mid=0&tt=0.5849379398716129"
-                        target="_blank"><span>在线充值</span><em class="recharge"></em></a></li>
-                <li class="wm-toolbar-tab qr-img"><span>
-		<a target='_blank'><img data-order="100" src='/static/product/picture/1460821684796_1.jpg' width='0' height='0'
-                                alt='手机二维码图片' border='0'/></a>
-	</span><em class="qr"></em></li>
-                <li class="wm-toolbar-tab"><a href=""><span>顶部</span><em class="go-top"></em></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="pop-up">
-        <div class="pop-layer wm-cart" id="suspendcart"><h3 class="pop-title">我的购物车<em></em></h3>
-            <div class="scroll-box" id="suspendcart_cont" data-visible="0"></div>
-        </div>
-        <div class="pop-layer wm-collect"><h3 class="pop-title">我的收藏<em></em></h3>
-            <div class="wm-c-box" id="loadfavorlist"></div>
-        </div>
-    </div>
-</div>
-<div class="list_buy_pop" id="addToCartDiv" style="display:none;">
-    <div class="buy_pop" id="addtocart_box" style="display:none;">
-        <div id="showIncludeCart"></div>
-        <div class="buy_pop_m" id="buyThisStillBuy_before">加载中，请稍后...</div>
-        <div style="display:none;" id="buyThisStillBuy">
-            <div class="buy_pop_m">购买过该商品的人还购买了</div>
-            <div class="buy_pop_b">
-                <div class="pop_prev"></div>
-                <div class="pop_prev_noclick"></div>
-                <div class="list_scroll">
-                    <div class="list" id="buyThisStillBuy_list" data-first="y"></div>
+
+    <div class="list_buy_pop" id="addToCartDiv" style="display:none;">
+        <div class="buy_pop" id="addtocart_box" style="display:none;">
+            <div id="showIncludeCart"></div>
+            <div class="buy_pop_m" id="buyThisStillBuy_before">加载中，请稍后...</div>
+            <div style="display:none;" id="buyThisStillBuy">
+                <div class="buy_pop_m">购买过该商品的人还购买了</div>
+                <div class="buy_pop_b">
+                    <div class="pop_prev"></div>
+                    <div class="pop_prev_noclick"></div>
+                    <div class="list_scroll">
+                        <div class="list" id="buyThisStillBuy_list" data-first="y"></div>
+                    </div>
+                    <div class="pop_next"></div>
+                    <div class="pop_next_noclick"></div>
                 </div>
-                <div class="pop_next"></div>
-                <div class="pop_next_noclick"></div>
             </div>
-        </div>
-    </div> <!--buy_pop -->
-</div>
-<script type="text/javascript" src="/static/product/js/cart_1.js"></script>
-<script type="text/javascript" src="/static/product/js/addtocartmessage_1.js"></script>
-<script type="text/javascript" src="/static/product/js/addtocart_1.js"></script>
-<script type="text/javascript" src="/static/product/js/rwcookie_1.js"></script>
-<script type="text/javascript" src="/static/product/js/addtrackrec.js"></script>
+        </div> <!--buy_pop -->
+    </div>
+    <script type="text/javascript" src="/static/product/js/cart_1.js"></script>
+    <script type="text/javascript" src="/static/product/js/addtocartmessage_1.js"></script>
+    <script type="text/javascript" src="/static/product/js/addtocart_1.js"></script>
+    <script type="text/javascript" src="/static/product/js/rwcookie_1.js"></script>
+    <script type="text/javascript" src="/static/product/js/addtrackrec.js"></script>
+
 </body>
 </html>
 <script type="text/javascript">set_mahout_request();</script>
