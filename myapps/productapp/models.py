@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class ProdTyp(models.Model):
     typeid = models.CharField(max_length=10,primary_key=True)
