@@ -1,11 +1,11 @@
 import time
-from django.db.models import F
+from django.db.models import F, Sum
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from orderapp.models import Cart,Order,OrderGoods
-from userapp.models import User
+from userapp.models import User,Address
 
 
 def myCart(request):
@@ -21,7 +21,7 @@ def myCart(request):
 
     return render(request,'cart.html',{'carts':carts,
                                        'address':address,
-                                       'allMoney':allMoney})
+                                       'allMoney':round(allMoney,2)})
 
 #选择购物车中的某件商品
 def selectCart(request,option,cart_id):
@@ -48,7 +48,7 @@ def selectCart(request,option,cart_id):
         cart = Cart.objects.get(id=cart_id)
         cart.isSelected = not cart.isSelected  #状态取反
         cart.save()
-        data['allMoney'] = cart.cnt * float(cart.products.price)
+        data['allMoney'] = cart.cnt * float(cart.products.price),
         data['selected'] = cart.isSelected
     except:
         data['status'] = 'fail'
@@ -74,6 +74,8 @@ def subPro(request,cart_id):
 def addPro(request,cart_id):
     data = {'status': 'ok', 'price': 0}
     user = User.objects.filter(id=1).first()  #拿到用户信息，暂定id为1
+    if not user:
+        return render(request,'login.html')
     cart = Cart.objects.filter(id=cart_id)  #拿到购物车对象
     if cart:
         cart = cart.first()
@@ -211,8 +213,8 @@ def orderList(request,state):
         orders = userOrders.filter(orderState=1,payState=1).order_by('-orderTime')
     elif state == '3':  #待评价
         orders = userOrders.filter(orderState=2,payState=1).order_by('-orderTime')
-    elif state == '4':  # 已取消
-        orders = userOrders.filter(orderState=4, payState=2).order_by('-orderTime')
+    elif state == '4':  # 交易完成
+        orders = userOrders.filter(orderState=3).order_by('-orderTime')
     else:  #所有
         orders = userOrders.all().order_by('-orderTime')
 
@@ -221,3 +223,30 @@ def orderList(request,state):
         'orders':orders,
         'state':state
     })
+
+#个人中心
+def myHome(request):
+    userid = 1
+    user = User.objects.get(id=userid)
+    cart = user.cart_set
+    if cart:
+        cartcnt = 0
+    else:
+        cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
+    return render(request,'myhome.html',{
+        'cartcnt': cartcnt
+    })
+
+#做一个中间价，只要用户未登录，则只能去登录、注册、首页、商品展示页
+# 删除或取消订单
+def delOrder(request,ordernum,deltype):
+    data = {'status':'ok0'}
+    if deltype == '0':  #取消订单
+        Order.objects.filter(orderNum=ordernum).update(orderState=4)  #取消订单
+        data['msg'] = '订单取消成功!'
+    else:
+        Order.objects.filter(orderNum=ordernum).delete()  #删除订单
+        data['status'] = 'ok1'
+        data['msg'] = '订单删除成功!'
+    return JsonResponse(data)
+

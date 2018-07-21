@@ -3,6 +3,7 @@ from django.db import models
 class ProdTyp(models.Model):
     typeid = models.CharField(max_length=10,primary_key=True)
     typename = models.CharField(max_length=50)
+    typesort = models.IntegerField(default=1)
 
     class Meta:
         db_table = 'sx_producttypes'

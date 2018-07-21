@@ -4,10 +4,11 @@ from django.db import models
 
 class User(models.Model):
     name=models.CharField(max_length=50,verbose_name='用户名')
-    email=models.CharField(max_length=50,unique=True,null=False)
+    email=models.CharField(max_length=50,unique=True)
     phone=models.CharField(max_length=12,unique=True,null=False)
     passwd=models.CharField(max_length=100,null=False)
-    photo=models.FileField(upload_to='upload')
+
+    photo=models.FileField(upload_to='upload',null=True)
     state=models.BooleanField(default=True,verbose_name='用户状态')
     money=models.DecimalField(default=0,max_digits=20,decimal_places=2)
 
@@ -24,7 +25,7 @@ class Address(models.Model):
     detailAddr=models.TextField(null=False,verbose_name='详细收货地址')
     phone=models.CharField(max_length=12,null=False)
     zipCode=models.IntegerField(null=True,verbose_name='邮编')
-    isselect = models.BooleanField(default=True,verbose_name="默认地址")
+    isselect=models.BooleanField(default=False,verbose_name='默认地址')
     user=models.ForeignKey(User,on_delete=models.CASCADE) #级联删除
     class Meta:
         db_table='sx_address'
