@@ -10,50 +10,57 @@ from userapp.models import User,Address
 
 def myCart(request):
     #注意到时候要考虑用户未登录的情况
-    userid = 1  #先设定userid为 1
-    user = User.objects.get(id=userid)
-    carts = user.cart_set.all()
-    address = user.address_set.filter(isselect=True).first()
-    allMoney = 0
-    for cart in carts:
-        if cart.isSelected:
-            allMoney += cart.cnt * float(cart.products.price)  #购物车选中的商品总价格
+    userid = request.session.get('user_id')
+    if userid:
+        user = User.objects.get(id=userid)
+        carts = user.cart_set.all()
+        address = user.address_set.filter(isselect=True).first()
+        allMoney = 0
+        for cart in carts:
+            if cart.isSelected:
+                allMoney += cart.cnt * float(cart.products.price)  #购物车选中的商品总价格
 
-    return render(request,'cart.html',{'carts':carts,
-                                       'address':address,
-                                       'allMoney':round(allMoney,2)})
+        return render(request,'cart.html',{'carts':carts,
+                                           'address':address,
+                                           'allMoney':round(allMoney,2),
+                                           'username':user.name})
+    else:
+        return render(request,'login1.html')
 
 #选择购物车中的某件商品
 def selectCart(request,option,cart_id):
     #option：0表示选择单个商品，1,表示全选，2表示全取消
-    if option == '1' or option == '2':
-        userid = 1
-        carts = Cart.objects.filter(user_id=userid)  #查询到当前用户的所有购物车信息
-        #更新isSelected
-        carts.update(isSelected=True if option == '1' else False)
-        #返回当前的总价格
-        allMoney = 0
-        if option == '1':
-            for cart in carts:
-                allMoney += cart.cnt * float(cart.products.price)
-        print(allMoney)
-        return JsonResponse({
-            'allMoney':allMoney,
-            'status':'ok'
-        })
+    userid = request.session.get('user_id')
+    if userid:
+        if option == '1' or option == '2':
+            carts = Cart.objects.filter(user_id=userid)  #查询到当前用户的所有购物车信息
+            #更新isSelected
+            carts.update(isSelected=True if option == '1' else False)
+            #返回当前的总价格
+            allMoney = 0
+            if option == '1':
+                for cart in carts:
+                    allMoney += cart.cnt * float(cart.products.price)
+            print(allMoney)
+            return JsonResponse({
+                'allMoney':allMoney,
+                'status':'ok'
+            })
 
-    #单个点击时
-    data = {'status':'ok','allMoney':0}
-    try:
-        cart = Cart.objects.get(id=cart_id)
-        cart.isSelected = not cart.isSelected  #状态取反
-        cart.save()
-        data['allMoney'] = cart.cnt * float(cart.products.price),
-        data['selected'] = cart.isSelected
-    except:
-        data['status'] = 'fail'
-        data['allMoney'] = 0
-    return JsonResponse(data)
+        #单个点击时
+        data = {'status':'ok','allMoney':0}
+        try:
+            cart = Cart.objects.get(id=cart_id)
+            cart.isSelected = not cart.isSelected  #状态取反
+            cart.save()
+            data['allMoney'] = cart.cnt * float(cart.products.price),
+            data['selected'] = cart.isSelected
+        except:
+            data['status'] = 'fail'
+            data['allMoney'] = 0
+        return JsonResponse(data)
+    else:
+        return render(request,'login1.html')
 
 #减去某个商品的数量
 def subPro(request,cart_id):
@@ -72,47 +79,51 @@ def subPro(request,cart_id):
 #添加某个商品数量
 #分为两种情况，第一种是在购物车对已有的商品添加，另一种是在商店第一次添加或对已有商品添加
 def addPro(request,cart_id):
-    data = {'status': 'ok', 'price': 0}
-    user = User.objects.filter(id=1).first()  #拿到用户信息，暂定id为1
-    if not user:
-        return render(request,'login.html')
-    cart = Cart.objects.filter(id=cart_id)  #拿到购物车对象
-    if cart:
-        cart = cart.first()
-        #要考虑到一个库存，这里暂时先不做
-        cart.cnt += 1
-        cart.save()
-        data['price'] = cart.products.price
-        return JsonResponse(data)
-
-    else:  #第一次添加到购物车或在商店添加已有商品
-        #先查询购物车
-        cart = Cart.objects.filter(products_id=cart_id,user_id=user.id)
+    userid = request.session.get('user_id')
+    if userid:
+        data = {'status': 'ok', 'price': 0}
+        user = User.objects.get(id=userid)  #拿到用户信息
+        cart = Cart.objects.filter(id=cart_id)  #拿到购物车对象
         if cart:
-            cart.update(cnt=F("cnt")+1)
+            cart = cart.first()
+            #要考虑到一个库存，这里暂时先不做
+            cart.cnt += 1
+            cart.save()
             data['price'] = cart.products.price
             return JsonResponse(data)
 
-        #创建购物车信息,商品数默认为1
-        cart = Cart()
-        cart.user_id = user.id
-        cart.products_id = cart_id  #这里cart_id是商品的id
-        cart.save()
+        else:  #第一次添加到购物车或在商店添加已有商品
+            #先查询购物车
+            cart = Cart.objects.filter(products_id=cart_id,user_id=user.id)
+            if cart:
+                cart.update(cnt=F("cnt")+1)
+                data['price'] = cart.products.price
+                return JsonResponse(data)
 
-        data['price'] = cart.products.price
-        return JsonResponse(data)
+            #创建购物车信息,商品数默认为1
+            cart = Cart()
+            cart.user_id = user.id
+            cart.products_id = cart_id  #这里cart_id是商品的id
+            cart.save()
 
+            data['price'] = cart.products.price
+            return JsonResponse(data)
+    else:
+        return render(request, 'login1.html')
 
 def delCart(request,cart_id):
     # cart_id为0时表示删除清空购物车
-    if cart_id == '0':
-        userid = 1  # 先设定userid为 1
-        user = User.objects.get(id=userid)
-        user.cart_set.all().delete()
+    userid = request.session.get('user_id')
+    if userid:
+        if cart_id == '0':
+            user = User.objects.get(id=userid)
+            user.cart_set.all().delete()
 
-    Cart.objects.get(id=cart_id).delete()  #删除指定商品
+        Cart.objects.get(id=cart_id).delete()  #删除指定商品
 
-    return JsonResponse({'status':'ok','msg':'删除成功!'})
+        return JsonResponse({'status':'ok','msg':'删除成功!'})
+    else:
+        return render(request, 'login1.html')
 
 #生成订单号
 def createOrderNo():
@@ -121,7 +132,7 @@ def createOrderNo():
 
 #下订单（0）或者查询某个订单的详细信息
 def toOrder(request,ordernum):
-    userid = 1
+    userid = request.session.get('user_id')
     if not userid:
         return render(request,'login.html')
     if ordernum == '0':
@@ -169,7 +180,7 @@ def payOrder(request,ordernum,payType):
         #拿到订单
         order = Order.objects.get(pk=ordernum)
 
-        userid = 1
+        userid = request.session.get('user_id')
         user = User.objects.filter(id=userid).first()
         if not user:
             return render(request,'login.html')
@@ -200,7 +211,7 @@ def payOrder(request,ordernum,payType):
 #所有订单
 def orderList(request,state):
     # state:0全部订单，1待付款，2待收货，3待评价
-    userid = 1
+    userid = request.session.get('user_id')
     user = User.objects.filter(id=userid).first()
     if not user:
         return render(request,'login.html')
@@ -226,16 +237,20 @@ def orderList(request,state):
 
 #个人中心
 def myHome(request):
-    userid = 1
-    user = User.objects.get(id=userid)
-    cart = user.cart_set
-    if cart:
-        cartcnt = 0
+    userid = request.session.get('user_id')
+    if userid:
+        user = User.objects.get(id=userid)
+        cart = user.cart_set
+        if cart:
+            cartcnt = 0
+        else:
+            cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
+        return render(request,'myhome.html',{
+            'cartcnt': cartcnt,
+            'username':user.name
+        })
     else:
-        cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
-    return render(request,'myhome.html',{
-        'cartcnt': cartcnt
-    })
+        return render(request,'login1.html')
 
 #做一个中间价，只要用户未登录，则只能去登录、注册、首页、商品展示页
 # 删除或取消订单

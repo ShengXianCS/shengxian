@@ -30,16 +30,13 @@ def login(req):
     passwd=req.POST.get('passwd')
     print('______________________________',phone)
     qs=User.objects.filter(phone=phone,passwd=jiami(passwd))
-    # qs=User.objects.filter(phone=phone,passwd=passwd)
 
     if qs.exists():
         print('***')
         user=qs.first()
         req.session['user_id']=user.id  # 向session存放user.id,用于购物车
         user.save()
-        resp=redirect('/sy/home')
-        resp.set_cookie('token',newToken(user.name))  # 向客户端添加token
-        return resp
+        return redirect('/sy/home')
 
     else:
         return render(req,'login1.html',{'errorMsg':'用户登录失败'})
@@ -82,13 +79,8 @@ def upload(req):
 
 
 def logout(req):
-    resp=redirect('user/login')
-    if req.COOKIES.get('token'):
-        # 将用户的token=‘'
-        User.objects.filter(token=req.COOKIES.get('token')).update(token='')
-        resp.delete_cookie('token')  # 删除cookie的token
-        del req.session['user_id']
-    return resp
+    del req.session['user_id']
+    return redirect('/sy/home')
 
 
 def code(req):
