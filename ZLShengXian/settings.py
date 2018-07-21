@@ -21,8 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'a8&2$w2z&%lu42^=gvmgydjn8i8l$^5qop)6_yq3&_nj2pkxlt'
 
-#设置APP存放的位置
-sys.path.insert(0,os.path.join(BASE_DIR,'myapps'))
+# 设置APP存放的位置
+sys.path.insert(0, os.path.join(BASE_DIR, 'myapps'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-sys.path.insert(0,os.path.join(BASE_DIR,'myapps'))
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapps.orderapp',
-    'myapps.productapp',
-    'myapps.userapp',
+    'orderapp',
+    'productapp',
+    'userapp',
 
 ]
 

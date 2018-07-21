@@ -163,20 +163,8 @@
 		value="0" />
 </form>
 <div class="sort" >
-    <div class="sort-1 clearfix" style=" width: 1060px; padding: 10px 0; border-bottom: 1px solid #eeeced; overflow: hidden;">
-        {% for childType in childTypes %}
-            <a>
-                {% ifequal childType.id chilid %}
-                   <span class="select">
-                {% else %}
-                   <span>
-                {% endifequal %}
-                {{ childType.name }}</span>
-            </a>
-        {% endfor %}
-    </div>
-    <div>
-        <a href="/sf/pdshow/{{ categoryid }}/{{ chilid }}/1">
+    <div class="sort-1 clearfix" style=" width: 1060px; padding: 30px 0; border-bottom: 1px solid #eeeced; margin-bottom:10px;">
+        <a href="/sy/pdshow/{{ categoryid }}/1">
             {% if sortid == 1 %}
                 <span class="select">
             {% else %}
@@ -184,7 +172,7 @@
             {% endif %}
              综合</span>
             </a>
-        <a href="/sy/pdshow/{{ categoryid }}/{{ chilid }}/2">
+        <a href="/sy/pdshow/{{ categoryid }}/2">
             {% if  sortid == 2 %}
                 <span class="select">
             {% else %}
@@ -192,8 +180,8 @@
             {% endif %}
             价格</span>
         </a>
-        <a href="/sy/pdshow/{{ categoryid }}/{{ chilid }}>/3">
-            {% if sortid == 3%}
+        <a href="/sy/pdshow/{{ categoryid }}/3">
+            {% if sortid == 3 %}
                 <span class="select">
             {% else %}
                 <span  style=" float: left; position: relative; width: 52px; text-align: center; color: #43a400; text-decoration: none;" >
@@ -201,63 +189,7 @@
             销量</span>
         </a>
     </div>
-    <ul class="sort-2 clearfix">
-		<li><a href="javascript:;"
-			onclick="queryListBySpecialOrSellable('sellable','-1'); return false;">有货</a></li>
-		<li><a href="javascript:;"
-			onclick="queryListBySeller(0,'-1');">自营</a></li>
-		<li><a href="javascript:;"
-			onclick="queryListBySeller(-1,'-1');">产地直送</a></li>
-		<li><a href="javascript:;"
-			onclick="queryListByFlgCross(-1,'-1');">跨境购</a></li>
-		<li><a href="javascript:;"
-			onclick="queryListBySpecialOrSellable('isPromotions','-1'); return false;">促销</a></li>
-	</ul>
-</div>
 
-	<div class="sort-1 clearfix">
-{#		<a id="orderDefault" data-orderby=""#}
-{#			onclick="searchQueryListOrderBy(this.id,'-1'); return false;"#}
-{#			href="javascript:;"#}
-{#			class="select">综合</a> <a#}
-{#			id="orderSellCount" data-orderby="mer_sellcount---string---desc"#}
-{#			onclick="searchQueryListOrderBy(this.id,'-1');"#}
-{#			href="javascript:;"#}
-{#			>销量</a>#}
-{#			<a id="orderPrice" data-orderby="mer_price---string---asc"#}
-{#				onclick="searchQueryListOrderBy(this.id,'-1'); return false;"#}
-{#				href="javascript:;" class="sort-price">价格<i class="up"></i></a>#}
-{#            <a id="orderModifyDate" data-orderby="mndsModifyDate---string---desc"#}
-{#                onclick="searchQueryListOrderBy(this.id,'-1'); return false;"#}
-{#                href="javascript:;"#}
-{#                >时间</a>#}
-{#		<div class="inp fl">#}
-{#			<input type="text" class="beginprice" value="最低价"#}
-{#				onfocus="this.value=''" onblur="if(!value){value=defaultValue;}" />#}
-{#			<span>－</span> <input type="text" class="endprice"#}
-{#				value="最高价" onfocus="this.value=''"#}
-{#				onblur="if(!value){value=defaultValue;}" /> <input type="button"#}
-{#				value="确定" class="btn-sub"#}
-{#				onclick="searchQueryListByPrice(); return false;" />#}
-{#		</div>#}
-{#		<div class="result-sum clearfix">#}
-{#			<span>总共126件相关商品 1/4</span>#}
-{#				<i class="next"#}
-{#					 onclick="searchQueryListByPage(2); return false;"></i>#}
-{#		</div>#}
-{#	</div>#}
-{#	<ul class="sort-2 clearfix">#}
-{#		<li><a href="javascript:;"#}
-{#			onclick="queryListBySpecialOrSellable('sellable','-1'); return false;">有货</a></li>#}
-{#		<li><a href="javascript:;"#}
-{#			onclick="queryListBySeller(0,'-1');">自营</a></li>#}
-{#		<li><a href="javascript:;"#}
-{#			onclick="queryListBySeller(-1,'-1');">产地直送</a></li>#}
-{#		<li><a href="javascript:;"#}
-{#			onclick="queryListByFlgCross(-1,'-1');">跨境购</a></li>#}
-{#		<li><a href="javascript:;"#}
-{#			onclick="queryListBySpecialOrSellable('isPromotions','-1'); return false;">促销</a></li>#}
-{#	</ul>#}
 </div>
 <div class="product-list">
 	<ul>
@@ -282,18 +214,18 @@
 								   		pidArr.push("{{ product.productid }}");
 								   		recommend_pidArr.push("{{ product.productid }}");
 								   	</script>
-								<div class="price" id="itemPrice649707">
+								<div class="price" id="itemPrice{{ product.productid }}">
                                     <b>￥</b>
                                     {{ product.price }}
                                 </div>
 									<div class="season_icon2">当季时令</div>
 								<div class="clear"></div>
 								<div class="list-title"
-									id="_gatrack_productlist_listtitle_649707"
+									id="_gatrack_productlist_listtitle_{{ product.productid }}"
 									keywordhiiiii=1>
 									<p title="{{ product.productname }}" keyword123=""
 										ccccccc="">
-										<a href="/Product-0-649707.htm?piwik_cid=500219" target="_blank">
+										<a href="/Product-0-{{ product.productid }}.htm?piwik_cid={{ categoryid }}" target="_blank">
 												<span class="red_tit">【团购】</span>
 											{{ product.productname }}
 										</a>
@@ -304,7 +236,7 @@
 								</div>
 								<div class="rated">
 									<span class="evaluated">销量<a target="_blank"
-										href="/Product-0-{{ product.productid }}.htm?piwik_cid=500219#remark"><em>1849</em></a></span>
+										href="/Product-0-{{ product.productid }}.htm?piwik_cid={{ categoryid }}#remark"><em>{{ product.salenums }}</em></a></span>
 									<span class="collection" name="favorite"
 										onclick="addFavor(0,{{ product.productid }});"><b
 										class="png"></b>收藏</span> <span class="addCart"
@@ -322,9 +254,6 @@
 							</div>
 			</li>
         {% endfor %}
-
-
-
 
 		<script>LoadProductPrice("itemPrice","saleIcon");</script>
 	</ul>
