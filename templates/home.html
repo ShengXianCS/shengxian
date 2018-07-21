@@ -53,13 +53,34 @@
             </ul>
             <ul class="nav_l" id="top_login_span" stle="clear:both;"></ul>
             <ul class="nav_r">
-                <li class="t_item mycount" id="myaccount" data-first="yes">
+                {% if username %}
+                    <li class="t_item mycount" id="myaccount" data-first="yes">
                 <p><a name="_gatrack_event_myaccount"
-                      data-ga="site_nav" data-gatext="我的账户"
-                      href="/order/myhome"
-                      id="t_item_mycount" rel="nofollow"
-                      target="_blank"><span class="text">我的账户<i class="png"></i></span></a></p>
-            </li>
+                      id="t_item_mycount" rel="nofollow"><span class="text">{{ username }}</span></a></p>
+                </li>
+                    <li class="t_item line">|</li>
+                    <li class="t_item mycount" id="myaccount" data-first="yes">
+                    <p><a name="_gatrack_event_myaccount"
+                          data-ga="site_nav" data-gatext="我的账户"
+                          href="/order/myhome"
+                          id="t_item_mycount" rel="nofollow"
+                          target="_blank"><span class="text">我的账户<i class="png"></i></span></a></p>
+                    </li>
+                {% else %}
+                    <li class="t_item mycount" id="myaccount" data-first="yes">
+                    <p><a name="_gatrack_event_myaccount"
+                          href="/user/login"
+                          id="t_item_mycount" rel="nofollow"><span class="text">登录</span></a></p>
+                    </li>
+                    <li class="t_item line">|</li>
+                    <li class="t_item mycount" id="myaccount" data-first="yes">
+                    <p><a name="_gatrack_event_myaccount"
+                          href="/user/regist"
+                          id="t_item_mycount" rel="nofollow"><span class="text">注册</span></a></p>
+                    </li>
+                    <li class="t_item line">|</li>
+                {% endif %}
+
                 <li class="cart t_item">
                 <a name="_gatrack_event_shoppingcart"
                    href="/order/mycart" class="cartlink_curr" target='_blank'>
@@ -193,7 +214,7 @@
                     {% for prodTyp in prodTyps %}
 
                     <li class="kinds">
-                        <div class="title"><h3><a href="/sy/pdshow/{{ prodTyp.typeid }}" target="_blank">{{ prodTyp.typename }}</a></h3>
+                        <div class="title"><h3><a href="/sy/pdshow/{{ prodTyp.typeid }}">{{ prodTyp.typename }}</a></h3>
                         </div>
                         <div class="clear"></div>
                         <div class="clear"></div>
@@ -259,7 +280,7 @@
                     id="smallcart_items_amount" name="smallcart_items_amount" type="hidden" value="init" data-count="0"></span>
                 <span class="text">
                     <a id="cartlink" name="_gatrack_event_carlink"
-                                    href="/order/mycart">购物车</a>
+                                    href="/order/mycart" >购物车</a>
                 </span>
                 <span class="arrow "></span></div>
                 <div class="loadding"></div>
