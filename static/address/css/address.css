@@ -316,7 +316,7 @@ i,#header .fr li,#header .icbcbtn,.topsearch,.topsearch .ss2 input,.sitecont dt 
 
 /*begin会员收货地址改版*/
 input{ margin:0;}
-.usercenter_address{ width:840px; overflow:hidden;}
+.usercenter_address{ width:840px; overflow:auto;}
 .usercenter_address .header{ width:830px; height:35px; padding-left:10px; line-height:35px; border-bottom:1px solid #DFDFDF; font-size:16px; color:#8CB91D; overflow:hidden; zoom:1;}
 .usercenter_address .header span{ display:inline-block; float:left; width:6px; height:16px; margin:10px 12px 0 0; background-color:#8CB91D; overflow:hidden;}
 .usercenter_address .content{ width:850px; overflow:hidden; zoom:1;}
