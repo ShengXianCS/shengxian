@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>我的收货地址</title>
+      <link rel="stylesheet" type="text/css" href="/static/myorder/css/bootstrap.min.css"/>
+      <link rel="stylesheet" type="text/css" href="/static/myorder/css/modal.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/address/css/address.css">
+    <link href="/static/address/css/msgbox.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" language="javascript" src="/static/main/js/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/main/js/bootstrap.min.js"></script>    <script type="text/javascript" language="javascript" src="/static/address/js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/address/js/jquery.form.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/address/js/jquery-impromptu.1.3.js"></script>
+    <script type="text/javascript" language="javascript">
+      var frontPath="";
+    </script>
+      <script type="text/javascript" language="javascript" src="/static/address/js/address.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/address.js"></script>
+  </head>
+  <body>
+    <div class="usercenter_address">
+    	<h2 class="header"><span></span>收货地址</h2>
+        <ul class="content">
+        {% for addr in addrs %}
+            {% if addr.isselect %}
+                <li id="defalutAddress" class="adds old_add_default" ></li>
+                <input type="hidden" value="20868010" id="defalutAddressId">
+                <li class="adds old_add" id="old_add_20868010">
+            <div class="name_infor">
+                <div class="name_etc" style="width: 230px">
+                    <span class="name" id="name{{ addr.id }}" title="{{ addr.name }}">{{ addr.name|truncatechars:6 }}</span>
+                    <span>收</span><span id="phone{{ addr.id }}" title="{{ addr.zipCode }}">{{ addr.phone }}</span>
+                    <span class="default_add">默认地址</span>
+                </div>
+
+                <ul class="btns">
+                    <li class="delete" id="{{ addr.id }}"><a class="myad_s2">删除</a></li>
+                    <li class="edit" id="{{ addr.id }}"><a class="thickbox myad_s1">编辑</a></li>
+                    <li class="set_default" id="{{ addr.id }}"><a >设为默认</a></li>
+                </ul>
+            </div>
+            <div class="add_infor">
+                <strong class="add_city"><span id="addr{{ addr.id }}">{{ addr.detailAddr }}</span></strong>
+
+            </div>
+        </li>
+                {% else %}
+                <li class="adds old_add" id="old_add_20868011" >
+            <div class="name_infor">
+                <div class="name_etc">
+                    <span class="name" id="name{{ addr.id }}" title="{{ addr.name }}">{{ addr.name|truncatechars:6 }}</span>
+                    <span>收</span><span id="phone{{ addr.id }}" title="{{ addr.zipCode }}">{{ addr.phone }}</span>
+                    <span class="default_add">默认地址</span>
+                </div>
+
+                <ul class="btns">
+                    <li class="delete" id="{{ addr.id }}"><a class="myad_s2">删除</a></li>
+                    <li class="edit" id="{{ addr.id }}"><a class="thickbox myad_s1">编辑</a></li>
+                    <li class="set_default" id="{{ addr.id }}"><a >设为默认</a></li>
+                </ul>
+            </div>
+            <div class="add_infor">
+                <strong class="add_city"><span id="addr{{ addr.id }}">{{ addr.detailAddr }}</span></strong>
+
+            </div>
+        </li>
+            {% endif %}
+
+        {% endfor %}
+
+         <li class="addnew_add">
+             <ul>
+                 <li class="addpic"></li>
+                 <li class="addnew_text" id="addNew">添加新地址</li>
+                 <!-- <li class="left_num">还可创建16个</li> -->
+             </ul>
+         </li>
+        </ul>
+    </div>
+    <div id="addDIV"></div>     <!-- 添加页面 -->
+    <div id="updateDIV"></div>  <!-- 修改页面 -->
+
+{# 模态框添加新地址 #}
+<div class="modal" id="myModal" style="margin-top: -4rem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold">添加新地址</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label" style="font-weight: normal;font-size: 0.4rem">收货人</label>
+            <input type="text" class="form-control" id="recipient-name" name="name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-phone" class="control-label" style="font-weight: normal;font-size: 0.4rem">联系电话</label>
+            <input type="text" class="form-control" id="recipient-phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="recipient-address" class="control-label" style="font-weight: normal;font-size: 0.4rem">收货地址</label>
+            <input type="text" class="form-control" id="recipient-address" name="address">
+          </div>
+          <div class="form-group">
+            <label for="recipient-zipcode" class="control-label" style="font-weight: normal;font-size: 0.4rem">邮编</label>
+            <input type="text" class="form-control" id="recipient-zipcode" name="zipcode">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="save" type="button" class="btn btn-sm btn-primary">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="margin: 0 20px">
+      <div class="modal-body">
+        <span id="payMsg">正在保存...</span>
+      </div>
+      <div class="modal-footer">
+        <button style="display: none" id="close" type="button" class="btn btn-sm btn-default" data-dismiss="modal">取消</button>
+        <button style="display: none" id="delete" type="button" class="btn btn-sm btn-primary">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

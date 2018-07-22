@@ -62,9 +62,16 @@
                     <li class="t_item mycount" id="myaccount" data-first="yes">
                     <p><a name="_gatrack_event_myaccount"
                           data-ga="site_nav" data-gatext="我的账户"
-                          href="/order/myhome"
+                          href="/order/myhome/0"
                           id="t_item_mycount" rel="nofollow"
-                          target="_blank"><span class="text">我的账户<i class="png"></i></span></a></p>
+                          target="_blank"><span class="text">我的账户</span></a></p>
+                    </li>
+                    <li class="t_item line">|</li>
+                    <li class="t_item mycount" id="myaccount" data-first="yes">
+                    <p><a name="_gatrack_event_myaccount"
+                          data-ga="site_nav" data-gatext="我的账户"
+                          href="/user/logout"
+                          id="t_item_mycount" rel="nofollow"><span class="text">退出</span></a></p>
                     </li>
                 {% else %}
                     <li class="t_item mycount" id="myaccount" data-first="yes">
@@ -84,7 +91,7 @@
                 <li class="cart t_item">
                 <a name="_gatrack_event_shoppingcart"
                    href="/order/mycart" class="cartlink_curr" target='_blank'>
-                    购物车 <b class="smallcart_totalamount" id="headcnt"></b>{{ cartcnt }} 件 </a></li>
+                    购物车 <b class="smallcart_totalamount" id="headcnt">{{ cartcnt }}</b> 件 </a></li>
                 <li class="t_item line">|</li>
                 <li class="t_item mycount"><p><a href=""><span class="text">客户服务<i
                     class="png"></i></span></a></p>

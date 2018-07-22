@@ -107,8 +107,15 @@
                 <p><a name="_gatrack_event_myaccount"
                       data-ga="site_nav" data-gatext="我的账户"
                       id="t_item_mycount" rel="nofollow">
-                    <span class="text">{{ username }}<i class="png"></i></span></a></p>
+                    <span class="text">{{ username }}</span></a></p>
             </li>
+            <li class="t_item line">|</li>
+                    <li class="t_item mycount" id="myaccount" data-first="yes">
+                    <p><a name="_gatrack_event_myaccount"
+                          data-ga="site_nav" data-gatext="我的账户"
+                          href="/user/logout"
+                          id="t_item_mycount" rel="nofollow"><span class="text">退出</span></a></p>
+                    </li>
             <li class="cart t_item">
                 <a name="_gatrack_event_shoppingcart"
                    href="/order/mycart" class="cartlink_curr" target='_blank'>
@@ -365,7 +372,7 @@
             <div class="mem_content">
 
 
-                <a href="/user/addr"
+                <a href="/order/addr/0/0"
                    target="mem_right">
                     <span class="bold">收货地址</span>
 
@@ -439,7 +446,11 @@
 
 
 
-        <iframe id="mem_right" name="mem_right" src="/order/allorder/0"
+        <iframe id="mem_right" name="mem_right" src="{% if state == '0' %}
+        /order/allorder/0
+        {% elif state == '1' %}
+        /order/addr/0/0
+        {% endif %}"
                 style="background:#fff;width:100%;" height="auto" frameborder="0" scrolling="no"></iframe>
     </div>
     <div style="clear:both;"></div>
@@ -628,6 +639,9 @@
 
 </div>
 </div>
+
+
+
 </body>
 </html>
 

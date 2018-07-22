@@ -23,14 +23,14 @@ $(function () {
                     setTimeout(function () {
                         $('#deleteModal').modal('hide');
                         $('#orderstate').text('已取消');
-                        window.open('/order/myhome',target='_parent')
+                        window.open('/order/myhome/0',target='_parent')
                     },1000)
                 }else if(data.status == 'ok1'){
                     $('#delMsg').text(data.msg);
                     $('.modal-footer').css('display','none');
                     setTimeout(function () {
                         $('#deleteModal').modal('hide');
-                        window.open('/order/myhome',target='_parent')
+                        window.open('/order/myhome/0',target='_parent')
                     },1000)
                 }
             })
