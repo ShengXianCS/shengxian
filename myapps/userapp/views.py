@@ -4,7 +4,7 @@ import re
 import uuid
 
 from PIL import Image, ImageDraw, ImageFont
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -44,7 +44,6 @@ def login(req):
     else:
         return render(req,'login1.html',{'errorMsg':'用户登录失败'})
 
-
 def regist(request):
     if request.method=='GET':
         return render(request,'regist.html')
@@ -67,24 +66,12 @@ def regist(request):
 
 
 
-def addAddress(req):
-    if req.method=='GET':
-        return redirect('/user/myAddress')
-    else:
-        addr=Address()
-        addr.name=req.POST.get()
-    return render(req,'address.html',)
 
 def myAddress(req,user_id):
 # def myAddress(req):
     # user_id=req.session.get('user_id')
     myAddrs=Address.objects.filter(user_id=user_id)
     return render(req, 'address.html', {'myAddrs':myAddrs})
-
-
-
-def upload(req):
-    return None
 
 
 def logout(req):
