@@ -1,0 +1,18 @@
+/*
+ * ∂©µ•»°œ˚…Í«Î
+ */
+.big-alert-popup { font-family:"Œ¢»Ì—≈∫⁄";position:fixed;_position:absolute;top:30%;width:700px; z-index:999999;_margin-top:20%;_top:expression(eval(document.documentElement.scrollTop));}
+.big-alert-top { height:5px;background:url(../images/big_icon.png) no-repeat 0 0;overflow:hidden}
+.big-alert-content { padding-top:15px;background:#fff;overflow:hidden}
+.big-alert-content h3 { position:relative;height:32px;padding:0 20px 25px 30px;font:20px "Microsoft Yahei";font-weight:300;color:#000}
+.big-alert-content h3 span { position:absolute;right:20px;top:-10px;display:block;font:24px/150% "Microsoft Yahei";font-weight:bold;color:#636363;cursor:pointer;overflow:hidden}
+.big-alert-popup .big-alert-msg { width:660px;padding:0 20px;line-height:1.6em;color:#333;font-size:14px;}
+.big-btn-bottom{ height:39px;border-top:1px solid #78b54f}
+.big-btn-bottom .btn { height: 36px;line-height:33px;font-size:14px;font-family:"Microsoft Yahei"}
+.big-alert-pop-btn a{text-decoration: none;}
+.btn .big-alert-confirm,.btn .big-alert-cancel { float:left;width:350px;height:36px;line-height:36px;text-align:center;cursor:pointer}
+.btn .big-alert-confirm { background:#78b54f;color:#fff}
+.btn .big-alert-cancel { background:#fff;color:#000}
+.big-alert-pop-btn2 .big-alert-confirm{width:700px;background:#78b54f;color:#fff}
+.big-btn-bottom .big-bottom1 { height:3px;overflow:hidden;background:url(../images/big_icon.png) no-repeat 0 -8px}
+.big-btn-bottom .big-bottom2 { height:3px;overflow:hidden;background:url(../images/big_icon.png) no-repeat 0 -29px}

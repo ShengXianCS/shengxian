@@ -21,8 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'a8&2$w2z&%lu42^=gvmgydjn8i8l$^5qop)6_yq3&_nj2pkxlt'
 
-#设置APP存放的位置
-sys.path.insert(0,os.path.join(BASE_DIR,'myapps'))
+# 设置APP存放的位置
+sys.path.insert(0, os.path.join(BASE_DIR, 'myapps'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'orderapp',
     'productapp',
     'userapp',
+
 ]
 
 MIDDLEWARE = [
@@ -82,7 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'shengxian',
-        'HOST':'10.35.163.30',
+        'HOST':'172.20.10.5',
         'PORT':3306,
         'USER':'root',
         'PASSWORD':'root',
@@ -115,7 +117,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+
+TIME_ZONE = 'Asia/Shanghai'
+
+
 
 USE_I18N = True
 

@@ -12,7 +12,7 @@
 .main_nav_wrap .all_kinds .head b { display: inline-block; width: 28px; height: 28px; margin: 9px 2px 9px 0; vertical-align: middle; overflow: hidden;}
 .main_nav_wrap .all_kinds .head b img { width: 28px; height: 28px;}
 .main_nav .all_kinds .cont { width:210px; height: 434px; padding: 6px 0 10px;}
-.main_nav .all_kinds .cont .kinds { width: 194px; height: 42px; padding: 12px 8px 8px; background: url(../images/bottom.png) no-repeat center bottom; cursor: pointer;}
+.main_nav .all_kinds .cont .kinds { width: 194px; height: 20px; padding: 12px 8px 8px; background: url(../images/bottom.png) no-repeat center bottom; cursor: pointer;}
 .main_nav .all_kinds .kinds .title { width:190px; height: 42px; padding:0 0 0 4px; overflow: hidden;}
 .main_nav .all_kinds .kinds .title h3 { position: relative; width: 178px; padding-right: 12px; height: 22px; font-weight: bold; line-height: 22px; color: #fff; overflow: hidden;}
 .main_nav .all_kinds .kinds .title h3 b { position: absolute; top: 0; right: 0; width: 7px; height: 12px; margin: 0; font: 700 18px/18px simsun; vertical-align: middle; overflow: hidden;}

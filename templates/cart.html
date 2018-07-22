@@ -3,33 +3,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>我的购物车_中粮我买网</title>
+    <link rel="stylesheet" type="text/css" href="/static/main/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/cart/css/checkoutcommon.css"/>
     <link rel="stylesheet" type="text/css" href="/static/cart/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/static/cart/css/cart.css"/>
-    <script type="text/javascript" src="/static/cart/js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="/static/cart/js/jquery.cookie.js"></script>
-    <script type="text/javascript" src="/static/cart/js/passportback.js"></script>
-    <script type="text/javascript" src="/static/cart/js/arrivalnotice.js"></script>
-    <script type="text/javascript">var mid = "0";
-    var cityid = "31000";
-    var webIndex = "green2012";
-    var frontPath = "";
-    var priceServer = "http://price.womai.com/PriceServer";
-    var wineServer = "http://jiu.womai.com";
-    var sellerServer = "http://zs.womai.com";
-    var picPrefix = "http://pic2.womai.com/upload/";
-    var staticPrefix = "http://static.womai.com";
-    var includeFlashbuy = "false";
-    var isMobileValidated = "true";
-    var isNeedMobileCertification = "false";
-    var columnName = "生鲜食品";
-    var checkoutAddressName = "";
-    </script>
-    <script type="text/javascript" src="/static/cart/js/checkoutcommon.js"></script>
-    <script type="text/javascript" src="/static/cart/js/cart.js"></script>
-    <script type="text/javascript" src="/static/cart/js/recommend_infosmart.js"></script>
-    <script type="text/javascript" src="/static/cart/js/recommend_all.js"></script>
-    <script type="text/javascript" src="/static/cart/js/recommend_cart_new.js"></script>
+    <script type="text/javascript" src="/static/main/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/main/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/main/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/static/cart/js/mycart.js"></script>
+
 </head>
 <body>
 <div class="cart_content">
@@ -37,14 +19,14 @@
         <div class="w">
             <ul class="fr">
                 <li class="myaccount" id="myaccount" data-first="y"><a
-                        href="/Member/index.jsp?mid=0&tt=0.3774874180135763" class="ian white">我的账户</a><i></i><i
+                        href="/order/myhome" class="ian white">我的账户</a><i></i><i
                         class="accountpng" id="topaccountpng" style="display:none"></i>
                     <div id="myaccount_cont" class="myaccount_cont loadding"></div>
                 </li>
             </ul>
             <ul class="fr" id="top_login_span">
-                <li class='none'><span class='nickname'>哈拉嘿呦</span></li>
-                <li class='none'><a href='/Member/Exit.do?mid=0'>退出</a></li>
+                <li class='none'><span class='nickname'>{{ username }}</span></li>
+                <li class='none'><a href='/user/logout'>退出</a></li>
             </ul>
         </div>
     </div>
@@ -59,48 +41,44 @@
     <link type="text/css" rel="StyleSheet" href="/static/cart/css/commonalert.css"/>
 
 
-    <div class="trip_div">
+    <div class="trip_div" style="height: 90px">
         <div class="trip_content"><span class="tc_left">我的购物车</span></div>
-
+        <div class="clear"></div>
         <div class="delivery-tip fl">
-            <div class="delivery-tit fl">送至：</div>
+            <div class="delivery-tit fl">
+                <strong>收件人</strong>：<span class="address">{{ address.name }}</span>
+                <strong>&nbsp;&nbsp;收货地址</strong>：<span class="address">{{ address.detailAddr }}</span>
+                <strong>&nbsp;&nbsp;联系电话</strong>：<span class="address">{{ address.phone }}</span>
+                &nbsp;&nbsp;<a href="/user/addr" style="color: orangered">更换地址</a>
+            </div>
             <div id="loadRegion" class="addr_select fl"></div>
             <div class="clear"></div>
-            <script type="text/javascript">loadArealist(0, 1);</script>
         </div>
 
 
-        <a href="/index-31000-0.htm" class="fr">继续购物></a>
+        <a style="cursor: pointer;" class="fr" href="/sy/home">继续购物></a>
         <div class="clear"></div>
     </div>
     <div class="shopping_cart">
         <div class="order_nav">
             <ul class="fl">
-                <li data-curtab="1" data-tab="1" data-index="1" data-cartids="1" data-mid="0" class="hover_li"><strong>我买网发货单(<em
-                        id="loadshowcart1_carttitle_totalamount">2</em>)</strong><span>我买网发货单(<em
-                        id="loadshowcart1_carttitle_totalamount">2</em>)</span></li>
-                <script type="text/javascript">orderNavHover();</script>
+                <li data-curtab="1" data-tab="1" data-index="1" data-cartids="1" data-mid="0" class="hover_li">我买网发货单</li>
             </ul>
             <div id="j-totalwithdeliveryrule" class="fr"></div>
             <div class="clear"></div>
         </div>
         <div class="order_contents">
-            <div class="crossordertip">
-                <div>1.海外仓运费25元（购满199免运费），国内保税仓运费10元（购满99元免运费)；</div>
-                <div>2.跨境购不同仓的商品需要分开结算，给您造成不便敬请谅解。</div>
-            </div>
+
             <div class="ordercont_titleline">
                 <div class="odct_title ordercon_title1">商品</div>
                 <div class="odct_title ordercon_title2">单价</div>
                 <div class="odct_title ordercon_title3">数量</div>
-                <div class="odct_title ordercon_title5">小计</div>
-                <div class="odct_title ordercon_title6">操作</div>
+                <div class="odct_title ordercon_title5" style="width: 150px">小计</div>
+                <div class="odct_title ordercon_title6" style="width: 126px">操作</div>
                 <div class="clear"></div>
             </div>
             <div class="ordercont_content" data-first="n" style="display:block">
-
-
-                <div id="loadshowcart1">
+             <div id="loadshowcart1">
 
 
                     <input id="j-relationFreeConfig1" type="hidden" data-mid="0" data-type="2" data-sellerid="0"
@@ -118,93 +96,67 @@
 
                         <div class="ordercont-cw-con">
 
-                            {# 订单信息 #}
+                            {% for cart in carts %}
+                                       {# 订单信息 #}
                             <div class="content_type content_type1 content_type_zp">
 
                                 <div class="ct1 contype1_cont1 ct_zp">
                                     <div>
-
-                                        <input id="sel616969" type="checkbox" class="fl" name="content-check1"
-                                               checked="checked" issel="1"
-                                               onclick="selectCartItem(1,0,616969,0,100,1,96);"/>
+                                        {# 购物车id #}
+                                        <input id="sel_{{ cart.id }}" type="checkbox" class="fl selectp" name="{{ cart.id }}"
+                                               {% if cart.isSelected %}checked="checked"{% endif %} issel="1"
+                                               />
 
                                         <a href=""
                                            class="img_a">
-                                            <img src="/static/cart/picture/616969_0_pic60_390.jpg"/>
+                                            <img src="{{ cart.products.productimg }}"/>  {# 商品图片 #}
                                         </a>
                                         <div class="contype1_cont1_cent fl">
-
-
-                                            <span style="color: black">
-
-
-                                                惠享【自营】[安萃]进口红心火龙果5枚 盒装2000g，细腻鲜嫩，入口爽滑，红艳欲滴，清甜爽...
-
+                                            <span style="color: black">{# 名字 #}
+                                                {{ cart.products.productname|truncatechars:60 }}
                                             </span>
-
-
                                             <div class="sevendays-preference">
-
-
                                                 <div class="clear"></div>
                                             </div>
 
                                         </div>
                                     </div>
                                     <div class="clear"></div>
-
-
                                 </div>
-
-
-                                <div class="ct1 contype1_cont2">
-
-
-                                    ￥39.80
-
-
+                                <div class="ct1 contype1_cont2" id="price_{{ cart.id }}" style="width: 130px">
+                                    {{ cart.products.price }}{# 购物车价格 #}
                                 </div>
-
-                                <div class="ct1 contype1_cont3">
-
-
-                                    <div id="p_dec1_0" class="oper_goods reduce_g"
-                                         onclick=""></div>
+                                <div class="ct1 contype1_cont3" style="width:140px; padding: 32px 0 0 3px;">
+                                    {# 减商品 #}
+                                    <div id="{{ cart.id }}" class="oper_goods reduce_g subp"></div>
                                     <div id="p_dec_disabled1_0" class="oper_goods reduce_g" style="display:none"></div>
 
                                     <div class="input_goods" id="input_goods_1_0_616969">
-                                        <input id="amount1_0_616969" value="1" class="item_amount"/>
+                                        <input id="num_{{ cart.id }}" value="{{ cart.cnt }}" class="item_amount"/>
                                         <input type="hidden" id="oldAmount1_0_616969" value="1"/>
                                         <input type="hidden" id="isPromotion1_0_616969" value=""/>
                                         <span class="restr_arrow"></span>
                                     </div>
 
-                                    <div id="p_add1_0" class="oper_goods plus_g"
-                                         onclick=""></div>
+                                    {# 加商品 #}
+                                    <div id="{{ cart.id }}" class="oper_goods plus_g addp"></div>
                                     <div id="p_add_disabled1_0" class="oper_goods plus_g" style="display:none;"></div>
                                     <div class="clear"></div>
                                 </div>
-
-{#                                <div class="ct1 contype1_cont4">#}
-{##}
-{##}
-{#                                    2#}
-{#                                </div>#}
-
-
-                                {# 小计 #}
-                                <div class="ct1 contype1_cont5"><span>￥39.80</span></div>
+                                <div class="ct1 contype1_cont5">￥<span id="sumpro_{{ cart.id }}" title="{{ cart.cnt }}">39.80</span></div>
                                 {# 删除订单 #}
-                                <div class="ct1 contype1_cont6">
-                                    <div class="fath_div_1">
-                                        <a onclick="" href="" data-id="1"
-                                           data-mid="0" data-productid="616969">删除</a>
+                                <div class="ct1 contype1_cont6" >
+                                    <div class="fath_div_1" style="text-align: right;font-size: 14px">
+                                        <a class="deletepro" id="{{ cart.id }}">删除</a>
                                         <span class="top_img"></span>
                                     </div>
                                 </div>
 
                                 <div class="clear"></div>
                             </div>
+                            {% endfor %}
+
+
 
 
 
@@ -234,14 +186,14 @@
 
                             <div class="ordercont_edit">
                                 <div class="ordercont_allcheck fl">
-                                    <input type="checkbox" id="all_two1" class="checkall" cartids="1" checked="checked"
-                                           onclick="selectAllCartItem('all_two1',0);"/>
+                                    <input type="checkbox" id="all_two1" class="allchose" cartids="1"
+                                           checked="checked"/>
                                     <label for="all_two1">全选</label>
                                     <div class="clear"></div>
                                 </div>
                                 <div class="pos fl">
-                                    <a href="javascript:void(0);" id="delSelCartItems1" cartids="1" todel="1"
-                                       onclick="delSelectedCart(0,1);" class="delete_all">删除</a>
+                                    <a id="0" style="cursor: pointer"
+                                        class="deletepro">删除</a>
                                     <span class="top_img"></span>
                                 </div>
                                 <div class="clear"></div>
@@ -254,23 +206,20 @@
 
                         </div>
 
-                        <div class="ordam_right">
+                        <div class="ordam_right" style="width: 180px">
 
 
                             <div class="ordam-total">
-                                <span class="num fl">已选 <em>2</em> 件</span>
-                                <script type="text/javascript">synchronousNavAmount(2); // 同步当前标题商品数量</script>
-                                <span id="j-totaltopay1" class="oar-money-total fl">￥63.60</span>
-                                <span class="oar_title-total fl">应付金额：</span>
+                                <span id="j-totaltopay1" class="oar-money-total fl" style="width: 80px">{{ allMoney }}</span>
+                                <span class="oar_title-total fl" style="font-size: 16px;font-family: bold">应付金额：</span>
                                 <div class="clear"></div>
                             </div>
                             <div class="btn">
-                                <a href="javascript:topay(true,'cofcocheck');" class="fl topay topay1" data-first="y"
-                                   topay="1" id="cofcocheck">去结算</a>
+                                <a class="fl topay topay1" data-first="y"
+                                   topay="1" id="toOrder">去结算</a>
                                 <div class="clear"></div>
                             </div>
                         </div>
-
 
 
                         <div class="clear"></div>
@@ -288,24 +237,43 @@
                         <div class="golist_all"></div>
                     </div>
 
-                    <script type="text/javascript">setcart_mahout_request();// 加载猜你喜欢、最近收藏</script>
-
-
-                    <script type="text/javascript">confinedArea();</script>
 
 
                 </div>
 
             </div>
-{#            <div class="ordercont_content" data-first="y" style="display:none"></div>#}
-{#            <div class="ordercont_content" data-first="y" style="display:none"></div>#}
-{#            <div class="ordercont_content" data-first="y" style="display:none"></div>#}
-{#            <div class="ordercont_content" data-first="y" style="display:none"></div>#}
-{#            <div class="ordercont_content" data-first="y" style="display:none"></div>#}
-{#            <div class="ordercont_content" data-first="y" style="display:none"></div>#}
+
         </div>
     </div>
-    <script type="text/javascript">initCartItemsEvents();</script>
+</div>
+
+{# 删除模态框 #}
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document" style="margin: 180px auto">
+<div class="modal-content" style="margin: 0 80px">
+  <div class="modal-body">
+    <h4><strong><span id="delMsg">确定要删除此商品吗?</span></strong></h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="close" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+      <button id="ok" type="button" class="btn btn-sm btn-default">确定</button>
+  </div>
+</div>
+</div>
+</div>
+
+{# 下订单模态框 #}
+<div class="modal" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document" style="margin: 180px auto">
+<div class="modal-content" style="margin: 0 80px">
+  <div class="modal-body">
+    <h4><strong><span id="selMsg">请先选择商品</span></strong></h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="close" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+  </div>
+</div>
+</div>
 </div>
 
 
@@ -325,10 +293,12 @@
 <p class="copyright">Copyright&#169;2009-2018 womai.com.hk 版权所有</p>
 </div>
 
-<img src="/static/cart/picture/387bbc9e1ae743778d061a45ae55876d.gif"
-     style="display:none;width:0;height:0;margin:0;padding:0;border:0;"></body>
+<img src=""
+     style="display:none;width:0;height:0;margin:0;padding:0;border:0;">
+
+
+
+</body>
 </html>
 
 
-{#<script type="text/javascript" src="/static/cart/js/jquery.cookie.js"></script>#}
-{#<script type="text/javascript" src="/static/cart/js/userinfo.js"></script>#}

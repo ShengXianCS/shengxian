@@ -1,0 +1,68 @@
+
+.ac_results {
+	position: absolute;
+	z-index: 10000;
+	display: none;
+	padding: 0 10px 5px 5px;
+	margin: 0;
+	list-style: none;
+	border: 1px solid #ccc;
+	background-color: white;
+}
+.ac_results tr {
+	line-height:2em;
+	cursor:pointer;
+}
+.ac_results li {
+	padding: 2px 5px;
+	white-space: nowrap;
+	color: #101010;
+	text-align: left;
+}
+
+.ac_over {
+	background-color: #f5f5f5;
+    color :#606060;
+    border:0px;
+}
+
+.ac_match {
+	text-decoration: underline;
+	color: black;
+}
+
+.ac_word {
+    width:70%;
+    padding:0;
+    padding-top:2px;
+    padding-left:6px;
+    margin:0;
+    text-align:left;
+    color:#606060
+}
+.ac_results .ac_item1 {
+	padding-bottom:5px;
+	border-bottom:1px dotted #ccc;
+}
+.ac_desc {
+    width:30%;
+    padding:0;
+    margin:0;
+    color:#999;
+    text-align:right;
+    font-size:12px;
+}
+ 
+.ac_column {
+    width:70%;
+    padding:0;
+    padding-top:2px;
+    padding-left:20px;
+    margin:0;
+    text-align:left;
+}
+   
+.ac_column span{
+    color:#cc0000;
+    font-weight:bold;
+}

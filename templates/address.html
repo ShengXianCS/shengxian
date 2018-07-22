@@ -20,10 +20,12 @@
     	<h2 class="header"><span></span>收货地址</h2>
         <ul class="content">
 
+
             {% for myAddr in myAddrs %}
                 {% if myAddr.isselect == 1 %}
                     <li id="defalutAddress" class="adds old_add_default"></li>
                     <input type="hidden" value="20868010" id="defalutAddressId">
+
                     <li class="adds old_add" id="old_add_20868010">
                         <div class="name_infor">
                             <div class="name_etc" style="width: 240px">
@@ -45,6 +47,7 @@
                         </div>
                     </li>
                 {% else %}
+
                     <li class="adds old_add" id="old_add_20868118">
                         <div class="name_infor">
                             <div class="name_etc">
@@ -64,6 +67,7 @@
                         <div class="add_infor">
                             <strong class="add_city"><span>{{ myAddr.detailAddr }}</span></strong>
 
+
                         </div>
                     </li>
                 {% endif %}
@@ -73,13 +77,15 @@
 
 
 
-            <li class="addnew_add">
-                <ul>
-                    <li class="addpic"></li>
-                    <li ><a class="addnew_text">添加新地址</a></li>
-                    <!-- <li class="left_num">还可创建16个</li> -->
-                </ul>
-            </li>
+
+         <li class="addnew_add">
+             <ul>
+                 <li class="addpic"></li>
+                 <li class="addnew_text">添加新地址</li>
+                 <!-- <li class="left_num">还可创建16个</li> -->
+             </ul>
+         </li>
+
         </ul>
 
         <div class="modal" id="myModal" style="margin-top: -4rem" tabindex="-1" role="dialog"

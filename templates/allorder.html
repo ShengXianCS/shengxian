@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>我的订单</title>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/modal.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/commonalert.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/ll.ui.datepicker.1.0.0.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/new_sell_list.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/conqu_order.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/myorder/css/live800button.css"/>
+    <script type="text/javascript" language="javascript" src="/static/main/js/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/main/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/addtocartmessage.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/ll.ui.datepicker.1.0.0.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/sny1.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/order_common.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/new_order_sell_list.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/engine.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/util.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/orderpayservice.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/allorder.js"></script>
+    <script type="text/javascript" src="/static/myorder/js/commonalert.js"></script>
+
+    <script type="text/javascript" language="javascript" src="/static/myorder/js/live800button.js" charset="utf-8"></script>
+</head>
+<body>
+{#<form action="/Member/menumyorderlist.do" id="myOrderListForm" method="get">#}
+{#    <input id="mid" name="mid" type="hidden" value="0"/>#}
+{#    <input id="ColumnId" name="ColumnId" type="hidden" value=""/>#}
+{#    <input id="orderType" name="orderType" type="hidden" value="8"/>#}
+{#    <input id="limitStates" name="limitStates" type="hidden" value="1"/>#}
+{#    <input id="state" name="state" type="hidden" value="101"/>#}
+{#    <input id="page" name="page" type="hidden" value="1"/>#}
+{#    <input id="isSignfor" name="isSignfor" type="hidden" value="0"/>#}
+{#    <input id="tag" name="tag" type="hidden" value="5"/>#}
+{#    <input id="aliasCode" name="aliasCode" type="hidden" value=""/>#}
+{#    <input id="beginDate" name="beginDate" type="hidden" value=""/>#}
+{#    <input id="endDate" name="endDate" type="hidden" value=""/>#}
+{#    <input id="orderStateValue" name="orderStateValue" type="hidden" value="订单状态"/>#}
+{#    <input id="isHaveSearch" name="isHaveSearch" type="hidden" value="0"/>#}
+{#    <input id="isSolr" name="isSolr" type="hidden" value="y"/>#}
+{#    <input id="mzhOrderCount" name="mzhOrderCount" type="hidden" value="0"/>#}
+{#    <input id="ttmenumyorderlist" name="tt" type="hidden" value="0.5350400116339185"/>#}
+{#</form>#}
+<input id="j-cancel-orderid" type="hidden" value=""/>
+<input id="j-cancel-orderaliasid" type="hidden" value=""/>
+<input id="j-cancel-flag" type="hidden" value=""/>
+<div id="gotopay" style="display: none;"></div>
+
+<div class="wrap_list">
+
+
+    <div class="list_1f"><b></b>我的订单</div>
+
+    <div class="list_2f">
+
+        <div class="l2f_1f">
+
+
+            <div id="tabDiv" class="l2f_1f_left">
+                <ul>
+                    <li>
+                        <div class="{% if state == '0' %}
+                        active
+                        {% endif %}"><a href="/order/allorder/0">全部订单</a></div>
+                    </li>
+                    <li>
+                        <div class="{% if state == '1' %}
+                        active
+                        {% endif %}"><a href="/order/allorder/1">待付款</a></div>
+                    </li>
+                    <li>
+                        <div class="{% if state == '2' %}
+                        active
+                        {% endif %}"><a href="/order/allorder/2">待收货</a></div>
+                    </li>
+                    <li>
+                        <div class="{% if state == '3' %}
+                        active
+                        {% endif %}"><a href="/order/allorder/3">待评价</a></div>
+                    </li>
+                    <li>
+                        <div class="{% if state == '4' %}
+                        active
+                        {% endif %}"><a href="/order/allorder/4">交易完成</a></div>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="l2f_2f"></div>
+        <div class="l2f_2fin">
+            <ul>
+                <li class="w291">商品</li>
+                <li class="w83">数量</li>
+                <li class="w128">订单金额</li>
+                <li class="w78">订单状态</li>
+                <li class="w106">操作</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+
+        {% for order in orders %}
+              <div class="div_popup" style="display:block;">
+            <div class="l2f_3f">
+                <div class="l2f_3f_title">
+                    <ul class="l2f_3f_title_ul">
+                        <li class="title_li01">订单编号：
+                            <a target="_blank" id=""
+                               href="/order/toorder/{{ order.orderNum }}">
+                                <span> {{ order.orderNum }}</span>
+                            </a>
+                        </li>
+                        <li class="title_li02">下单时间：
+                            {{ order.orderTime }}
+                        </li>
+                        <li class="title_li03" style="margin-left: 90px;color: red">
+                            <strong>￥{{ order.orderPrice }}</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="l2f_3f_detail">
+
+                    <div class="fl detail_left">
+
+                        {% for ordpro in order.ordergoods_set.all %}
+                            <ul>
+                            <li class="w291">
+                                <dl class="dl2">
+                                    <dt>
+                                        {# 商品图片 #}
+                                        <span>
+                                            <img title="{{ pro.products.productname }}"
+                                                 src="{{ ordpro.products.productimg }}"/>
+                                        </span>
+                                    </dt>
+                                    {# 商品名 #}
+                                    <dd><span>{{ ordpro.products.productname|truncatechars:60 }}</span></dd>
+                                </dl>
+                            </li>
+                            <li class="w83">X&nbsp;{{ ordpro.cnt }}</li>
+                        </ul>
+                        {% endfor %}
+
+                    </div>
+                    <ul class="fl detail_right">
+                        <li class="w128 jh01">
+                            <div class="outer jh01">
+                                <div class="middle">
+                                    <div class="inner">
+                                        <p>合计：
+                                            <span class="c_red">{{ order.orderPrice }}</span>
+                                        </p>
+                                        {% if order.payState == 1 %}
+                                            <p>支付方式： {{ order.payTypeName }}</p>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="w78 jh02">
+                            <div class="outer jh01">
+                                <div class="middle">
+                                    <div class="inner">
+                                        <p class="color_01" id="orderstate">
+                                            {{ order.orderStateName }}  {# 订单状态 #}
+                                        </p>
+                                        <div class="list_time">
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="w106 topaybtn jh03" style="z-index: 99;">
+                            <div class="outer jh01">
+                                <div class="middle">
+                                    <div class="inner">
+
+                                        <div id="cancelbtn_0">
+                                            {# 未支付的情况 #}
+                                            {% if order.payState == 0 and order.orderState == 0 %}
+                                            <span id="canceltopay" class="topayimg">
+                                                <a href="/order/toorder/{{ order.orderNum }}" target="_blank"><p class="font_white forpay" id="topay">去支付</p></a>
+                                            </span>
+                                            <a class="offorder" id="{{ order.orderNum }}" style="cursor: pointer">取消订单</a>
+                                            {% else %}
+                                                <a  class="offorder" id="{{ order.orderNum }}" style="cursor: pointer">删除订单</a>
+                                            {% endif %}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                    <div class="clear"></div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="pglist_page">
+            <div class='page'>
+                <div class='page_l'><a href='#' class='prev' title='目前已是第一页'>上一页</a><a class='select'>1</a><a
+                        class='next' title='目前已是最后一页'>下一页</a></div>
+                <div class='page_m'>共<span>1</span>页</div>
+                <div class='page_m_2'>到第</div>
+                <div class='page_m_3'><input type='text' class='page_input' value='1'></div>
+                <div class='page_m_4'>页</div>
+                <div class='page_r'><input
+                        type='button'></div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<input type="hidden" id="theorderId"/>
+
+{# 删除模态框 #}
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document" style="margin: 180px auto">
+<div class="modal-content" style="margin: 0 120px">
+  <div class="modal-body">
+    <h3><strong><span id="delMsg"></span></strong></h3>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="close" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+      <button id="ok" type="button" class="btn btn-sm btn-default">确定</button>
+  </div>
+</div>
+</div>
+</div>
+
+
+</body>
+</html>
+
