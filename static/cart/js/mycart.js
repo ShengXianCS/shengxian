@@ -157,7 +157,7 @@ $(function () {
                     $('#deleteModal').modal({backdrop:'static',show:true});
                     $('#ok').text('添加地址');
                     $('#ok').click(function () {
-                        window.open('/user/addr',target='_self')
+                        window.open('/order/myhome/1',target='_self')
                     });
                     return
                 }

@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
 from orderapp.models import Cart,Order,OrderGoods
 from userapp.models import User,Address
 
@@ -80,36 +82,39 @@ def subPro(request,cart_id):
 #分为两种情况，第一种是在购物车对已有的商品添加，另一种是在商店第一次添加或对已有商品添加
 def addPro(request,cart_id):
     userid = request.session.get('user_id')
-    if userid:
-        data = {'status': 'ok', 'price': 0}
-        user = User.objects.get(id=userid)  #拿到用户信息
-        cart = Cart.objects.filter(id=cart_id)  #拿到购物车对象
+    print(userid)
+    if not userid:
+        print('haha')
+        return redirect('/user/login')
+
+    data = {'status': 'ok', 'price': 0}
+    user = User.objects.get(id=userid)  #拿到用户信息
+    cart = Cart.objects.filter(id=cart_id)  #拿到购物车对象
+    if cart:
+        cart = cart.first()
+        #要考虑到一个库存，这里暂时先不做
+        cart.cnt += 1
+        cart.save()
+        data['price'] = cart.products.price
+        return JsonResponse(data)
+
+    else:  #第一次添加到购物车或在商店添加已有商品
+        #先查询购物车
+        cart = Cart.objects.filter(products_id=cart_id,user_id=user.id)
         if cart:
-            cart = cart.first()
-            #要考虑到一个库存，这里暂时先不做
-            cart.cnt += 1
-            cart.save()
+            cart.update(cnt=F("cnt")+1)
             data['price'] = cart.products.price
             return JsonResponse(data)
 
-        else:  #第一次添加到购物车或在商店添加已有商品
-            #先查询购物车
-            cart = Cart.objects.filter(products_id=cart_id,user_id=user.id)
-            if cart:
-                cart.update(cnt=F("cnt")+1)
-                data['price'] = cart.products.price
-                return JsonResponse(data)
+        #创建购物车信息,商品数默认为1
+        cart = Cart()
+        cart.user_id = user.id
+        cart.products_id = cart_id  #这里cart_id是商品的id
+        cart.save()
 
-            #创建购物车信息,商品数默认为1
-            cart = Cart()
-            cart.user_id = user.id
-            cart.products_id = cart_id  #这里cart_id是商品的id
-            cart.save()
+        data['price'] = cart.products.price
+        return JsonResponse(data)
 
-            data['price'] = cart.products.price
-            return JsonResponse(data)
-    else:
-        return render(request, 'login1.html')
 
 def delCart(request,cart_id):
     # cart_id为0时表示删除清空购物车
@@ -134,7 +139,7 @@ def createOrderNo():
 def toOrder(request,ordernum):
     userid = request.session.get('user_id')
     if not userid:
-        return render(request,'login.html')
+        return render(request,'login1.html')
     if ordernum == '0':
         #创建订单
         order = Order()
@@ -183,7 +188,7 @@ def payOrder(request,ordernum,payType):
         userid = request.session.get('user_id')
         user = User.objects.filter(id=userid).first()
         if not user:
-            return render(request,'login.html')
+            return render(request,'login1.html')
 
         if user.money < order.orderPrice:  #余额不足
             return JsonResponse({'status':'fail','msg':'对不起，账户余额不足'})
@@ -212,10 +217,10 @@ def payOrder(request,ordernum,payType):
 def orderList(request,state):
     # state:0全部订单，1待付款，2待收货，3待评价
     userid = request.session.get('user_id')
-    user = User.objects.filter(id=userid).first()
-    if not user:
-        return render(request,'login.html')
+    if not userid:
+        return render(request,'login1.html')
 
+    user = User.objects.filter(id=userid).first()
     #取出当前登录用户的所有订单
     userOrders = user.order_set
     if state == '1':  #待支付
@@ -236,18 +241,21 @@ def orderList(request,state):
     })
 
 #个人中心
-def myHome(request):
+def myHome(request,state):
     userid = request.session.get('user_id')
     if userid:
         user = User.objects.get(id=userid)
-        cart = user.cart_set
-        if cart:
+        cart = user.cart_set.all()
+        print(cart)
+        if not cart:
             cartcnt = 0
         else:
             cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
+        print(cartcnt)
         return render(request,'myhome.html',{
             'cartcnt': cartcnt,
-            'username':user.name
+            'username':user.name,
+            'state':state
         })
     else:
         return render(request,'login1.html')
@@ -265,3 +273,47 @@ def delOrder(request,ordernum,deltype):
         data['msg'] = '订单删除成功!'
     return JsonResponse(data)
 
+
+#收货地址管理
+@csrf_exempt
+def address(request,state,addrid):
+    #state：对地址的操作，0 查看所有，1添加地址，2修改地址，3删除地址，4设为默认
+    # addrid：地址id
+    userid = request.session.get('user_id')
+    if not userid:
+        return render(request, 'login1.html')
+
+    user = User.objects.filter(id=userid).first()
+    if state == '1':  #创建地址
+        addr = Address()
+        addr.name = request.POST.get('name')
+        addr.phone = request.POST.get('phone')
+        addr.detailAddr = request.POST.get('address')
+        addr.zipCode = request.POST.get('zipcode')
+        addr.user_id = user.id
+        addr.save()
+        return JsonResponse({'status':'ok','addrid':addr.id})
+    elif state == '2':
+        addr = Address.objects.get(id=addrid)
+        addr.name = request.POST.get('name')
+        addr.phone = request.POST.get('phone')
+        addr.detailAddr = request.POST.get('address')
+        addr.zipCode = request.POST.get('zipcode')
+        addr.save()
+        return JsonResponse({'status':'ok','addrid':addr.id})
+    elif state == '3':
+        Address.objects.filter(id=addrid).delete()
+        return JsonResponse({'status': 'ok', 'msg': '地址删除成功!'})
+    elif state == '4':
+        lastSel = Address.objects.filter(isselect=True)  #拿到之前被选为默认的地址
+        lastid = ''
+        if lastSel:  #先看之前有没有选择默认地址
+            lastid = lastSel.first().id
+            lastSel.update(isselect=False)  #将之前默认地址取消默认
+            Address.objects.filter(id=addrid).update(isselect=True)  #将要设置默认的地址设置
+        else:  #没有默认的话，就直接将要设置的改为默认
+            Address.objects.filter(id=addrid).update(isselect=True)
+        return JsonResponse({'status':'ok','lastid':lastid,'msg':'设置成功!'})
+
+    addrs = Address.objects.filter(user_id=userid)
+    return render(request,'address1.html',{'addrs':addrs})

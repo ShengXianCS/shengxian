@@ -29,8 +29,8 @@ urlpatterns = [
     url(r'^delcart/(?P<cart_id>\d+)$',views.delCart),  #删除商品
     url(r'^toorder/(?P<ordernum>\d+)$',views.toOrder),  #下订单或查看订单详细
     url(r'^pay/(?P<ordernum>\d+)/(?P<payType>[012])$',views.payOrder),  #支付订单
-    url(r'^allorder/(?P<state>[01234])$',views.orderList),  #订单管理
-    url(r'^myhome$',views.myHome),  #个人中心
+    url(r'^allorder/(?P<state>[0-4])$',views.orderList),  #订单管理
+    url(r'^myhome/(?P<state>[0-3])$',views.myHome),  #个人中心
     url(r'^delorder/(?P<ordernum>\d+)/(?P<deltype>[01])$',views.delOrder),  #删除或取消订单
-
+    url(r'^addr/(?P<state>[0-4])/(?P<addrid>\d+)$',views.address),  #用户收货地址管理
 ]

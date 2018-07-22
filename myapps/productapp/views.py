@@ -9,8 +9,8 @@ def home(req):
     cartcnt = 0
     if userid:
         user = User.objects.get(id=userid)
-        cart = user.cart_set
-        if cart:
+        cart = user.cart_set.all()
+        if not cart:
             cartcnt = 0
         else:
             cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
@@ -27,15 +27,17 @@ def home(req):
 
 
 def prodshow(req, categoryid, sortid=0):
-    productslist = None
-
-    userid = 1
-    user = User.objects.get(id=userid)
-    cart = user.cart_set
-    if cart:
-        cartcnt = 0
-    else:
-        cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
+    userid = req.session.get('user_id')
+    cartcnt = 0
+    username = ''
+    if userid:
+        user = User.objects.get(id=userid)
+        username = user.name
+        cart = user.cart_set.all()
+        if not cart:
+            cartcnt = 0
+        else:
+            cartcnt = cart.aggregate(Sum('cnt')).get('cnt__sum')
 
     sortColumn = 'productid'
     if sortid == '1':
@@ -43,7 +45,7 @@ def prodshow(req, categoryid, sortid=0):
     elif sortid == '2':
         sortColumn = 'price'
     elif sortid == '3':
-        sortColumn = 'salenums'
+        sortColumn = '-salenums'
     productlist=Products.objects.filter(typeid=categoryid).all()
     if categoryid:
         productlist = productlist.order_by(sortColumn)
@@ -52,4 +54,5 @@ def prodshow(req, categoryid, sortid=0):
                   {'categoryid': categoryid,
                    'sortid': sortid,
                    'cartcnt': cartcnt,
-                   'productlist': productlist})
+                   'productlist': productlist,
+                   'username':username})

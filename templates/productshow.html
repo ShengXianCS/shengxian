@@ -81,10 +81,17 @@
                 <li class="t_item mycount" id="myaccount" data-first="yes">
                     <p><a name="_gatrack_event_myaccount"
                           data-ga="site_nav" data-gatext="我的账户"
-                          href="/order/myhome"
+                          href="/order/myhome/0"
                           id="t_item_mycount" rel="nofollow"
-                          target="_blank"><span class="text">我的账户<i class="png"></i></span></a></p>
+                          target="_blank"><span class="text">我的账户</span></a></p>
                 </li>
+                <li class="t_item line">|</li>
+                    <li class="t_item mycount" id="myaccount" data-first="yes">
+                    <p><a name="_gatrack_event_myaccount"
+                          data-ga="site_nav" data-gatext="我的账户"
+                          href="/user/logout"
+                          id="t_item_mycount" rel="nofollow"><span class="text">退出</span></a></p>
+                    </li>
             {% else %}
                 <li class="t_item mycount" id="myaccount" data-first="yes">
                     <p><a name="_gatrack_event_myaccount"
@@ -103,7 +110,7 @@
             <li class="cart t_item">
                 <a name="_gatrack_event_shoppingcart"
                    href="/order/mycart" class="cartlink_curr" target='_blank'>
-                    购物车 <b class="smallcart_totalamount" id="headcnt"></b>{{ cartcnt }} 件 </a></li>
+                    购物车 <b class="smallcart_totalamount" id="headcnt">{{ cartcnt }}</b> 件 </a></li>
             <li class="t_item line">|</li>
             <li class="t_item mycount"><p><a href=""><span class="text">客户服务<i
                     class="png"></i></span></a></p>
@@ -333,7 +340,7 @@
     </div>
     <div class="main-r fl" id="ajaxrightshow"> <!-- 加载展示搜索结果的页面 -->
         <form onsubmit="return searchCheckTopSearchForm();"
-              action="/ProductList.do" id="searchProductListForm"
+              action="" id="searchProductListForm"
               method="get">
             <input id="mid" name="mid" type="hidden" value="0"/> <input
                 id="Cid" name="Cid" type="hidden" value="500219"/> <input
@@ -370,29 +377,25 @@
         </form>
 <div class="sort" >
     <div class="sort-1 clearfix" style=" width: 1060px; padding: 30px 0; border-bottom: 1px solid #eeeced; margin-bottom:10px;">
-        <a href="/sy/pdshow/{{ categoryid }}/1">
-            {% if sortid == 1 %}
-                <span class="select">
-            {% else %}
-                <span style=" float: left; position: relative; width: 52px; text-align: center; color: #43a400; text-decoration: none; border-color: #43a400" >
-            {% endif %}
-             综合</span>
+        <a href="/sy/pdshow/{{ categoryid }}/0" class="{% if sortid == '0'%}
+        select
+        {% endif %}" style="width: 80px">
+             综合
             </a>
-        <a href="/sy/pdshow/{{ categoryid }}/2">
-            {% if  sortid == 2 %}
-                <span class="select">
-            {% else %}
-                <span  style=" float: left; position: relative; width: 52px; text-align: center; color: #43a400; text-decoration: none;" >
-            {% endif %}
-            价格</span>
+        <a href="/sy/pdshow/{{ categoryid }}/1" class="{% if sortid == '1'%}
+        select
+        {% endif %}" style="width: 80px">
+             价格最高
+            </a>
+        <a href="/sy/pdshow/{{ categoryid }}/2" class="{% if sortid == '2'%}
+        select
+        {% endif %}" style="width: 80px">
+            价格最低
         </a>
-        <a href="/sy/pdshow/{{ categoryid }}/3">
-            {% if sortid == 3 %}
-                <span class="select">
-            {% else %}
-                <span  style=" float: left; position: relative; width: 52px; text-align: center; color: #43a400; text-decoration: none;" >
-            {% endif %}
-            销量</span>
+        <a href="/sy/pdshow/{{ categoryid }}/3" class="{% if sortid == '3'%}
+        select
+        {% endif %}" style="width: 80px">
+            销量最高
         </a>
     <div class="result-sum clearfix">
                     <span>总共{{ productlist.count }}件相关商品</span>
@@ -447,19 +450,11 @@
 								<div class="rated">
 									<span class="evaluated">销量<a target="_blank"
 										href="/Product-0-{{ product.productid }}.htm?piwik_cid={{ categoryid }}#remark"><em>{{ product.salenums }}</em></a></span>
-									<span class="collection" name="favorite"
-										onclick="addFavor(0,{{ product.productid }});"><b
-										class="png"></b>收藏</span> <span class="addCart"
-										id="items_buy_{{ product.productid }}" style="display: none;"
-										onclick="isGoToCart({{ product.productid }}, 0);"><b
-										class="png"></b>加入购物车</span> <span class="addCart" id="items_apacketmial_{{ product.productid }}"
-                                                                       style="display: none;"><b
-                                    class="png"></b>加入购物车</span> <span class="addCart"
-                                                                      id="items_soldout_{{ product.productid }}"
-                                                                      style="display: none;"
-                                                                      onclick="addNotice(0,{{ product.productid }})"
-                                                                      name="notice"><b
-                                    class="png"></b>加入购物车</span>
+									<span class="collection" name="favorite"><b
+										class="png"></b>收藏</span>
+                                    <span class="addCart"
+										id="items_buy_{{ product.productid }}"><b
+										class="png"></b>加入购物车</span>
                             </div>
                         </div>
                     </li>

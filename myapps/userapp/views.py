@@ -24,7 +24,7 @@ def newToken(username):
     return md5.hexdigest()
 
 def login(req):
-    if req.method=='GET':
+    if req.method == 'GET':
         return render(req,'login1.html')
     phone=req.POST.get('name')
     passwd=req.POST.get('passwd')
@@ -105,12 +105,12 @@ def code(req):
     # 将生成的验证码的字符串存入到session中
     req.session['verifycode'] = chars
 
-    font = ImageFont.truetype(font='static/fonts/hktt.ttf', size=25)
+    font = ImageFont.truetype(font='static/fonts/hktt.ttf', size=28)
     for char in chars:
         xy = (15 + chars.find(char) * 20, random.randrange(2, 8))
         draw.text(xy=xy,
                   text=char,
-                  fill=(255, 0, 0),
+                  fill=(39, 45, 255),
                   font=font)
     for i in range(200):
         xy = (random.randrange(120), random.randrange(30))
