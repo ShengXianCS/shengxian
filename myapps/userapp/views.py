@@ -48,7 +48,10 @@ def login(req):
 def regist(request):
     if request.method=='GET':
         return render(request,'regist.html')
-    else:
+    inputCode=request.POST.get('code')
+    sessionCode=request.session.get('code')
+    if inputCode == sessionCode:
+        print('验证码输入正确')
         user=User()
         user.name=request.POST.get('name')
         user.passwd=jiami(request.POST.get('passwd2'))
@@ -59,6 +62,8 @@ def regist(request):
 
         print('{}保存成功'.format(user.id))
         return redirect('/user/login')
+    else:
+        return HttpResponse('验证码输入不正确。。。刷新图片，重新输入')
 
 
 
@@ -70,8 +75,9 @@ def addAddress(req):
         addr.name=req.POST.get()
     return render(req,'address.html',)
 
-def myAddress(req):
-    user_id=req.session.get('user_id')
+def myAddress(req,user_id):
+# def myAddress(req):
+    # user_id=req.session.get('user_id')
     myAddrs=Address.objects.filter(user_id=user_id)
     return render(req, 'address.html', {'myAddrs':myAddrs})
 
@@ -111,7 +117,7 @@ def code(req):
             chars += char
 
     # 将生成的验证码的字符串存入到session中
-    req.session['verifycode'] = chars
+    req.session['code'] = chars
 
     font = ImageFont.truetype(font='static/fonts/hktt.ttf', size=25)
     for char in chars:

@@ -5,6 +5,8 @@
     <title>我的收货地址</title>
     <link rel="stylesheet" type="text/css" href="/static/address/css/address.css">
     <link href="/static/address/css/msgbox.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/static/user/main/css/bootstrap.min.css">
+
     <script type="text/javascript" language="javascript" src="/static/address/js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="/static/address/js/jquery.form.js"></script>
     <script type="text/javascript" language="javascript" src="/static/address/js/jquery-impromptu.1.3.js"></script>
@@ -18,64 +20,104 @@
     	<h2 class="header"><span></span>收货地址</h2>
         <ul class="content">
 
-        {% for myAddr in myAddrs %}
-            {% if myAddr.isselect == 1 %}
-                <li id="defalutAddress" class="adds old_add_default"></li>
-                <input type="hidden" value="20868010" id="defalutAddressId">
+            {% for myAddr in myAddrs %}
+                {% if myAddr.isselect == 1 %}
+                    <li id="defalutAddress" class="adds old_add_default"></li>
+                    <input type="hidden" value="20868010" id="defalutAddressId">
                     <li class="adds old_add" id="old_add_20868010">
-                    <div class="name_infor">
-                        <div class="name_etc" style="width: 220px">
+                        <div class="name_infor">
+                            <div class="name_etc" style="width: 240px">
                             <span class="name"
                                   title="{{ myAddr.name }}">{{ myAddr.name }}…</span><span>收</span><span>{{ myAddr.phone }}</span>
-                            <span class="default_add">默认地址</span>
+                                <span class="default_add">默认地址</span>
+                            </div>
+                            <ul class="btns" style="width: 150px">
+                                <li class="delete"><a class="delete1">删除</a></li>
+                                <li class="edit"><a class="change1">编辑</a></li>
+                                <li class="set_default"><a href="javascript:"
+                                                           onclick="updateDefaultAddress({{ myAddr.zipCode }},{{ myAddr.name }},{{ myAddr.detailAddr }},{{ myAddr.phone }});">设为默认</a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="btns" style="width: 150px">
-                            <li class="delete"><a href="javascript:;" onclick="addrDel(20868118);return false;"
-                                                  class="myad_s2">删除</a></li>
-                            <li class="edit"><a href="javascript:;" onclick="update(20868118);return false;"
-                                                class="thickbox myad_s1">编辑</a></li>
-                            <li class="set_default"><a href="javascript:" onclick="updateDefaultAddress();">设为默认</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="add_infor">
-                        <strong class="add_city"><span>{{ myAddr.detailAddr }}</span></strong>
+                        <div class="add_infor">
+                            <strong class="add_city"><span>{{ myAddr.detailAddr }}</span></strong>
 
-                    </div>
-                </li>
+                        </div>
+                    </li>
                 {% else %}
-                <li class="adds old_add" id="old_add_20868118">
-            <div class="name_infor">
-                <div class="name_etc">
-                    <span class="name" title="{{ myAddr.name }}">{{ myAddr.name }}…</span><span>收</span><span>{{ myAddr.phone }}</span>
-                    <span class="default_add">默认地址</span>
-                </div>
-                <ul class="btns">
-                    <li class="delete"><a href="javascript:;" onclick="addrDel(20868118);return false;" class="myad_s2">删除</a></li>
-                    <li class="edit"><a href="javascript:;" onclick="update(20868118);return false;" class="thickbox myad_s1">编辑</a></li>
-                    <li class="set_default"><a href="javascript:" onclick="updateDefaultAddress();">设为默认</a></li>
+                    <li class="adds old_add" id="old_add_20868118">
+                        <div class="name_infor">
+                            <div class="name_etc">
+                                <span class="name"
+                                      title="{{ myAddr.name }}">{{ myAddr.name }}…</span><span>收</span><span>{{ myAddr.phone }}</span>
+                                <span class="default_add">默认地址</span>
+                            </div>
+                            <ul class="btns">
+                                <li class="delete"><a class="delete1">删除</a>
+                                </li>
+                                <li class="edit"><a class="change1">编辑</a></li>
+                                <li class="set_default"><a href="javascript:"
+                                                           onclick="updateDefaultAddress({{ myAddr.zipCode }},{{ myAddr.name }},{{ myAddr.detailAddr }},{{ myAddr.phone }});">设为默认</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="add_infor">
+                            <strong class="add_city"><span>{{ myAddr.detailAddr }}</span></strong>
+
+                        </div>
+                    </li>
+                {% endif %}
+
+            {% endfor %}
+
+
+
+
+            <li class="addnew_add">
+                <ul>
+                    <li class="addpic"></li>
+                    <li ><a class="addnew_text">添加新地址</a></li>
+                    <!-- <li class="left_num">还可创建16个</li> -->
                 </ul>
-            </div>
-            <div class="add_infor">
-                <strong class="add_city"><span>{{ myAddr.detailAddr }}</span></strong>
-
-            </div>
-        </li>
-            {% endif %}
-
-        {% endfor %}
-
-
-
-
-         <li class="addnew_add">
-             <ul>
-                 <li class="addpic"></li>
-                 <li class="addnew_text">添加新地址</li>
-                 <!-- <li class="left_num">还可创建16个</li> -->
-             </ul>
-         </li>
+            </li>
         </ul>
+
+        <div class="modal" id="myModal" style="margin-top: -4rem" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold">添加新地址</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label"
+                                       style="font-weight: normal;font-size: 0.4rem">收货人</label>
+                                <input type="text" class="form-control" id="recipient-name" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-phone" class="control-label"
+                                       style="font-weight: normal;font-size: 0.4rem">联系电话</label>
+                                <input type="text" class="form-control" id="recipient-phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-address" class="control-label"
+                                       style="font-weight: normal;font-size: 0.4rem">收货地址</label>
+                                <input type="text" class="form-control" id="recipient-address" name="address">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="save" type="button" class="btn btn-sm btn-primary">保存收货地址</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <div id="addDIV"></div>     <!-- 添加页面 -->
     <div id="updateDIV"></div>  <!-- 修改页面 -->
