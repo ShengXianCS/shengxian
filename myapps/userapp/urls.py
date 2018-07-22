@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^regist',views.regist),
     url(r'^addAddress',views.addAddress),
     url(r'^myAddress/(?P<user_id>\d+)/',views.myAddress),
-    # url(r'^upload',views.upload),
+    # url(r^myAddress',views.myAddress),
     url(r'^code',views.code),
 
 
