@@ -6,11 +6,13 @@
     <link rel="stylesheet" type="text/css" href="/static/user/main/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/user/css/login2.css"/>
     <link rel="stylesheet" type="text/css" href="/static/user/css/commonalert.css"/>
-
+    <link rel="stylesheet" href="/static/user/main/css/register.css">
     <link rel="stylesheet" href="/static/user/main/reset.css">
     <link rel="stylesheet" href="/static/user/main/base.css">
     <script type="text/javascript">var frontPath = "";</script>
-    <script type="text/javascript" src="/static/user/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/main/js/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/main/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/user/js/jquery-1.4.2.min.js"></script>
 {#    <script type="text/javascript" src="/static/user/js/registerandlogin.js"></script>#}
 {#    <script type="text/javascript" src="/static/user/js/register.js"></script>#}
 {#    <script type="text/javascript" src="/static/user/js/commonalert.js"></script>#}
@@ -56,44 +58,44 @@
                             {% csrf_token %}
                             <div class="input-group">
                                 <span class="input-group-addon">用户名</span>
-                                <input class="form-control" title="用户名" name="name">
+                                <input class="form-control" placeholder="长度为6~12个字符" title="用户名" name="name">
                             </div>
-                            <p class="has-error" style="font-size: 10px "></p>
+                            <span class="error">用户名格式不正确</span>
                             <div style="height: 13px"></div>
 
                             <div class="input-group">
                                 <span class="input-group-addon">邮&nbsp;&nbsp;&nbsp;箱</span>
                                 <input class="form-control" title="邮箱" name="email">
                             </div>
-                            <p class="has-error" style="font-size: 10px"></p>
+                            <span class="error">邮箱不能为空</span>
                             <div style="height: 13px"></div>
 
                             <div class="input-group">
                                 <span class="input-group-addon">电&nbsp;&nbsp;&nbsp;话</span>
                                 <input class="form-control" title="电话" name="phone">
                             </div>
-                            <p class="has-error" style="font-size: 10px"></p>
+                            <span class="error"></span>
                             <div style="height: 13px"></div>
 
                             <div class="input-group">
                                 <span class="input-group-addon">密&nbsp;&nbsp;&nbsp;码</span>
-                                <input class="form-control" title="密码" name="passwd1" type="password">
+                                <input class="form-control" placeholder="长度为6~16个字符" name="passwd1" type="password">
                             </div>
-                            <p class="has-error" style="font-size: 10px"></p>
+                            <span class="error">密码格式不正确</span>
                             <div style="height: 13px"></div>
 
                             <div class="input-group">
                                 <span class="input-group-addon">确认密码</span>
-                                <input class="form-control" title="确认密码" name="passwd2" type="password">
+                                <input class="form-control" placeholder="长度为6~16个字符" name="passwd2" type="password">
                             </div>
-                            <p class="has-error" style="font-size: 10px"></p>
+                            <span class="error">两次输入密码不同</span>
                             <div style="height: 13px"></div>
 
                             <div class="input-group" >
                                 <span class="input-group-addon" style="padding: 1px"><img src="/user/code" alt="看不清，请更换" width="100" height="30" onclick="refreshcode(this)"></span>
                                 <input class="form-control" name="code" >
                             </div>
-                            <p id="error-code" class="has-error" style="font-size: 10px"></p>
+                            <span class="error"></span>
                             <div style="height: 13px"></div>
 
 
@@ -102,8 +104,7 @@
                                 <div class="mciline_left" style="display:block; margin-top: 4px;"><span
                                         class="choose-checkbox"><input id="checkBox" onclick="validateTermsofService();"
                                                                        type="checkbox" checked="checked"/>
-                                    <label for="checkBox" id="checkBoxLabel"></label></span>我已阅读并同意<a target="_blank"
-                                                                                                   onclick="document.protocolForm.submit();">《我买网上商城服务条款》</a>
+                                    <label for="checkBox" id="checkBoxLabel"></label></span>我已阅读并同意<a >《我买网上商城服务条款》</a>
                                 </div>
                                 <br/>
                                 <div class="clear"></div>
@@ -113,7 +114,7 @@
                             </div>
 
                             <div class="input-group" style="margin: 0px auto">
-                                <button type="button" onclick="submitForm()" class="btn btn-success">注册</button>
+                                <button type="button" onclick="submitMsg()" class="btn btn-success">注册</button>
                                 <a href="/user/login" class="btn btn-link">已注册用户登录</a>
                             </div>
 

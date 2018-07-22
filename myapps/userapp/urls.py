@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^myAddress/(?P<user_id>\d+)/',views.myAddress),
     # url(r^myAddress',views.myAddress),
     url(r'^code',views.code),
-
+    url(r'^verify/(?P<iptcode>[0-9a-zA-Z]+)',views.verifyCode),
 
 ]

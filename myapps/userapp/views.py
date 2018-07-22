@@ -26,10 +26,9 @@ def newToken(username):
 def login(req):
     if req.method == 'GET':
         return render(req,'login1.html')
-    phone=req.POST.get('name')
+    name =req.POST.get('name')
     passwd=req.POST.get('passwd')
-    print('______________________________',phone)
-    qs=User.objects.filter(phone=phone,passwd=jiami(passwd))
+    qs=User.objects.filter(name=name,passwd=jiami(passwd))
 
     if qs.exists():
         print('***')
@@ -44,24 +43,18 @@ def login(req):
 def regist(request):
     if request.method=='GET':
         return render(request,'regist.html')
-    inputCode=request.POST.get('code')
-    sessionCode=request.session.get('code')
-    if inputCode == sessionCode:
-        print('验证码输入正确')
-        user=User()
-        user.name=request.POST.get('name')
-        user.passwd=jiami(request.POST.get('passwd2'))
-        user.email=request.POST.get('email')
-        user.phone=request.POST.get('phone')
 
-        user.save()
+    user=User()
+    user.name=request.POST.get('name')
+    user.passwd=jiami(request.POST.get('passwd2'))
+    user.email=request.POST.get('email')
+    user.phone=request.POST.get('phone')
 
-        print('{}保存成功'.format(user.id))
-        return redirect('/user/login')
-    else:
-        return HttpResponse('验证码输入不正确。。。刷新图片，重新输入')
+    user.save()
+    del request.session['code']
 
-
+    print('{}保存成功'.format(user.id))
+    return redirect('/user/login')
 
 
 def myAddress(req,user_id):
@@ -75,6 +68,12 @@ def logout(req):
     del req.session['user_id']
     return redirect('/sy/home')
 
+def verifyCode(request,iptcode):
+    sessioncode = request.session.get('code')
+    if sessioncode.lower() == iptcode.lower():
+        return JsonResponse({'status':'ok'})
+    else:
+        return JsonResponse({'status':'fail','msg':'验证码错误'})
 
 def code(req):
     # 1. 创建画布Image对象
@@ -121,3 +120,7 @@ def code(req):
     del img
     return HttpResponse(buffer.getvalue(),  # 从BytesIO对象中获取字节数据
                         content_type='image/png')
+
+
+def addAddress(request):
+    return None
