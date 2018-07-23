@@ -38,7 +38,16 @@ def login(req):
         return redirect('/sy/home')
 
     else:
-        return render(req,'login1.html',{'errorMsg':'用户登录失败'})
+        return render(req,'login1.html',{'errorMsg':'用户名或密码错误','name':name})
+
+#验证用户名是否存在
+def verifyName(request,uname):
+    qs = User.objects.filter(name=uname)
+    if qs:
+        return JsonResponse({'status':'fail','msg':'用户名已存在'})
+    else:
+        return JsonResponse({'status':'ok'})
+
 
 def regist(request):
     if request.method=='GET':
