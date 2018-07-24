@@ -55,7 +55,7 @@
                         {% csrf_token %}
                             <div class="input-group">
                                 <span class="input-group-addon">用户名</span>
-                                <input class="form-control" title="用户名" name="name">
+                                <input class="form-control" title="用户名" name="name" value="{{ name }}">
                             </div>
                             <p class="has-error" style="font-size: 10px">请输入：电话</p>
                             <div style="height: 13px"></div>
@@ -73,7 +73,7 @@
                             </div>
 
                             {% if errorMsg %}
-                                <p id="MSG" class="error text-right" style="display: block">
+                                <p id="MSG" class="error text-right" style="display: block;font-size: 16px;color: red">
                                     {{ errorMsg }}
                                 </p>
                             {% endif %}

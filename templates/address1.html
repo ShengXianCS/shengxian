@@ -22,27 +22,27 @@
         <ul class="content" style="height: 500px">
         {% for addr in addrs %}
             {% if addr.isselect %}
-                <li id="defalutAddress" class="adds old_add_default" ></li>
-                <input type="hidden" value="20868010" id="defalutAddressId">
-                <li class="adds old_add" id="old_add_20868010">
-            <div class="name_infor">
-                <div class="name_etc" style="width: 230px">
-                    <span class="name" id="name{{ addr.id }}" title="{{ addr.name }}">{{ addr.name|truncatechars:6 }}</span>
-                    <span>收</span><span id="phone{{ addr.id }}" title="{{ addr.zipCode }}">{{ addr.phone }}</span>
-                    <span class="default_add">默认地址</span>
+                <li id="defalutAddress" class="adds old_add_default" >
+                    <div class="name_infor">
+                    <div class="name_etc" style="width: 230px">
+                        <span class="name" id="name{{ addr.id }}" title="{{ addr.name }}">{{ addr.name|truncatechars:6 }}</span>
+                        <span>收</span><span id="phone{{ addr.id }}" title="{{ addr.zipCode }}">{{ addr.phone }}</span>
+                        <span class="default_add">默认地址</span>
+                    </div>
+
+                    <ul class="btns">
+                        <li class="delete" id="{{ addr.id }}"><a class="myad_s2">删除</a></li>
+                        <li class="edit" id="{{ addr.id }}"><a class="thickbox myad_s1">编辑</a></li>
+                        <li class="set_default" id="{{ addr.id }}"><a >设为默认</a></li>
+                    </ul>
                 </div>
+                    <div class="add_infor">
+                    <strong class="add_city"><span id="addr{{ addr.id }}">{{ addr.detailAddr }}</span></strong>
 
-                <ul class="btns">
-                    <li class="delete" id="{{ addr.id }}"><a class="myad_s2">删除</a></li>
-                    <li class="edit" id="{{ addr.id }}"><a class="thickbox myad_s1">编辑</a></li>
-                    <li class="set_default" id="{{ addr.id }}"><a >设为默认</a></li>
-                </ul>
-            </div>
-            <div class="add_infor">
-                <strong class="add_city"><span id="addr{{ addr.id }}">{{ addr.detailAddr }}</span></strong>
+                </div>
+                </li>
+                <input type="hidden" value="20868010" id="defalutAddressId">
 
-            </div>
-        </li>
                 {% else %}
                 <li class="adds old_add" id="old_add_20868011" >
             <div class="name_infor">

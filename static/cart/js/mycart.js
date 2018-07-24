@@ -6,7 +6,9 @@ function everyM() {
         var id = $(pro).attr("name");
         var cnt = $("#sumpro_"+id).attr("title");
         var price = $("#price_"+id).text().trim();
-        $("#sumpro_"+id).text(parseInt(cnt)*parseFloat(price));
+        console.log(cnt)
+        console.log((parseInt(cnt)*parseFloat(price)).toFixed(2))
+        $("#sumpro_"+id).text((parseInt(cnt)*parseFloat(price)).toFixed(2));  //两位小数
     }
 
 }

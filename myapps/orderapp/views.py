@@ -1,6 +1,6 @@
 import time
 from django.db.models import F, Sum
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -85,7 +85,7 @@ def addPro(request,cart_id):
     print(userid)
     if not userid:
         print('haha')
-        return redirect('/user/login')
+        return JsonResponse({'status':'login'})
 
     data = {'status': 'ok', 'price': 0}
     user = User.objects.get(id=userid)  #拿到用户信息
@@ -176,7 +176,7 @@ def toOrder(request,ordernum):
     else:  #根据订单号查询订单
         order = Order.objects.get(pk=ordernum)
 
-    return render(request,'toorder.html',{'order':order})
+    return render(request,'toorder.html',{'order':order,'username':User.objects.get(id=userid).name})
 
 #支付订单
 def payOrder(request,ordernum,payType):

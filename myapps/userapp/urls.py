@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^myAddress/(?P<user_id>\d+)/',views.myAddress),
     # url(r^myAddress',views.myAddress),
     url(r'^code',views.code),
-    url(r'^verify/(?P<iptcode>[0-9a-zA-Z]+)',views.verifyCode),
-
+    url(r'^verify/(?P<iptcode>[0-9a-zA-Z]+)',views.verifyCode),  #验证验证码
+    url(r'^verifyName/(?P<uname>.+)',views.verifyName),  #验证用户名是否已存在
 ]

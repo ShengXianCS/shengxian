@@ -6,9 +6,12 @@ $(function () {
         cntimg = $('#cntimg').text();
         headcnt = $('#headcnt').text();
         $.getJSON('/order/addpro/' + proid, function (data) {
+            console.log(data.status);
             if (data.status == 'ok') {
                 $('#cntimg').text(parseInt(cntimg) + 1);
                 $('#headcnt').text(parseInt(headcnt) + 1);
+            }else{
+                window.open('/user/login',target='_self')
             }
         })
     });

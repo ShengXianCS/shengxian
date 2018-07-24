@@ -16,11 +16,19 @@ $(function () {
         //     showError.call(this,'信息不能为空');
         //     return
         // }
-        if(this.name == 'name' &&
-            (this.value.trim().length < 6 || this.value.trim().length>12) ){
-            showError.call(this,this.placeholder,true);
-            console.log(this.placeholder);
-            return
+        if(this.name == 'name'){
+            name = this.value.trim();
+            if (name.length < 6 || this.value.trim().length > 12) {
+                showError.call(this, this.placeholder, true);
+                console.log(this.placeholder);
+                return
+            }
+            $.getJSON('/user/verifyName/'+name,function (data) {
+                if(data.status == 'fail'){
+                    showError.call($('input[name="name"]')[0], data.msg, false);
+                    return
+                }
+            })
         }
 
         if(this.name == 'email' && this.value.trim().length == ''){
